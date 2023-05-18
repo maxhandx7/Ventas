@@ -56,7 +56,7 @@
                                         <a href="{{ route('sales.show', $sale)}}"> {{$sale->id }}</a>
                                     </th>
                                     <td> {{$sale->sale_date }} </td>
-                                    <td>{{$sale->total }}</td>
+                                    <td>{{number_format($sale->total) }}</td>
 
                                     @if ($sale->status=='VALID')
                                     <td>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 
 <head>
@@ -18,7 +18,7 @@
     {!! Html::style('melody/css/style.css') !!}
     @yield('styles')
   <!-- endinject -->
-  <link rel="shortcut icon" href="melody/images/favicon.png" />
+  <link rel="shortcut icon" href="{{asset('melody/images/favicon.png')}}" />
 </head>
 <body>
   <div class="container-scroller">
@@ -268,12 +268,14 @@
 
     <!-- endinject -->
     <!-- Custom js for this page-->
+   
     {!! Html::script('melody/js/dashboard.js') !!} 
+   
     <!-- End custom js for this page-->
     
     @yield('scripts')
   <!-- End custom js for this page-->
 </body>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 
 </html>

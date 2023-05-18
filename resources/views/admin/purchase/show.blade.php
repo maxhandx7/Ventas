@@ -126,5 +126,4 @@
 {!! Html::script('melody/js/avgrund.js') !!}
 
 {!! Html::script('select/dist/js/bootstrap-select.min.js') !!}
-{!! Html::script('js/sweetalert2.all.min.js') !!}
 @endsection

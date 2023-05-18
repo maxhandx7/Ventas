@@ -51,7 +51,6 @@
 {!! Html::script('melody/js/avgrund.js') !!}
 
 {!! Html::script('select/dist/js/bootstrap-select.min.js') !!}
-{!! Html::script('js/sweetalert2.all.min.js') !!}
 <script>
     $(document).ready(function () {
         $("#agregar").click(function () {
@@ -78,7 +77,16 @@
             subtotal[cont] = quantity * price;
             total = total + subtotal[cont];
             
-            var fila = '<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-outline-danger btn-sm" onclick="eliminar('+cont+');"><i class="fa fa-times-circle"></i></button></td> <td><input type="hidden" name="product_id[]" value="'+product_id+'">'+producto+'</td> <td> <input type="hidden" id="price[]" name="price[]" value="' + price + '"> <input class="form-control" type="number" id="price[]" value="' + price + '" disabled> </td>  <td> <input type="hidden" name="quantity[]" value="' + quantity + '"> <input class="form-control" type="number" value="' + quantity + '" disabled> </td> <td align="right">s/' + subtotal[cont] + ' </td></tr>';
+            var fila = '<tr class="selected" id="fila'+
+            cont+'"><td><button type="button" class="btn btn-outline-danger btn-sm" onclick="eliminar('+
+            cont+');"><i class="fa fa-times-circle"></i></button></td> <td><input type="hidden" name="product_id[]" value="'+
+            product_id+'">'+
+            producto+'</td> <td> <input type="hidden" id="price[]" name="price[]" value="' + 
+            numeral(price).format('0,0.00') + '"> <input class="form-control" type="number" id="price[]" value="' + 
+            numeral(price).format('0,0.00') + '" disabled> </td>  <td> <input type="hidden" name="quantity[]" value="' + 
+            quantity + '"> <input class="form-control" type="number" value="' + 
+            quantity + '" disabled> </td> <td align="right">s/' + 
+            numeral(subtotal[cont]).format('0,0.00') + ' </td></tr>';
             cont++;
             limpiar();
             totales();
@@ -99,12 +107,12 @@
     }
     
     function totales() {
-        $("#total").html("COL " + total.toFixed(2));
+        $("#total").html("COL " + numeral(total).format('0,0.00'));
         total_impuesto = total * impuesto / 100;
         total_pagar = total + total_impuesto;
-        $("#total_impuesto").html("COL " + total_impuesto.toFixed(2));
-        $("#total_pagar_html").html("COL " + total_pagar.toFixed(2));
-        $("#total_pagar").val(total_pagar.toFixed(2));
+        $("#total_impuesto").html("COL " + numeral(total_impuesto).format('0,0.00'));
+        $("#total_pagar_html").html("COL " + numeral(total_pagar).format('0,0.00'));
+        $("#total_pagar").val(total_pagar);
     }
     
     function evaluar() {

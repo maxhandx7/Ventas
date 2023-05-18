@@ -35,7 +35,7 @@ UPDATE products p
 JOIN sale_details dv
 ON dv.product_id = p.id
 AND dv.sale_id = new.id
-set p.stock = p.stock + dv.quantity;
+set p.stock = p.stock - dv.quantity;
 end;
 // 
 DELIMITER ;

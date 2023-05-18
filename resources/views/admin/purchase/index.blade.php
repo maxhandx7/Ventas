@@ -55,7 +55,7 @@
                                         <a href="{{ route('purchases.show', $purchase)}}"> {{$purchase->id }}</a>
                                     </th>
                                     <td> {{$purchase->purchase_date }} </td>
-                                    <td>{{$purchase->total }}</td>
+                                    <td>{{number_format($purchase->total) }}</td>
 
                                     @if ($purchase->status=='VALID')
                                     <td>

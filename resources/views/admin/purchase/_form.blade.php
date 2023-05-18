@@ -72,7 +72,7 @@
                      <p align="right">TOTAL PAGAR</p>
                  </th>
                  <th colspan="4">
-                  <p align="right"><span align="right" id="total_pagar_html">COL 0.000</span><input type="hidden" name="total" id="total_pagar"></p>
+                  <p align="right"><span align="right" id="total_pagar_html">COL 0.00</span><input type="hidden" name="total" id="total_pagar"></p>
               </th>
               </tr>
  
