@@ -7,7 +7,6 @@
         padding: 0;
         background: none;
     }
-
 </style>
 @endsection
 @section('options')
@@ -21,7 +20,6 @@
             Panel administrador
         </h3>
     </div>
-
     @foreach ($totales as $total)
     <div class="row">
         <div class="col-md-6 grid-margin stretch-card">
@@ -36,8 +34,7 @@
                     <div class="h3">Compras</div>
                 </div>
                 <div class="chart-wrapper mt-3 mx-3" style="height:35px;">
-                    <a href="{{route('purchases.index')}}" class="small-box-footer h4">Compras <i
-                            class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{route('purchases.index')}}" class="small-box-footer h4">Compras <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
 
             </div>
@@ -55,15 +52,13 @@
                     <div class="h3">Ventas</div>
                 </div>
                 <div class="chart-wrapper mt-3 mx-3" style="height:35px;">
-                    <a href="{{route('sales.index')}}" class="small-box-footer h4">Ventas <i
-                            class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{route('sales.index')}}" class="small-box-footer h4">Ventas <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
 
             </div>
         </div>
     </div>
     @endforeach
-
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
@@ -132,8 +127,7 @@
                                     <td><strong>{{$productosvendido->stock}}</strong> Unidades</td>
                                     <td><strong>{{$productosvendido->quantity}}</strong> Unidades</td>
                                     <td>
-                                        <a class="btn btn-primary"
-                                            href="{{route('products.show', $productosvendido->id)}}">
+                                        <a class="btn btn-primary" href="{{route('products.show', $productosvendido->id)}}">
                                             <i class="far fa-eye"></i>
                                             Ver detalles
                                         </a>
@@ -147,103 +141,103 @@
             </div>
         </div>
     </div>
-
-    
 </div>
 @endsection
 @section('scripts')
 {!! Html::script('melody/js/data-table.js') !!}
 {!! Html::script('melody/js/chart.js') !!}
 <script>
-    $(function () {
-        var varCompra=document.getElementById('compras').getContext('2d');
-    
-            var charCompra = new Chart(varCompra, {
-                type: 'line',
-                data: {
-                    labels: [<?php foreach ($comprasmes as $reg)
-                        { 
-                    
-                    setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
-                    $mes_traducido=strftime('%B',strtotime($reg->mes));
-            
-                    echo '"'. $mes_traducido.'",';} ?>],
-                    datasets: [{
-                        label: 'Compras',
-                        data: [<?php foreach ($comprasmes as $reg)
-                            {echo ''. $reg->totalmes.',';} ?>],
-                    
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth:3
+    $(function() {
+        var varCompra = document.getElementById('compras').getContext('2d');
+
+        var charCompra = new Chart(varCompra, {
+            type: 'line',
+            data: {
+                labels: [<?php foreach ($comprasmes as $reg) {
+
+                                setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish');
+                                $mes_traducido = strftime('%B', mktime(0, 0, 0, $reg->mes, 1));
+
+                                echo '"' . $mes_traducido . '",';
+                            } ?>],
+                datasets: [{
+                    label: 'Compras',
+                    data: [<?php foreach ($comprasmes as $reg) {
+                                echo '' . $reg->totalmes . ',';
+                            } ?>],
+
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
                     }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero:true
-                            }
-                        }]
-                    }
                 }
-            });
-            var varVenta=document.getElementById('ventas').getContext('2d');
-            var charVenta = new Chart(varVenta, {
-                type: 'line',
-                data: {
-                    labels: [<?php foreach ($ventasmes as $reg)
-                {
-                    setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
-                    $mes_traducido=strftime('%B',strtotime($reg->mes));
-                    
-                    echo '"'. $mes_traducido.'",';} ?>],
-                    datasets: [{
-                        label: 'Ventas',
-                        data: [<?php foreach ($ventasmes as $reg)
-                        {echo ''. $reg->totalmes.',';} ?>],
-                        backgroundColor: 'rgba(20, 204, 20, 1)',
-                        borderColor: 'rgba(54, 162, 235, 0.2)',
-                        borderWidth: 1
+            }
+        });
+        var varVenta = document.getElementById('ventas').getContext('2d');
+        var charVenta = new Chart(varVenta, {
+            type: 'line',
+            data: {
+                labels: [<?php foreach ($ventasmes as $reg) {
+                                setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish');
+                                $mes_traducido = strftime('%B', mktime(0, 0, 0, $reg->mes, 1));
+                                echo '"' . $mes_traducido . '",';
+                            } ?>],
+                datasets: [{
+                    label: 'Ventas',
+                    data: [<?php foreach ($ventasmes as $reg) {
+                                echo '' . $reg->totalmes . ',';
+                            } ?>],
+                    backgroundColor: 'rgba(20, 204, 20, 1)',
+                    borderColor: 'rgba(54, 162, 235, 0.2)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
                     }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero:true
-                            }
-                        }]
-                    }
                 }
-            });
-            var varVenta=document.getElementById('ventas_diarias').getContext('2d');
-            var charVenta = new Chart(varVenta, {
-                type: 'bar',
-                data: {
-                    labels: [<?php foreach ($ventasdia as $ventadia)
-                {
-                    $dia = $ventadia->dia;
-                    
-                    echo '"'. $dia.'",';} ?>],
-                    datasets: [{
-                        label: 'Ventas',
-                        data: [<?php foreach ($ventasdia as $reg)
-                        {echo ''. $reg->totaldia.',';} ?>],
-                        backgroundColor: 'rgba(20, 204, 20, 1)',
-                        borderColor: 'rgba(54, 162, 235, 0.2)',
-                        borderWidth: 1
+            }
+        });
+        var varVenta = document.getElementById('ventas_diarias').getContext('2d');
+        var charVenta = new Chart(varVenta, {
+            type: 'bar',
+            data: {
+                labels: [<?php foreach ($ventasdia as $ventadia) {
+                                $dia = $ventadia->dia;
+
+                                echo '"' . $dia . '",';
+                            } ?>],
+                datasets: [{
+                    label: 'Ventas',
+                    data: [<?php foreach ($ventasdia as $reg) {
+                                echo '' . $reg->totaldia . ',';
+                            } ?>],
+                    backgroundColor: 'rgba(20, 204, 20, 1)',
+                    borderColor: 'rgba(54, 162, 235, 0.2)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
                     }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero:true
-                            }
-                        }]
-                    }
                 }
-            });
+            }
+        });
     });
 </script>
 

@@ -65,9 +65,15 @@
                                   <span class="float-left">
                                     Estado
                                   </span>
+                                  @if ($product->status == 'ACTIVE')
                                   <span class="float-right text-muted">
-                                    {{$product->status }}
+                                    Activo
                                   </span>
+                                  @else
+                                  <span class="float-right text-muted">
+                                    Inactivo
+                                  </span>
+                                @endif
                                 </p>
                                 <p class="clearfix">
                                   <span class="float-left">
@@ -91,9 +97,9 @@
                               </div>
 
                             @if ($product->status == 'ACTIVE')
-                            <button class="btn btn-primary btn-block">{{$product->status }}</button>
+                            <button class="btn btn-primary btn-block">Activo</button>
                                 @else
-                                <button class="btn btn-danger btn-block">{{$product->status }}</button>
+                                <button class="btn btn-danger btn-block">Inactivo</button>
                             @endif
 
                         </div>
@@ -127,7 +133,11 @@
                                     <div class="form-group col-md-6">
 
                                         <strong> <i class="fas fa-check"> Estado del producto </i> </strong>
-                                        <p class="text-muted"> {{$product->status }} </p>
+                                        @if ($product->status=='ACTIVE')
+                                        <p class="text-muted"> Activo </p>
+                                        @else
+                                        <p class="text-muted"> Inactivo </p>
+                                        @endif
                                         <hr>
                                         <strong> <i class="fas fa-list mr-1"> Categoria </i> </strong>
                                         <p class="text-muted"> {{$product->category->name}} </p>

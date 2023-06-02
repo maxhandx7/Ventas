@@ -81,10 +81,11 @@
 
                     <p class="text-muted">{{$business->mail}}</p>
                     <hr>
-                    {{--  <strong><i class="far fa-calendar-check mr-1"></i> Fecha de alta</strong>
+                     <strong><i class="far fa-calendar-check mr-1"></i> Fecha de alta</strong>
                            
-                            <p class="text-muted">{{$business->discharge_date}}</p>
-                    <hr> --}}
+                            <p class="text-muted">{{$business->created_at}}</p>
+                    <hr> 
+                    
                     <div class="row">
                         <div class="col-md-6">
                             <strong><i class="fas fa-exclamation-circle mr-1"></i> Logo</strong><br>
