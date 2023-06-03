@@ -61,7 +61,7 @@
                         <div class="col-12 col-md-4 text-center">
                             <span>Total de ingresos: <b> </b></span>
                             <div class="form-group">
-                                <strong>s/ {{$total}}</strong>
+                                <strong>$ {{$total}}</strong>
                             </div>
                         </div>
                     </div>

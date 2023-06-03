@@ -20,10 +20,10 @@ class StoreRequest extends FormRequest
     {
         return [
             'name'=>'required|string|max:255', 
-            'email'=>'required|email|string|max:200|unique:providers', 
-            'nit_number'=>'required|string|unique:providers', 
+            'email'=>'nullable|email|string|max:200|unique:providers', 
+            'nit_number'=>'nullable|string|unique:providers', 
             'address'=>'nullable|string|max:255', 
-            'phone'=>'required|string|unique:providers',
+            'phone'=>'nullable|integer|unique:providers',
         ];
     }
 
@@ -34,24 +34,20 @@ class StoreRequest extends FormRequest
             'name.string'=>'El valor no es correcto .',
             'name.max'=>'Solo se permiten 255 caracteres.',
 
-            'email.required'=>'Este campo es requerido.',
             'email.email'=>'No es un correo electronico.',
             'email.string'=>'El valor no es correcto.',
             'email.max'=>'Solo se permiten 255 caracteres.',
             'email.unique'=>'Ya se encuentra registrado.',
 
-            'nit_number.required'=>'Este campo es requerido.',
-            'nit_number.string'=>'El valor no es correcto.',
+            'nit_number.integer'=>'El valor no es correcto.',
            
             'nit_number.unique'=>'Ya se encuentra registrado.',
 
             'address.max'=>'Solo se permiten 255 caracteres.',
             'address.string'=>'El valor no es correcto.',
-
-            'phone.required'=>'Este campo es requerido.',
-            'phone.string'=>'El valor no es correcto.',
               
             'phone.unique'=>'Ya se encuentra registrado.',
+            'phone.integer'=>'El valor no es correcto.',
             
         ];
     }   

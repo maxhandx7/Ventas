@@ -11,11 +11,11 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-          Administrar Proveedores
+            Administrar Proveedores
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="/">Panel administrador</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Proveedor</li>
             </ol>
         </nav>
@@ -27,20 +27,26 @@
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Proveedores</h4>
                         <div class="btn-group">
-                            <a  class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             
+                            <a class="dropdown-toggle btn btn-success cursor-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-plus"></i>
+                                Nuevo
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{ route('providers.create')}}" class="dropdown-item" type="button">Agregar</a>
-                             
+                                <a href="{{route('providers.create')}}" class="dropdown-item" type="button">Agregar</a>
                             </div>
-                          </div>
+                        </div>
                     </div>
+                    <br>
+                    @if(session('success'))
+                    <div id="success-message" class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     <div class="table-responsive">
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>
-                                   
+
                                     <th>Id</th>
                                     <th>Nombre</th>
                                     <th>Correo electronico</th>
@@ -50,23 +56,23 @@
                             </thead>
                             <tbody>
                                 @foreach ($providers as $provider)
-                                
+
                                 <tr>
                                     <th scope="row">{{$provider->id }}</th>
-                                    
+
                                     <td> <a href="{{ route('providers.show', $provider )  }}"> {{$provider->name }} </a></td>
                                     <td>{{$provider->email }}</td>
                                     <td>{{$provider->phone }}</td>
-                                    
-                                    <td style="width: 50px;">              
+
+                                    <td style="width: 50px;">
                                         {!! Form::open(['route'=>['providers.destroy', $provider], 'method'=>'DELETE']) !!}
                                         <a class="btn btn-outline-info" href="{{ route('providers.edit', $provider)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
-                                        
-                                        <button class="btn btn-outline-danger delete-confirm" type="submit"  title="Eliminar">
+
+                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
-                                    </button>
+                                        </button>
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>
@@ -82,5 +88,5 @@
 
 @endsection
 @section('scripts')
-{!! Html::script('melody/js/data-table.js') !!} 
+{!! Html::script('melody/js/data-table.js') !!}
 @endsection

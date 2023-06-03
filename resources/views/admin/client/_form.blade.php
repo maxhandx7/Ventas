@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="name">Nombre de cliente *</label>
+    <label for="name">Nombre de cliente (*)</label>
     <input type="text" name="name" id="name" class="form-control" placeholder="Nombre de cliente" required>
     @error('name')
     <span class="text-danger">{{ $message }}</span>

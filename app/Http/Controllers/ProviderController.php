@@ -39,7 +39,7 @@ class ProviderController extends Controller
     {
        Provider::create($request->all());
         
-       return redirect()->route('providers.index');
+       return redirect()->route('providers.index')->with('success', 'Nuevo proveedor creado con éxito');
     }
 
     public function show(provider $provider)
@@ -57,7 +57,7 @@ class ProviderController extends Controller
     {
         $provider->update($request->all());
 
-        return redirect()->route('providers.index');
+        return redirect()->route('providers.index')->with('success', 'Proveedor modificado');
     }
 
  

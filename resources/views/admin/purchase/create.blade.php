@@ -82,10 +82,10 @@
             cont+');"><i class="fa fa-times-circle"></i></button></td> <td><input type="hidden" name="product_id[]" value="'+
             product_id+'">'+
             producto+'</td> <td> <input type="hidden" id="price[]" name="price[]" value="' + 
-            numeral(price).format('0,0.00') + '"> <input class="form-control" type="number" id="price[]" value="' + 
-            numeral(price).format('0,0.00') + '" disabled> </td>  <td> <input type="hidden" name="quantity[]" value="' + 
+            price+ '"> <input class="form-control" type="number" id="price[]" value="' + 
+            price+ '" disabled> </td>  <td> <input type="hidden" name="quantity[]" value="' + 
             quantity + '"> <input class="form-control" type="number" value="' + 
-            quantity + '" disabled> </td> <td align="right">s/' + 
+            quantity + '" disabled> </td> <td align="right">$' + 
             numeral(subtotal[cont]).format('0,0.00') + ' </td></tr>';
             cont++;
             limpiar();

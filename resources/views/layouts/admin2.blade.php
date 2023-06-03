@@ -233,11 +233,12 @@
 
   @yield('scripts')
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>  
 <script>
   $(document).ready(function() {
     setTimeout(function() {
       $('#success-message').fadeOut('slow');
-    }, 5000); 
+    }, 5000);
   });
 </script>
 

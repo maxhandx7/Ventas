@@ -100,7 +100,7 @@
                     numeral(discount).format('0,0.00') + '"> <input class="form-control" type="number" value="' +
                     numeral(discount).format('0,0.00') + '" disabled> </td> <td> <input type="hidden" name="quantity[]" value="' +
                     quantity + '"> <input type="number" value="' +
-                    quantity + '" class="form-control" disabled> </td> <td align="right">s/' +
+                    quantity + '" class="form-control" disabled> </td> <td align="right">$' +
                     numeral(subtotal[cont]).format('0,0.00') + '</td></tr>';
                 cont++;
                 limpiar();

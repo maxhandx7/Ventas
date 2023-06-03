@@ -167,8 +167,8 @@
                     <tr>
                         <td>{{$purchaseDetail->quantity}}</td>
                         <td>{{$purchaseDetail->product->name}}</td>
-                        <td>s/ {{$purchaseDetail->price}}</td>
-                        <td>s/ {{number_format($purchaseDetail->quantity*$purchaseDetail->price,3)}}</td>
+                        <td>$ {{$purchaseDetail->price}}</td>
+                        <td>$ {{number_format($purchaseDetail->quantity*$purchaseDetail->price,3)}}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -179,7 +179,7 @@
                             <p align="right">SUBTOTAL:</p>
                         </th>
                         <td>
-                            <p align="right">s/ {{number_format($subtotal,3)}}<p>
+                            <p align="right">$ {{number_format($subtotal,3)}}<p>
                         </td>
                     </tr>
                   
@@ -188,7 +188,7 @@
                             <p align="right">TOTAL IMPUESTO ({{$purchase->tax}}%):</p>
                         </th>
                         <td>
-                            <p align="right">s/ {{number_format($subtotal*$purchase->tax/100,2)}}</p>
+                            <p align="right">$ {{number_format($subtotal*$purchase->tax/100,2)}}</p>
                         </td>
                     </tr>
                     <tr>
@@ -196,7 +196,7 @@
                             <p align="right">TOTAL PAGAR:</p>
                         </th>
                         <td>
-                            <p align="right">s/ {{number_format($purchase->total,3)}}<p>
+                            <p align="right">$ {{number_format($purchase->total,3)}}<p>
                         </td>
                     </tr>
                   
