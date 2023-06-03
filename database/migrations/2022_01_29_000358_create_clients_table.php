@@ -13,7 +13,7 @@ class CreateClientsTable extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('cc')->unique();
+            $table->integer('cc')->nullable()->unique();
             $table->string('rut')->nullable()->unique();
             $table->string('address')->nullable();
             $table->string('phone')->unique()->nullable();

@@ -75,7 +75,7 @@
     </nav>
     <div class="container-fluid page-body-wrapper">
       @yield('preference')
-      <div class="theme-setting-wrapper">
+      <!-- <div class="theme-setting-wrapper">
         <div id="settings-trigger"><i class="fas fa-fill-drip"></i></div>
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close fa fa-times"></i>
@@ -97,7 +97,7 @@
             <div class="tiles default"></div>
           </div>
         </div>
-      </div>
+      </div> -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
@@ -219,37 +219,26 @@
           </div>
         </footer>
       </div>
-      <!-- page-body-wrapper ends -->
     </div>
   </div>
-  <!-- container-scroller -->
-
-
 
   {!! Html::script('melody/vendors/js/vendor.bundle.base.js') !!}
   {!! Html::script('melody/vendors/js/vendor.bundle.addons.js') !!}
-  <!-- endinject -->
-  <!-- Plugin js for this page-->
-  <!-- End plugin js for this page-->
-  <!-- inject:js -->
   {!! Html::script('melody/js/off-canvas.js') !!}
   {!! Html::script('melody/js/hoverable-collapse.js') !!}
   {!! Html::script('melody/js/misc.js') !!}
   {!! Html::script('melody/js/settings.js') !!}
   {!! Html::script('melody/js/todolist.js') !!}
-
-
-
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-
   {!! Html::script('melody/js/dashboard.js') !!}
 
-  <!-- End custom js for this page-->
-
   @yield('scripts')
-  <!-- End custom js for this page-->
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<script>
+  $(document).ready(function() {
+    setTimeout(function() {
+      $('#success-message').fadeOut('slow');
+    }, 5000); 
+  });
+</script>
 
 </html>

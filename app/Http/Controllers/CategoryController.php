@@ -30,8 +30,6 @@ class CategoryController extends Controller
 
     public function create()
     {
-      
-
         return view('admin.category.create');
     }
 
@@ -40,7 +38,7 @@ class CategoryController extends Controller
     {
        Category::create($request->all());
 
-       return redirect()->route('categories.index');
+       return redirect()->route('categories.index')->with('success', 'Categoria credada con éxito');
     }
 
     public function show(category $category)
@@ -58,7 +56,7 @@ class CategoryController extends Controller
     {
         $category->update($request->all());
 
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', 'Categoria modificado');
     }
 
  

@@ -41,7 +41,7 @@ class ClientController extends Controller
     {
        Client::create($request->all());
 
-       return redirect()->route('clients.index');
+       return redirect()->route('clients.index')->with('success', 'Nuevo cliente creado con éxito');
     }
 
     public function show(client $client)
@@ -59,7 +59,7 @@ class ClientController extends Controller
     {
         $client->update($request->all());
 
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('success', 'Cliente modificado');
     }
 
  

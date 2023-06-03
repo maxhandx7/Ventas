@@ -17,7 +17,7 @@ class UpdateRequest extends FormRequest
         
              return [
             'name'=>'string|required|max:255',
-            'cc'=>'string|required|unique:clients,cc,'. $this->route('client')->id.'', 
+            'cc'=>'integer|nullable|unique:clients,cc,'. $this->route('client')->id.'', 
             'rut'=>'string|nullable|unique:clients,rut,'. $this->route('client')->id.'', 
             'address'=>'nullable|string|max:255', 
             'phone'=>'string|nullable|unique:clients,phone,'. $this->route('client')->id.'',
@@ -33,8 +33,7 @@ class UpdateRequest extends FormRequest
             'name.string'=>'el valor ingresado no es correcto.', 
             'name.max'=>'se permite maximo 50 caracteres.', 
 
-            'cc.required'=>'este campo es requerido.',
-            'cc.string'=>'el valor ingresado no es correcto.', 
+            'cc.integer'=>'el valor ingresado no es correcto.', 
             'cc.max'=>'se permite maximo 10 caracteres.',
             'cc.min'=>'se permite maximo 10 caracteres.',
             'cc.unique'=>'la cedula ya esta registrada',

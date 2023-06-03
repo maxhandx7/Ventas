@@ -21,11 +21,11 @@ class StoreRequest extends FormRequest
     {
         return [
             'name'=>'string|required|max:255',
-            'cc'=>'string|required|', 
+            'cc'=>'integer|nullable|', 
             'rut'=>'string|nullable|unique:clients', 
             'address'=>'nullable|string|max:255', 
             'phone'=>'string|nullable',
-            'email'=>'string|nullable|email:rfc,dns',
+            'email'=>'string|nullable|unique:clients,email,dns',
         ];
     }
 
@@ -36,8 +36,7 @@ class StoreRequest extends FormRequest
             'name.string'=>'el valor ingresado no es correcto.', 
             'name.max'=>'se permite maximo 50 caracteres.', 
 
-            'cc.required'=>'este campo es requerido.',
-            'cc.string'=>'el valor ingresado no es correcto.', 
+            'cc.integer'=>'el valor ingresado no es correcto.', 
             
             'cc.unique'=>'la cedula ya esta registrada',
             
@@ -57,7 +56,7 @@ class StoreRequest extends FormRequest
             'email.string'=>'el valor ingresado no es correcto.', 
             'email.max'=>'se permite maximo 255 caracteres.',
             'email.unique'=>'el email ya esta registrado',
-            'email.email'=>'este Rno es un correo electronico valido',
+            'email.email'=>'este no es un correo electronico valido',
 
             
            

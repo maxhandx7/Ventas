@@ -3,14 +3,6 @@
 @section('styles')
 @endsection
 @section('styles')
-
-@section('create')
-<li class="nav-item d-none d-lg-flex">
-    <a href="{{ route('categories.create') }}" class="nav-link">
-    <span class="btn btn-primary"> crear nuevo</span>
-    </a>
-</li>
-@endsection
 @section('preference')
 @endsection
 @section('content')
@@ -24,9 +16,9 @@
            Detalles
         </h3>
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel de administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('clients.index') }}">Proveedores</a></li>
+            <ol class="breadcrumb breadcrumb-custom">
+                <li class="breadcrumb-item"><a href="/">Panel de administrador</a></li>
+                <li class="breadcrumb-item"><a href="{{route('clients.index') }}">Clientes</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{$client->name }}</li>
             </ol>
         </nav>

@@ -14,7 +14,7 @@ class BusinessTableSeeder extends Seeder
         Business::create([
             'name'=>'AF',
             'description'=>'software design and development',
-            'logo'=>'logo.png',
+            'logo'=>'logo.svg',
             'mail'=>'Af@gmail.com',
             'address'=>'cra 26c#109-14, Cali, Colombia',
             'nit'=>'15247895632',
