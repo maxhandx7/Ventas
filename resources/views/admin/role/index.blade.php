@@ -6,7 +6,7 @@
         border: none;
         padding: 0;
         background: none;
-      }
+    }
 </style>
 
 @endsection
@@ -31,21 +31,17 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
+
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Roles del sistema</h4>
-                        {{--  <i class="fas fa-ellipsis-v"></i>  --}}
                         <div class="btn-group">
-                            <a  class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{ route('roles.create')}}" class="dropdown-item" type="button">Agregar</a>
-                             
-                            </div>
-                          </div>
+                            <a href="{{route('roles.create')}}" class="btn btn-success" type="button">
+                                <i class="fa fa-plus"></i>
+                                Agregar</a>
+                        </div>
                     </div>
-
+                    <br>
+                    @include('admin.role.message')
                     <div class="table-responsive">
                         <table id="order-listing" class="table">
                             <thead>
@@ -70,7 +66,7 @@
                                         <a class="jsgrid-button jsgrid-edit-button" href="{{route('roles.edit', $role)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
-                                        
+
                                         <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
@@ -83,14 +79,11 @@
                         </table>
                     </div>
                 </div>
-                {{--  <div class="card-footer text-muted">
-                    {{$roles->render()}}
-                </div>  --}}
             </div>
         </div>
     </div>
 </div>
 @endsection
 @section('scripts')
- {!! Html::script('melody/js/data-table.js') !!} 
+{!! Html::script('melody/js/data-table.js') !!}
 @endsection

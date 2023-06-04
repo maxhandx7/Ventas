@@ -27,15 +27,13 @@
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Usuarios</h4>
                         <div class="btn-group">
-                            <a  class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{ route('users.create')}}" class="dropdown-item" type="button">Agregar</a>
-                             
-                            </div>
-                          </div>
+                            <a href="{{route('users.create')}}" class="btn btn-success" type="button">
+                                <i class="fa fa-plus"></i>
+                                Agregar</a>
+                        </div>
                     </div>
+                    <br>
+                    @include('admin.user.message')
                     <div class="table-responsive">
                         <table id="order-listing" class="table">
                             <thead>
@@ -48,28 +46,28 @@
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
-                                
+
                                 <tr>
                                     <th scope="row">{{$user->id }}</th>
-                                    
+
                                     <td>
                                         <a href="{{route('users.show',$user)}}">{{$user->name}}</a>
                                     </td>
 
 
                                     <td>{{$user->email }}</td>
-                                    
 
-                                    
-                                    <td style="width: 100px;">              
+
+
+                                    <td style="width: 100px;">
                                         {!! Form::open(['route'=>['users.destroy', $user], 'method'=>'DELETE']) !!}
                                         <a class="btn btn-outline-info" href="{{ route('users.edit', $user)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
-                                        
-                                        <button class="btn btn-outline-danger delete-confirm" type="submit"  title="Eliminar">
+
+                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
-                                    </button>
+                                        </button>
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>
@@ -85,5 +83,5 @@
 
 @endsection
 @section('scripts')
-{!! Html::script('melody/js/data-table.js') !!} 
+{!! Html::script('melody/js/data-table.js') !!}
 @endsection

@@ -26,21 +26,13 @@
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">clientes</h4>
                         <div class="btn-group">
-                            <a class="dropdown-toggle btn btn-success cursor-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a href="{{route('clients.create')}}" class="btn btn-success" type="button">
                                 <i class="fa fa-plus"></i>
-                                Nuevo
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a href="{{route('clients.create')}}" class="dropdown-item" type="button">Agregar</a>
-                            </div>
+                                Agregar</a>
                         </div>
                     </div>
                     <br>
-                    @if(session('success'))
-                    <div id="success-message" class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                    @endif
+                    @include('admin.client.message')
                     <div class="table-responsive">
                         <table id="order-listing" class="table">
                             <thead>

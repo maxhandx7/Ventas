@@ -27,16 +27,13 @@
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Ventas</h4>
                         <div class="btn-group">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a href="{{ route('sales.create')}}" class="dropdown-item" type="button">Agregar</a>
-
-                            </div>
+                            <a href="{{route('sales.create')}}" class="btn btn-success" type="button">
+                                <i class="fa fa-plus"></i>
+                                Nueva venta</a>
                         </div>
                     </div>
+                    <br>
+                    @include('admin.sale.message')
                     <div class="table-responsive">
                         <table id="order-listing" class="table">
                             <thead>
@@ -60,9 +57,9 @@
 
                                     @if ($sale->status=='VALID')
                                     <td>
-                                    <a class="btn btn-sucess" href="{{ route('change.status.sales', $sale)}}" title="Esta pago">
-                                        pagado<i class="fa fa-check"></i>
-                                    </a>
+                                        <a class="btn btn-sucess" href="{{ route('change.status.sales', $sale)}}" title="Esta pago">
+                                            pagado<i class="fa fa-check"></i>
+                                        </a>
 
                                     </td>
 
@@ -71,18 +68,18 @@
                                         <a class="btn btn-danger" href="{{ route('change.status.sales', $sale)}}" title="no pago">
                                             No pago<i class="fa fa-times"></i>
                                         </a>
-    
-                                        </td>
-                                        
+
+                                    </td>
+
                                     @endif
 
-                                    
+
 
                                     <td style="width:50px;">
 
                                         {{-- <a class="jsgrid-button jsgrid-edit-button"
                                             href="{{ route('sales.edit', $sale)}}" title="Editar">
-                                            <i class="far fa-edit"></i>
+                                        <i class="far fa-edit"></i>
                                         </a> --}}
 
                                         {{-- <button class="jsgrid-button jsgrid-delete-button" type="submit"
@@ -90,14 +87,9 @@
                                             <i class="far fa-trash-alt"></i>
                                         </button> --}}
 
-                                        <a class="jsgrid-button jsgrid-edit-button" href="{{route('sales.pdf', $sale)}}"
-                                            title="PDF"><i class="fa fa-file-pdf" aria-hidden="true"></i></a>
-                                        <a class="jsgrid-button jsgrid-edit-button" title="Imprimir"
-                                            href="{{route('sales.print', $sale)}}"> <i class="fa fa-print"
-                                                aria-hidden="true"></i></a>
-                                        <a class="jsgrid-button jsgrid-edit-button" title="VER"
-                                            href="{{ route('sales.show', $sale)}}"><i class="fa fa-eye"
-                                                aria-hidden="true"></i></a>
+                                        <a class="jsgrid-button jsgrid-edit-button" href="{{route('sales.pdf', $sale)}}" title="PDF"><i class="fa fa-file-pdf" aria-hidden="true"></i></a>
+                                        <a class="jsgrid-button jsgrid-edit-button" title="Imprimir" href="{{route('sales.print', $sale)}}"> <i class="fa fa-print" aria-hidden="true"></i></a>
+                                        <a class="jsgrid-button jsgrid-edit-button" title="VER" href="{{ route('sales.show', $sale)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -112,5 +104,5 @@
 
 @endsection
 @section('scripts')
-{!! Html::script('melody/js/data-table.js') !!} 
+{!! Html::script('melody/js/data-table.js') !!}
 @endsection

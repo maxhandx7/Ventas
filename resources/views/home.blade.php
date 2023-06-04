@@ -1,13 +1,6 @@
 @extends('layouts.admin2')
 @section('title','Panel administrador')
 @section('styles')
-<style type="text/css">
-    .unstyled-button {
-        border: none;
-        padding: 0;
-        background: none;
-    }
-</style>
 @endsection
 @section('options')
 @endsection
@@ -29,7 +22,7 @@
                     <div class="float-right">
                         <i class="fas fa-cart-arrow-down fa-4x"></i>
                     </div>
-                    <div class="text-value h4"><strong>COL {{$total->totalcompra}} (MES ACTUAL)</strong>
+                    <div class="text-value h4"><strong>COL {{number_format($total->totalcompra)}} (MES ACTUAL)</strong>
                     </div>
                     <div class="h3">Compras</div>
                 </div>
@@ -47,7 +40,7 @@
                     <div class="float-right">
                         <i class="fas fa-shopping-cart fa-4x"></i>
                     </div>
-                    <div class="text-value h4"><strong>COL {{$total->totalventa}} (MES ACTUAL) </strong>
+                    <div class="text-value h4"><strong>COL {{number_format($total->totalventa)}} (MES ACTUAL) </strong>
                     </div>
                     <div class="h3">Ventas</div>
                 </div>
@@ -163,7 +156,7 @@
                 datasets: [{
                     label: 'Compras',
                     data: [<?php foreach ($comprasmes as $reg) {
-                                echo '' . $reg->totalmes . ',';
+                                echo '"' . $reg->totalmes . '",';
                             } ?>],
 
                     borderColor: 'rgba(255, 99, 132, 1)',
@@ -192,7 +185,7 @@
                 datasets: [{
                     label: 'Ventas',
                     data: [<?php foreach ($ventasmes as $reg) {
-                                echo '' . $reg->totalmes . ',';
+                                echo '"' . $reg->totalmes . '",';
                             } ?>],
                     backgroundColor: 'rgba(20, 204, 20, 1)',
                     borderColor: 'rgba(54, 162, 235, 0.2)',
@@ -221,7 +214,7 @@
                 datasets: [{
                     label: 'Ventas',
                     data: [<?php foreach ($ventasdia as $reg) {
-                                echo '' . $reg->totaldia . ',';
+                                echo '"' . $reg->totaldia . '",';
                             } ?>],
                     backgroundColor: 'rgba(20, 204, 20, 1)',
                     borderColor: 'rgba(54, 162, 235, 0.2)',

@@ -14,11 +14,11 @@ class UserController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('can:users.create')->only(['create','store']);
+        $this->middleware('can:users.create')->only(['create', 'store']);
         $this->middleware('can:users.index')->only(['index']);
-        $this->middleware('can:users.edit')->only(['edit','update']);
+        $this->middleware('can:users.edit')->only(['edit', 'update']);
         $this->middleware('can:users.show')->only(['show']);
-        $this->middleware('can:users.destroy')->only(['destroy']); 
+        $this->middleware('can:users.destroy')->only(['destroy']);
     }
 
     public function index()
@@ -33,26 +33,32 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-        $user = User::create($request->all());
-        $user->update(['password'=> Hash::make($request->password)]);
-        $user->roles()->sync($request->get('roles'));
-        return redirect()->route('users.index');
+        try {
+            $user = User::create($request->all());
+            $user->update(['password' => Hash::make($request->password)]);
+            $user->roles()->sync($request->get('roles'));
+            return redirect()->route('users.index')->with('success', 'Nuevo usuario creado con éxito');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Ocurrió un error al crear el usuario');
+        }
     }
     public function show(User $user)
     {
         $total_purchases = 0;
-        if (is_array($user->sales) || is_object($user->sales)){
-        foreach ($user->sales as $key =>  $sale) {
-            
-            $total_purchases+=$sale->total;
-        }}
+        if (is_array($user->sales) || is_object($user->sales)) {
+            foreach ($user->sales as $key =>  $sale) {
+
+                $total_purchases += $sale->total;
+            }
+        }
         $total_amount_sold = 0;
-        if (is_array($user->purchases) || is_object($user->purchases)){
-        foreach ($user->purchases as $key =>  $purchase) {
-            $total_amount_sold+=$purchase->total;
-        }}
-    
-        
+        if (is_array($user->purchases) || is_object($user->purchases)) {
+            foreach ($user->purchases as $key =>  $purchase) {
+                $total_amount_sold += $purchase->total;
+            }
+        }
+
+
         return view('admin.user.show', compact('user', 'total_purchases', 'total_amount_sold'));
     }
     public function edit(User $user)
@@ -62,21 +68,29 @@ class UserController extends Controller
     }
     public function update(Request $request, User $user)
     {
-        if ($user->id == 1) {
-            return redirect()->route('users.index');
-        }else{
-            $user->update($request->all());
-            $user->roles()->sync($request->get('roles'));
-            return redirect()->route('users.index');
+        try {
+            if ($user->id == 1) {
+                return redirect()->route('users.index');
+            } else {
+                $user->update($request->all());
+                $user->roles()->sync($request->get('roles'));
+                return redirect()->route('users.index')->with('success', 'Usuario modificado');
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Ocurrió un error al modificar el usuario');
         }
     }
     public function destroy(User $user)
     {
-        if ($user->id == 1) {
-            return back();
-        } else {
-            $user->delete();
-            return back();
+        try {
+            if ($user->id == 1) {
+                return back()->with('error', 'No se puede eliminar este usuario');
+            } else {
+                $user->delete();
+                return back()->with('success', 'Usuario eliminado');
+            }
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Ocurrió un error al eliminar el usuario');
         }
     }
 }

@@ -8,7 +8,7 @@ DELIMITER ;
 
 
 DELIMITER //
-CREATE TRIGGER `tr_updStockAnular` AFTER UPDATE ON `purchases`
+CREATE TRIGGER `tr_updStockCompraAnular` AFTER UPDATE ON `purchases`
 FOR EACH ROW BEGIN
     IF NEW.status = 'VALID' THEN
         UPDATE products p 

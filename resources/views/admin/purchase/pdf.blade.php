@@ -5,102 +5,157 @@
 <title>Reporte de compra</title>
 <style>
     body {
-        /*position: relative;*/
-        /*width: 16cm;  */
-        /*height: 29.7cm; */
-        /*margin: 0 auto; */
-        /*color: #555555;*/
-        /*background: #FFFFFF; */
         font-family: Arial, sans-serif;
-        font-size: 14px;
-        /*font-family: SourceSansPro;*/
+        margin: 0;
+        padding: 0;
     }
-    #datos {
-        float: left;
-        margin-top: 0%;
-        margin-left: 2%;
-        margin-right: 2%;
-        /*text-align: justify;*/
-    }
-    #encabezado {
-        text-align: center;
-        margin-left: 35%;
-        margin-right: 35%;
-        font-size: 15px;
-    }
-    #fact {
-        /*position: relative;*/
-        float: right;
-        margin-top: 2%;
-        margin-left: 2%;
-        margin-right: 2%;
-        font-size: 20px;
-        background: #33AFFF;
-    }
-    section {
-        clear: left;
-    }
-    #cliente {
-        text-align: left;
-    }
-    #faproveedor {
-        width: 40%;
-        border-collapse: collapse;
-        border-spacing: 0;
-        margin-bottom: 15px;
-    }
-    #fac,
-    #fv,
-    #fa {
-        color: #FFFFFF;
-        font-size: 15px;
-    }
-    #faproveedor thead {
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         padding: 20px;
-        border-radius: 25%;
-        background: #33AFFF;
+        background-color: #f2f2f2;
+    }
+
+    #logo {
+        margin-right: 20px;
+    }
+
+    #imagen {
+        max-width: 150px;
+    }
+
+    #empresa {
+        text-align: center;
+    }
+
+    #empresa_nombre {
+        font-size: 24px;
+        margin: 0;
+    }
+
+    #descripcion {
+        font-size: 16px;
+        margin: 0;
+    }
+
+    #fact {
+        text-align: right;
+    }
+
+    #fact p {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    #datos {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+    #datos th {
+        font-size: 18px;
         text-align: left;
-        border-bottom: 1px solid #FFFFFF;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ddd;
     }
-    .AF{
-        font-size: 9px;
+
+    #datos td {
+        font-size: 16px;
+        padding: 10px;
+        border: 1px solid #ddd;
     }
-    .AF2 a{
-        font-size: 9px;
-        text-decoration: none;
-    }
+
     #faccomprador {
         width: 100%;
+        margin-top: 20px;
         border-collapse: collapse;
-        border-spacing: 0;
-        margin-bottom: 15px;
     }
-    #faccomprador thead {
-        padding: 20px;
-        background: #33AFFF;
-        text-align: center;
-        border-bottom: 1px solid #FFFFFF;
+
+    #faccomprador th {
+        font-size: 18px;
+        text-align: left;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ddd;
     }
+
+    #faccomprador td {
+        font-size: 16px;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
     #facproducto {
         width: 100%;
+        margin-top: 20px;
         border-collapse: collapse;
-        border-spacing: 0;
-        margin-bottom: 15px;
     }
-    #facproducto thead {
-        padding: 20px;
-        background: #33AFFF;
-        text-align: center;
-        border-bottom: 1px solid #FFFFFF;
+
+    #facproducto th {
+        font-size: 18px;
+        text-align: left;
+        padding: 10px;
+        background-color: #f2f2f2;
+        border: 1px solid #ddd;
+    }
+
+    #facproducto td {
+        font-size: 16px;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    #facproducto tfoot th {
+        text-align: right;
+        background-color: #f2f2f2;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+
+    #facproducto tfoot td {
+        font-weight: bold;
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #f2f2f2;
+    }
+
+    #encabezado {
+        font-weight: bold;
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .AF {
+        font-size: 14px;
+    }
+
+    .AF2 a {
+        text-decoration: none;
+        color: #000;
     }
 </style>
 
 <body>
-  
+
     <header>
-        {{--  <div id="logo">
-            <img src="img/logo.png" alt="" id="imagen">
-        </div>  --}}
+        <div id="logo">
+            <img src="{{asset('image/'.$business->logo)}}" alt="logo empresa" id="imagen">
+        </div>
+        <div id="empresa">
+            <h3 id="empresa_nombre">{{$business->name}}</h3>
+            <p id="descripcion">{{$business->description}}</p>
+        </div>
         <div>
             <table id="datos">
                 <thead>
@@ -112,25 +167,24 @@
                     <tr>
                         <th>
                             <p id="proveedor">Nombre: {{$purchase->provider->name}}<br>
-                                {{--  {{$purchase->provider->document_type}}-COMPRA: {{$purchase->provider->document_number}}<br>  --}}
                                 Dirección: {{$purchase->provider->address}}<br>
                                 Teléfono: {{$purchase->provider->phone}}<br>
-                                Email: {{$purchase->provider->email}}</p>
+                                Email: {{$purchase->provider->email}}
+                            </p>
                         </th>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div id="fact">
-            {{--  <p>{{$purchase->provider->document_type}} COMPRA<br />
-                {{$purchase->provider->document_number}}</p>  --}}
-                <p>NUMERO DE COMPRA<br />
-                    {{$purchase->id}}</p>
+            <p>NUMERO DE COMPRA<br />
+                {{$purchase->id}}
+            </p>
         </div>
     </header>
     <br>
 
-   
+
     <br>
     <section>
         <div>
@@ -168,21 +222,22 @@
                         <td>{{$purchaseDetail->quantity}}</td>
                         <td>{{$purchaseDetail->product->name}}</td>
                         <td>$ {{$purchaseDetail->price}}</td>
-                        <td>$ {{number_format($purchaseDetail->quantity*$purchaseDetail->price,3)}}</td>
+                        <td>$ {{number_format($purchaseDetail->quantity*$purchaseDetail->price,2)}}</td>
                     </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
-                 
+
                     <tr>
                         <th colspan="3">
                             <p align="right">SUBTOTAL:</p>
                         </th>
                         <td>
-                            <p align="right">$ {{number_format($subtotal,3)}}<p>
+                            <p align="right">$ {{number_format($subtotal,2)}}
+                            <p>
                         </td>
                     </tr>
-                  
+
                     <tr>
                         <th colspan="3">
                             <p align="right">TOTAL IMPUESTO ({{$purchase->tax}}%):</p>
@@ -196,10 +251,11 @@
                             <p align="right">TOTAL PAGAR:</p>
                         </th>
                         <td>
-                            <p align="right">$ {{number_format($purchase->total,3)}}<p>
+                            <p align="right">$ {{number_format($purchase->total,2)}}
+                            <p>
                         </td>
                     </tr>
-                  
+
                 </tfoot>
             </table>
         </div>
@@ -207,16 +263,16 @@
     <br>
     <br>
     <footer>
-        <!--puedes poner un mensaje aqui-->
         <div id="datos">
             <p id="encabezado">
-                {{--  <b>{{$company->name}}</b><br>{{$company->description}}<br>Telefono:{{$company->telephone}}<br>Email:{{$company->email}}  --}}
+                <b>{{$business->name}}</b><br>{{$business->description}}<br>{{$business->mail}}<br>{{$business->address}}
             </p>
         </div>
-        <div>
-            <span class="AF">Copyright © 2022.
-                Todos los derechos reservados.</span>
-            <span class="AF2"><a href="https://www.instagram.com/tribie17/">AF</a></span>
+        <div class="contenedor-padre">
+            <div id="footer">
+                <span class="AF">Copyright © 2022. Todos los derechos reservados.</span>
+                <span class="AF2"><a href="https://www.instagram.com/tribie17/">AF</a></span>
+            </div>
         </div>
     </footer>
 </body>

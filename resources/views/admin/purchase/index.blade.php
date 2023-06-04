@@ -27,16 +27,13 @@
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Compras</h4>
                         <div class="btn-group">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a href="{{ route('purchases.create')}}" class="dropdown-item" type="button">Agregar</a>
-
-                            </div>
+                            <a href="{{route('purchases.create')}}" class="btn btn-success" type="button">
+                                <i class="fa fa-plus"></i>
+                                Nueva compra</a>
                         </div>
                     </div>
+                    <br>
+                    @include('admin.purchase.message')
                     <div class="table-responsive">
                         <table id="order-listing" class="table">
                             <thead>
@@ -59,9 +56,9 @@
 
                                     @if ($purchase->status=='VALID')
                                     <td>
-                                    <a class="btn btn-sucess" href="{{ route('change.status.purchases', $purchase)}}" title="pagado">
-                                        Pagado<i class="fa fa-check"></i>
-                                    </a>
+                                        <a class="btn btn-sucess" href="{{ route('change.status.purchases', $purchase)}}" title="pagado">
+                                            Pagado<i class="fa fa-check"></i>
+                                        </a>
 
                                     </td>
 
@@ -70,15 +67,15 @@
                                         <a class="btn btn-danger" href="{{ route('change.status.purchases', $purchase)}}" title="no pago">
                                             No pago<i class="fa fa-times"></i>
                                         </a>
-    
-                                        </td>
-                                        
+
+                                    </td>
+
                                     @endif
-                                    
+
                                     <td style="width:100px;">
                                         {{-- <a class="jsgrid-button jsgrid-edit-button"
                                             href="{{ route('purchases.edit', $purchase)}}" title="Editar">
-                                            <i class="far fa-edit"></i>
+                                        <i class="far fa-edit"></i>
                                         </a> --}}
 
                                         {{-- <button class="jsgrid-button jsgrid-delete-button" type="submit"
@@ -86,12 +83,8 @@
                                             <i class="far fa-trash-alt"></i>
                                         </button> --}}
 
-                                        <a class="jsgrid-button jsgrid-edit-button"
-                                            href="{{route('purchases.pdf', $purchase)}}" title="PDF"><i
-                                                class="fa fa-file-pdf" aria-hidden="true"></i></a>
-                                        <a class="jsgrid-button jsgrid-edit-button" title="VER"
-                                            href="{{ route('purchases.show', $purchase)}}"><i class="fa fa-eye"
-                                                aria-hidden="true"></i></a>
+                                        <a class="jsgrid-button jsgrid-edit-button" href="{{route('purchases.pdf', $purchase)}}" title="PDF"><i class="fa fa-file-pdf" aria-hidden="true"></i></a>
+                                        <a class="jsgrid-button jsgrid-edit-button" title="VER" href="{{ route('purchases.show', $purchase)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -106,5 +99,5 @@
 
 @endsection
 @section('scripts')
-{!! Html::script('melody/js/data-table.js') !!} 
+{!! Html::script('melody/js/data-table.js') !!}
 @endsection

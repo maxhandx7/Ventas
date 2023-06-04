@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\category;
-use Illuminate\Http\Request;
 use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
 
@@ -13,18 +12,18 @@ class CategoryController extends Controller
     {
         $this->middleware('auth');
 
-        $this->middleware('can:categories.create')->only(['create','store']);
+        $this->middleware('can:categories.create')->only(['create', 'store']);
         $this->middleware('can:categories.index')->only(['index']);
-        $this->middleware('can:categories.edit')->only(['edit','update']);
+        $this->middleware('can:categories.edit')->only(['edit', 'update']);
         $this->middleware('can:categories.show')->only(['show']);
-        $this->middleware('can:categories.destroy')->only(['destroy']); 
+        $this->middleware('can:categories.destroy')->only(['destroy']);
     }
-   
+
     public function index()
     {
-      $categories = Category::get();
+        $categories = Category::get();
 
-      return view('admin.category.index', compact('categories'));
+        return view('admin.category.index', compact('categories'));
     }
 
 
@@ -33,12 +32,15 @@ class CategoryController extends Controller
         return view('admin.category.create');
     }
 
- 
+
     public function store(StoreRequest $request)
     {
-       Category::create($request->all());
-
-       return redirect()->route('categories.index')->with('success', 'Categoria credada con éxito');
+        try {
+            Category::create($request->all());
+            return redirect()->route('categories.index')->with('success', 'Categoria credada con éxito');
+        } catch (\Exception $th) {
+            return redirect()->back()->with('error', 'Ocurrió un error al crear la categoria');
+        }
     }
 
     public function show(category $category)
@@ -46,7 +48,7 @@ class CategoryController extends Controller
         return view('admin.category.show', compact('category'));
     }
 
- 
+
     public function edit(category $category)
     {
         return view('admin.category.edit', compact('category'));
@@ -54,15 +56,22 @@ class CategoryController extends Controller
 
     public function update(UpdateRequest $request, category $category)
     {
-        $category->update($request->all());
-
-        return redirect()->route('categories.index')->with('success', 'Categoria modificado');
+        try {
+            $category->update($request->all());
+            return redirect()->route('categories.index')->with('success', 'Categoria modificado');
+        } catch (\Exception $th) {
+            return redirect()->back()->with('error', 'Ocurrió un error al actualizar la categoria');
+        }
     }
 
- 
+
     public function destroy(category $category)
     {
-        $category->delete();
-        return redirect()->route('categories.index');
+        try {
+            $category->delete();
+            return redirect()->route('categories.index')->with('success', 'Categoria eliminada');
+        } catch (\Exception $th) {
+            return redirect()->back()->with('error', 'Ocurrió un error al eliminar la categoria');
+        }
     }
 }

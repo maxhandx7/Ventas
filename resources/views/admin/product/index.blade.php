@@ -11,7 +11,7 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-          Administrar Productos
+            Administrar Productos
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
@@ -27,20 +27,18 @@
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Productos</h4>
                         <div class="btn-group">
-                            <a  class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a href="{{ route('products.create')}}" class="dropdown-item" type="button">Agregar</a>
-                             
-                            </div>
-                          </div>
+                            <a href="{{route('products.create')}}" class="btn btn-success" type="button">
+                                <i class="fa fa-plus"></i>
+                                Agregar</a>
+                        </div>
                     </div>
+                    <br>
+                    @include('admin.product.message')
                     <div class="table-responsive">
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>
-                                   
+
                                     <th>Id</th>
                                     <th>Nombre</th>
                                     <th>Stock</th>
@@ -51,10 +49,10 @@
                             </thead>
                             <tbody>
                                 @foreach ($products as $product)
-                                
+
                                 <tr>
                                     <th scope="row">{{$product->id }}</th>
-                                    
+
                                     <td> <a href="{{ route('products.show', $product )  }}"> {{$product->name }} </a></td>
 
                                     <td>{{$product->stock }}</td>
@@ -62,9 +60,9 @@
 
                                     @if ($product->status=='ACTIVE')
                                     <td>
-                                    <a class="btn btn-sucess" href="{{ route('change.status.products', $product)}}" title="Activado">
-                                        Activo<i class="fa fa-check"></i>
-                                    </a>
+                                        <a class="btn btn-sucess" href="{{ route('change.status.products', $product)}}" title="Activado">
+                                            Activo<i class="fa fa-check"></i>
+                                        </a>
 
                                     </td>
 
@@ -73,22 +71,22 @@
                                         <a class="btn btn-danger" href="{{ route('change.status.products', $product)}}" title="Desactivado">
                                             No activo<i class="fa fa-times"></i>
                                         </a>
-    
-                                        </td>
-                                        
+
+                                    </td>
+
                                     @endif
-                                    
+
                                     <td>{{$product->category->name }}</td>
-                                    
-                                    <td style="width: 100px;">              
+
+                                    <td style="width: 100px;">
                                         {!! Form::open(['route'=>['products.destroy', $product], 'method'=>'DELETE']) !!}
                                         <a class="btn btn-outline-info" href="{{ route('products.edit', $product)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
-                                        
-                                        <button class="btn btn-outline-danger delete-confirm" type="submit"  title="Eliminar">
+
+                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
-                                    </button>
+                                        </button>
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>
@@ -104,5 +102,5 @@
 
 @endsection
 @section('scripts')
-{!! Html::script('melody/js/data-table.js') !!} 
+{!! Html::script('melody/js/data-table.js') !!}
 @endsection

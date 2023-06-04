@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Business;
 use App\Http\Requests\Business\UpdateRequest;
 
@@ -22,21 +21,24 @@ class BusinessController extends Controller
     }
     public function update(UpdateRequest $request, Business $business)
     {
+        try {
+            if ($request->hasFile('picture')) {
+                $file = $request->file('picture');
+                $image_name = time() . '_' . $file->getClientOriginalName();
+                $file->move(public_path("/image"), $image_name);
+            }
+            if (isset($image_name)) {
+                $business->update($request->all() + [
+                    'logo' => $image_name,
+                ]);
+                return redirect()->route('business.index')->with('success', 'Se ha actualizado la empresa');
+            }
 
-        if ($request->hasFile('picture')) {
-            $file = $request->file('picture');
-            $image_name = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path("/image"), $image_name);
+            $business->update($request->all());
+            return redirect()->route('business.index')->with('success', 'Se ha actualizado la empresa');
+
+        } catch (\Exception $th) {
+            return redirect()->back()->with('error', 'Ocurrió un error al actualizar la empresa');
         }
-        if (isset($image_name)) {
-            $business->update($request->all() + [
-                'logo' => $image_name,
-            ]);
-            return redirect()->route('business.index');
-        }
-
-        $business->update($request->all());
-
-        return redirect()->route('business.index');
     }
 }
