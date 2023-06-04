@@ -15,7 +15,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="/">Panel administrador</a></li>
                 <li class="breadcrumb-item"><a href="{{route('sales.index') }}">ventas</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Nueva venta</li>
             </ol>
@@ -95,10 +95,10 @@
                     cont + '"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' +
                     cont + ');"><i class="fa fa-times fa-2x"></i></button></td> <td><input type="hidden" name="product_id[]" value="' +
                     product_id + '">' + producto + '</td> <td> <input type="hidden" name="price[]" value="' +
-                    numeral(price).format('0,0.00') + '"> <input class="form-control" type="number" value="' +
-                    numeral(price).format('0,0.00') + '" disabled> </td> <td> <input type="hidden" name="discount[]" value="' +
-                    numeral(discount).format('0,0.00') + '"> <input class="form-control" type="number" value="' +
-                    numeral(discount).format('0,0.00') + '" disabled> </td> <td> <input type="hidden" name="quantity[]" value="' +
+                    price + '"> <input class="form-control" type="number" value="' +
+                    price + '" disabled> </td> <td> <input type="hidden" name="discount[]" value="' +
+                    discount + '"> <input class="form-control" type="number" value="' +
+                    discount + '" disabled> </td> <td> <input type="hidden" name="quantity[]" value="' +
                     quantity + '"> <input type="number" value="' +
                     quantity + '" class="form-control" disabled> </td> <td align="right">$' +
                     numeral(subtotal[cont]).format('0,0.00') + '</td></tr>';
@@ -127,12 +127,12 @@
     }
 
     function totales() {
-        $("#total").html("COL " + total.toFixed(2));
+        $("#total").html("COL " + numeral(total).format('0,0.00'));
         total_impuesto = total * impuesto / 100;
         total_pagar = total + total_impuesto;
-        $("#total_impuesto").html("COL " + total_impuesto.toFixed(2));
-        $("#total_pagar_html").html("COL " + total_pagar.toFixed(2));
-        $("#total_pagar").val(total_pagar.toFixed(2));
+        $("#total_impuesto").html("COL " + numeral(total_impuesto).format('0,0.00'));
+        $("#total_pagar_html").html("COL " + numeral(total_pagar).format('0,0.00'));
+        $("#total_pagar").val(total_pagar);
     }
 
     function evaluar() {

@@ -21,7 +21,7 @@ class CreatePurchasesTable extends Migration
             $table->dateTime('purchase_date');
 
             $table->decimal('tax');
-            $table->decimal('total', 10, 2);
+            $table->decimal('total', 11, 2);
 
             $table->enum('status',['VALID', 'CANCELED'])->default('VALID');
            

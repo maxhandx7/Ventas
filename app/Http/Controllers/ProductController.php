@@ -40,6 +40,7 @@ class ProductController extends Controller
 
     public function store(StoreRequest $request)
     {
+        
         try {
             if ($request->hasFile('picture')) {
                 $file = $request->file('picture');
@@ -105,10 +106,10 @@ class ProductController extends Controller
     {
         if ($product->status == 'ACTIVE') {
             $product->update(['status' => 'DESACTIVATED']);
-            return redirect()->back();
+            return redirect()->back()->with('error', 'Producto inactivado');
         } else {
             $product->update(['status' => 'ACTIVE']);
-            return redirect()->back();
+            return redirect()->back()->with('success', 'Producto activado');
         }
     }
 }

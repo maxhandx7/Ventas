@@ -15,7 +15,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="/">Panel administrador</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Ventas</li>
             </ol>
         </nav>
@@ -40,6 +40,7 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Fecha de venta</th>
+                                    <th>cliente</th>
                                     <th>Total</th>
                                     <th>Estado</th>
                                     <th style="width:50px;">Acciones</th>
@@ -53,6 +54,7 @@
                                         <a href="{{ route('sales.show', $sale)}}"> {{$sale->id }}</a>
                                     </th>
                                     <td> {{$sale->sale_date }} </td>
+                                    <td>{{$sale->client->name}}</td>
                                     <td>{{number_format($sale->total) }}</td>
 
                                     @if ($sale->status=='VALID')

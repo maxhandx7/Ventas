@@ -15,17 +15,14 @@
 @endsection
 @section('content')
 
-
-<!-- partial -->
-
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
            Detalles
         </h3>
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel de administrador</a></li>
+            <ol class="breadcrumb breadcrumb-custom">
+                <li class="breadcrumb-item"><a href="/">Panel de administrador</a></li>
                 <li class="breadcrumb-item"><a href="{{route('products.index') }}">Productos</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{$product->name }}</li>
             </ol>

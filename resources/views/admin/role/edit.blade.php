@@ -13,8 +13,8 @@
             Editar rol
         </h3>
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
+            <ol class="breadcrumb breadcrumb-custom">
+                <li class="breadcrumb-item"><a href="/">Panel administrador</a></li>
                 <li class="breadcrumb-item"><a href="{{route('roles.index')}}">Roles</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Editar rol</li>
             </ol>

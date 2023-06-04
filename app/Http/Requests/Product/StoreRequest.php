@@ -20,8 +20,6 @@ class StoreRequest extends FormRequest
 
                 'name'=>'string|required|unique:products|max:255',
                 'sell_price'=>'required',
-               
-
         ]; 
       
     }
@@ -32,13 +30,8 @@ public function messages()
             'name.required'=>'Este campo es requerido.',
             'name.unique'=>'El producto ya esta registrado', 
             'name.max'=>'Se permite maximo 255 caracteres.', 
-            
-            
 
             'sell_price.required'=>'Este campo es requerido.',
- 
-            
-            
         ];
     }
 
