@@ -13,7 +13,7 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-           Detalles
+            Detalles
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
@@ -37,65 +37,110 @@
                             <div class="border-bottom py-4">
 
                                 <div class="list-group">
-                                    <button type="button" class="list-group-item list-group-item-action active">
-                                        sobre el cliente
-                                    </button>
+                                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" user="tab" aria-controls="home">
+                                        Sobre el cliente
+                                    </a>
 
-                                    <button type="button" class="list-group-item list-group-item-action">
-                                        Historial
-                                    </button>
+                                    <a type="button" class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" user="tab" aria-controls="profile">Historial</a>
 
-                                   
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                         <div class="col-lg-8 pl-lg-5">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <h4>Informacion del clientes</h4>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="list-home" user="tabpanel" aria-labelledby="list-home-list">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h4>Informacion del clientes</h4>
 
+                                        </div>
+
+                                    </div>
+                                    <div class="profile-feed" id="list-profile1">
+                                        <div class="d-flex align-items-start profile-feed-item">
+
+                                            <div class="form-group col-md-6">
+
+                                                <strong> <i class="fab fa-product-hunt mr-1"> Nombre </i> </strong>
+                                                <p class="text-muted"> {{$client->name }} </p>
+                                                <hr>
+
+                                                <strong> <i class="far fa-id-card mr-1"> </i>Cedula </strong>
+                                                <p class="text-muted"> {{$client->cc }} </p>
+                                                <hr>
+
+
+                                                <strong> <i class="fas fa-address-card mr-1"> Correo Electronico </i> </strong>
+                                                <p class="text-muted"> {{$client->email }} </p>
+                                                <hr>
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+
+                                                <strong> <i class="far fa-id-card mr-1"> </i>Rut </strong>
+                                                <p class="text-muted"> {{$client->rut }} </p>
+                                                <hr>
+
+                                                <strong> <i class="fas fa-phone"> Telefono </i> </strong>
+                                                <p class="text-muted"> {{$client->phone }} </p>
+                                                <hr>
+                                                <strong> <i class="fas fa-map-marked-alt mr-1"> Dirección </i> </strong>
+                                                <p class="text-muted"> {{$client->address }} </p>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                            </div>
-                            <div class="profile-feed">
-                                <div class="d-flex align-items-start profile-feed-item">
+                                <div class="tab-pane fade" id="list-profile" user="tabpanel" aria-labelledby="list-profile-list">
 
-                                    <div class="form-group col-md-6">
-
-                                        <strong> <i class="fab fa-product-hunt mr-1"> Nombre </i> </strong>
-                                        <p class="text-muted"> {{$client->name }} </p>
-                                        <hr>
-
-                                        <strong> <i class="far fa-id-card mr-1">  </i>Cedula </strong>
-                                        <p class="text-muted"> {{$client->cc }} </p>
-                                        <hr>
-                                        
-
-                                        <strong> <i class="fas fa-address-card mr-1"> Correo Electronico </i> </strong>
-                                        <p class="text-muted"> {{$client->email }} </p>
-                                        <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h4>Historial de {{$client->name }}</h4>
+                                        </div>
                                     </div>
+                                    <div class="profile-feed">
+                                        <div class="d-flex align-items-start profile-feed-item">
 
-                                    <div class="form-group col-md-6">
+                                            <div class="table-responsive">
+                                                <table id="order-listing" class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Id</th>
+                                                            <th>Nombre producto</th>
+                                                            <th>Precio</th>
+                                                            <th>Cantidad</th>
+                                                        </tr>
+                                                    </thead>
 
-                                        <strong> <i class="far fa-id-card mr-1">  </i>Rut </strong>
-                                        <p class="text-muted"> {{$client->rut }} </p>
-                                        <hr>
-
-                                        <strong> <i class="fas fa-phone"> Telefono </i> </strong>
-                                        <p class="text-muted"> {{$client->phone }} </p>
-                                        <hr>
-                                        <strong> <i class="fas fa-map-marked-alt mr-1"> Dirección </i> </strong>
-                                        <p class="text-muted"> {{$client->address }} </p>
-                                        <hr>
+                                                    <tbody>
+                                                        @foreach($client->sales as $sale)
+                                                        @if (is_array($sale->saleDetails) || is_object($sale->saleDetails))
+                                                        @foreach ($sale->saleDetails as $saleDetail)
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <a href="{{ route('sales.show', $saleDetail)}}">{{$saleDetail->id}}</a>
+                                                            </th>
+                                                            <td>{{$saleDetail->product->name}}</td>
+                                                            <td>{{number_format($saleDetail->price)}}</td>
+                                                            <td>{{$saleDetail->quantity}}</td>
+                                                        </tr>
+                                                        @endforeach
+                                                        @endif
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card text-muted">
-                  <a href="{{route('clients.index') }}" class="btn btn-primary" type="button">Regresar</a>
+                    <a href="{{route('clients.index') }}" class="btn btn-primary" type="button">Regresar</a>
                 </div>
 
             </div>

@@ -16,10 +16,9 @@ class Client extends Model
         'email',
     ];
 
-    
-
-
-
-
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
 
 }

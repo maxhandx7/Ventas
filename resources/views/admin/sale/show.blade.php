@@ -91,7 +91,7 @@
                                     @foreach($saleDetails as $saleDetail)
                                     <tr>
                                         <td>{{$saleDetail->product->name}}</td>
-                                        <td>$ {{$saleDetail->price}}</td>
+                                        <td>$ {{number_format($saleDetail->price)}}</td>
                                         <td>{{$saleDetail->discount}} %</td>
                                         <td>{{$saleDetail->quantity}}</td>
                                         <td>$ {{number_format($saleDetail->quantity*$saleDetail->price - $saleDetail->quantity*$saleDetail->price*$saleDetail->discount/100,2)}}
