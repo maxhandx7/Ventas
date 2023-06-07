@@ -38,4 +38,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function routeNotificationForDatabase()
+    {
+        return $this->id; // Utiliza el campo que identifique de manera única al usuario en tu tabla de usuarios.
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
 }

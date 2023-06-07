@@ -78,6 +78,16 @@ class SaleController extends Controller
         return view('admin.sale.edit', compact('sale'));
     }
 
+    public function destroy(sale $sale)
+    {
+        try {
+            $sale->delete();
+            return redirect()->route('sales.index')->with('success', 'Venta eliminada');
+        } catch (\Exception $th) {
+            return redirect()->back()->with('error', 'Ocurrió un error al eliminar la venta');
+        }
+    }
+
     public function pdf(sale $sale)
     {
         $subtotal = 0;
@@ -86,7 +96,7 @@ class SaleController extends Controller
             $subtotal += $saleDetail->quantity * $saleDetail->price - $saleDetail->quantity * $saleDetail->price * $saleDetail->discount / 100;
         }
         $pdf = PDF::loadView('admin.sale.pdf', compact('sale', 'subtotal', 'saleDetails'));
-        return $pdf->download('reporte_de_  venta_' . $sale->id . '.pdf');
+        return $pdf->download('reporte_de_venta_' . $sale->id . '.pdf');
     }
 
     public function print(Sale $sale)

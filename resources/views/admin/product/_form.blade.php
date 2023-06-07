@@ -16,7 +16,7 @@
 
 <div class="form-group">
     <label for="category_id">Categoria</label>
-    <select id="category_id" class="form-control" name="category_id">
+    <select id="category_id" class="form-control js-example-basic-single" name="category_id">
         <option selected disabled value="">Seleccione Categoria</option>
         @foreach ($categories as $category)
         <option value="{{ $category->id }}">{{$category->name}}</option>
@@ -27,7 +27,7 @@
 
 <div class="form-group">
     <label for="provider_id">Proveedor</label>
-    <select id="provider_id" class="form-control" name="provider_id">
+    <select id="provider_id" class="form-control js-example-basic-single" name="provider_id">
         <option selected disabled value="">Seleccione Proveedor</option>
         @foreach ($providers as $provider)
         <option value="{{ $provider->id }}">{{$provider->name}}</option>

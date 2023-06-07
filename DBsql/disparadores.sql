@@ -1,7 +1,9 @@
 DELIMITER //
 CREATE TRIGGER `tr_updStockCompra` AFTER INSERT ON `purchase_details`
 FOR EACH ROW BEGIN
-    UPDATE products SET stock = stock + NEW.quantity;
+    UPDATE products 
+    SET stock = stock + NEW.quantity
+    WHERE id = NEW.product_id;
 END;
 //
 DELIMITER ;

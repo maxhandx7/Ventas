@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function() {
+Route::get('/', function () {
     return redirect()->route('login');
 });
 
@@ -28,10 +29,10 @@ Route::resource('clients', 'ClientController')->names('clients');
 Route::resource('products', 'ProductController')->names('products');
 Route::resource('providers', 'ProviderController')->names('providers');
 Route::resource('purchases', 'PurchaseController')->names('purchases')->except([
-    'edit', 'update', 'destroy'
+    'edit', 'update'
 ]);
 Route::resource('sales', 'SaleController')->names('sales')->except([
-    'edit', 'update', 'destroy'
+    'edit', 'update'
 ]);
 
 Route::get('purchases/pdf/{purchase}', 'PurchaseController@pdf')->name('purchases.pdf');
@@ -43,7 +44,7 @@ Route::get('sales/print/{sale}', 'SaleController@print')->name('sales.print');
 Route::get('/prueba', function () {
     return view('prueba');
 });
-
+//Route::delete('purchases/{purchase}', 'PurchaseController@destroy')->name('purchases.destroy');
 Route::get('purchases/upload/{purchase}', 'PurchaseController@upload')->name('upload.purchases');
 
 Route::get('change_status/products/{product}', 'ProductController@change_status')->name('change.status.products');
@@ -51,5 +52,5 @@ Route::get('change_status/purchases/{purchase}', 'PurchaseController@change_stat
 Route::get('change_status/sales/{sale}', 'SaleController@change_status')->name('change.status.sales');
 
 Auth::routes();
-
+//Route::get('sendPushNotification/users/{user}', 'UserController@sendPushNotification')->name('sendPushNotification');
 Route::get('/home', 'HomeController@index')->name('home');

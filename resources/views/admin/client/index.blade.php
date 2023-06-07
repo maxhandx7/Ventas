@@ -49,7 +49,7 @@
                                     <th scope="row">{{$client->id }}</th>
                                     <td> <a href="{{ route('clients.show', $client )  }}"> {{$client->name }} </a></td>
                                     <td>{{$client->email }}</td>
-                                    <td style="width: 50px;">
+                                    <td style="width: 110px;">
                                         {!! Form::open(['route'=>['clients.destroy', $client], 'method'=>'DELETE']) !!}
                                         <a class="btn btn-outline-info" href="{{ route('clients.edit', $client)}}" title="Editar">
                                             <i class="far fa-edit"></i>

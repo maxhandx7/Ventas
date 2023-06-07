@@ -64,7 +64,7 @@
                                         <a class="btn btn-outline-info" href="{{ route('users.edit', $user)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
-
+                                        
                                         <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar">
                                             <i class="far fa-trash-alt"></i>
                                         </button>

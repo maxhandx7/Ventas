@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="provider_id">Proveedor</label>
-    <select id="provider_id"  class="form-control" name="provider_id">
+    <select id="provider_id"  class="form-control js-example-basic-single" name="provider_id">
         <option selected disabled value="">Seleccione Proveedor</option>
         @foreach ($providers as $provider)
         <option value="{{ $provider->id }}">{{$provider->name}}</option>
@@ -10,7 +10,7 @@
 
 <div class="form-group">
     <label for="product_id">Productos</label>
-    <select id="product_id"  class="form-control" name="product_id">
+    <select id="product_id"  class="form-control js-example-basic-single" name="product_id">
         <option selected disabled value="">Seleccione Productos</option>
         @foreach ($products as $product)
         <option value="{{ $product->id }}">{{$product->name}}</option>

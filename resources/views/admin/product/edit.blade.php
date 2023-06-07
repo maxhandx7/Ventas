@@ -45,7 +45,7 @@
                     
                     <div class="form-group">
                         <label >Categoria</label>
-                        <select   class="form-control" name="category_id">
+                        <select   class="form-control js-example-basic-single" name="category_id">
                             
                             @foreach ($categories as $category)
                             <option value="{{ $category->id }}" @if ($category->id == $product->category_id)
@@ -59,7 +59,7 @@
                     
                     <div class="form-group">
                         <label for="provider_id">Proveedor</label>
-                        <select id="provider_id"  class="form-control" name="provider_id">
+                        <select id="provider_id"  class="form-control js-example-basic-single" name="provider_id">
                             
                             @foreach ($providers as $provider)
                             <option value="{{ $provider->id }}"

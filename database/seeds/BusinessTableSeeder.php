@@ -12,10 +12,10 @@ class BusinessTableSeeder extends Seeder
     public function run()
     {
         Business::create([
-            'name'=>'AF',
-            'description'=>'software design and development',
+            'name'=>'ANTO STORE 2000',
+            'description'=>'Anto store 2000 es el lugar ideal para encontrar bolsos, ropa y accesorios de moda.',
             'logo'=>'logo.svg',
-            'mail'=>'Af@gmail.com',
+            'mail'=>'dianaamaamiranda@gmail.com',
             'address'=>'cra 26c#109-14, Cali, Colombia',
             'nit'=>'15247895632',
         ]);

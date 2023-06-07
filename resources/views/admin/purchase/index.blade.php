@@ -40,6 +40,7 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Fecha de compra</th>
+                                    <th>Producto</th>
                                     <th>Total</th>
                                     <th>Estado</th>
                                     <th style="width:100px;">Acciones</th>
@@ -52,6 +53,10 @@
                                         <a href="{{ route('purchases.show', $purchase)}}"> {{$purchase->id }}</a>
                                     </th>
                                     <td> {{$purchase->purchase_date }} </td>
+
+                                    @foreach($purchase->purchaseDetails as $purchaseDetail)
+                                    <td> {{$purchaseDetail->product->name}} </td>
+                                    @endforeach
                                     <td>{{number_format($purchase->total) }}</td>
 
                                     @if ($purchase->status=='VALID')
@@ -71,20 +76,13 @@
                                     </td>
 
                                     @endif
-
                                     <td style="width:100px;">
-                                        {{-- <a class="jsgrid-button jsgrid-edit-button"
-                                            href="{{ route('purchases.edit', $purchase)}}" title="Editar">
-                                        <i class="far fa-edit"></i>
-                                        </a> --}}
-
-                                        {{-- <button class="jsgrid-button jsgrid-delete-button" type="submit"
-                                            title="Eliminar">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button> --}}
-
-                                        <a class="jsgrid-button jsgrid-edit-button" href="{{route('purchases.pdf', $purchase)}}" title="PDF"><i class="fa fa-file-pdf" aria-hidden="true"></i></a>
-                                        <a class="jsgrid-button jsgrid-edit-button" title="VER" href="{{ route('purchases.show', $purchase)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <a class="btn btn-outline-info jsgrid-edit-button" href="{{route('purchases.pdf', $purchase)}}" title="PDF"><i class="fa fa-file-pdf" aria-hidden="true"></i></a>
+                                        <a class="btn btn-outline-info jsgrid-edit-button" title="VER" href="{{ route('purchases.show', $purchase)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <button class="btn btn-outline-danger jsgrid-delete-button" type="submit" title="Eliminar">
+                                            <i class="fa fa-trash-alt"></i>
+                                        </button>
+                                        {!! Form::close() !!}
                                     </td>
                                 </tr>
                                 @endforeach

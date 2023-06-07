@@ -115,49 +115,49 @@
               </div>
             </div>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ Request::segment(1) === 'home' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('home')}}">
               <i class="fa fa-home menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ Request::segment(1) === 'clients' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('clients.index')}}">
               <i class="fa fa-user  menu-icon"></i>
               <span class="menu-title">Tus Clientes</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ Request::segment(1) === 'sales' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('sales.index')}}">
               <i class="fa fa-money-bill menu-icon"></i>
               <span class="menu-title">Tus ventas</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ Request::segment(1) === 'purchases' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('purchases.index')}}">
               <i class="fa fa-shopping-cart menu-icon"></i>
               <span class="menu-title">Tus Compras</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ Request::segment(1) === 'products' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('products.index')}}">
               <i class="fa fa-archive menu-icon"></i>
               <span class="menu-title">Tus Productos</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ Request::segment(1) === 'providers' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('providers.index')}}">
               <i class="fa fa-truck menu-icon"></i>
               <span class="menu-title">Tus Proveedores</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ Request::segment(1) === 'categories' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('categories.index')}}">
               <i class="fa fa-list menu-icon"></i>
               <span class="menu-title">Tus Categorias</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ Request::is('business*', 'printers*') ? 'active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
               <i class="fas fa-cog menu-icon"></i>
               <span class="menu-title">Configuracion</span>
@@ -173,7 +173,7 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item d-none d-lg-block">
+          <li class="nav-item {{ Request::is('users*', 'roles*') ? 'active' : '' }} d-none d-lg-block">
             <a class="nav-link" data-toggle="collapse" href="#sidebar-layouts" aria-expanded="false" aria-controls="sidebar-layouts">
               <i class="fas fa-users menu-icon"></i>
               <span class="menu-title">Gestion de usuarios</span>
@@ -227,6 +227,7 @@
   {!! Html::script('melody/js/off-canvas.js') !!}
   {!! Html::script('melody/js/hoverable-collapse.js') !!}
   {!! Html::script('melody/js/misc.js') !!}
+  {!! Html::script('melody/js/select2.js') !!}
   {!! Html::script('melody/js/settings.js') !!}
   {!! Html::script('melody/js/todolist.js') !!}
   {!! Html::script('melody/js/dashboard.js') !!}

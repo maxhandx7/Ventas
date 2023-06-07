@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\PushNotification;
 use Illuminate\Http\Request;
 use App\User;
 use Caffeinated\Shinobi\Models\Role;
@@ -92,5 +93,14 @@ class UserController extends Controller
         } catch (\Throwable $th) {
             return back()->with('error', 'Ocurrió un error al eliminar el usuario');
         }
+    }
+
+    public function sendPushNotification()
+    {
+        dd('hola');
+        $user = User::find(1); // Reemplaza esto con el usuario al que deseas enviar la notificación
+        $notification = new PushNotification();
+        $user->notify($notification);
+        return back()->with('success', 'Notificacion enviada');
     }
 }

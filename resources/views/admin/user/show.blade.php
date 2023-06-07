@@ -122,6 +122,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        
                                                         @if (is_array($user->purchases) || is_object($user->purchases))
                                                         @foreach ($user->purchases as $purchase)
                                                         <tr>
@@ -129,18 +130,18 @@
                                                                 <a href="{{route('purchases.show', $purchase)}}">{{$purchase->id}}</a>
                                                             </th>
                                                             <td>{{$purchase->purchase_date}}</td>
-                                                            <td>{{$purchase->total}}</td>
+                                                            <td>{{number_format($purchase->total)}}</td>
                         
                                                             @if ($purchase->status == 'VALID')
                                                             <td>
                                                                 <a class="jsgrid-button btn btn-success" href="{{route('change.status.purchases', $purchase)}}" title="Editar">
-                                                                    Activo <i class="fas fa-check"></i>
+                                                                    Pagado <i class="fas fa-check"></i>
                                                                 </a>
                                                             </td>
                                                             @else
                                                             <td>
                                                                 <a class="jsgrid-button btn btn-danger" href="{{route('change.status.purchases', $purchase)}}" title="Editar">
-                                                                    Cancelado <i class="fas fa-times"></i>
+                                                                    No pagado <i class="fas fa-times"></i>
                                                                 </a>
                                                             </td>
                                                             @endif
@@ -159,7 +160,7 @@
                                                     <tfoot>
                                                         <tr>
                                                           <td colspan="2"><strong>Monto total comprado: </strong></td>
-                                                          <td colspan="3" align="left"><strong>s/{{$total_amount_sold}}</strong></td>
+                                                          <td colspan="3" align="left"><strong>${{number_format($total_amount_sold)}}</strong></td>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -198,18 +199,18 @@
                                                                 <a href="{{route('sales.show', $sale)}}">{{$sale->id}}</a>
                                                             </th>
                                                             <td>{{$sale->sale_date}}</td>
-                                                            <td>{{$sale->total}}</td>
+                                                            <td>{{number_format($sale->total)}}</td>
                         
                                                             @if ($sale->status == 'VALID')
                                                             <td>
                                                                 <a class="jsgrid-button btn btn-success" href="{{route('change.status.sales', $sale)}}" title="Editar">
-                                                                    Activo <i class="fas fa-check"></i>
+                                                                    Pagado <i class="fas fa-check"></i>
                                                                 </a>
                                                             </td>
                                                             @else
                                                             <td>
                                                                 <a class="jsgrid-button btn btn-danger" href="{{route('change.status.sales', $sale)}}" title="Editar">
-                                                                    Cancelado <i class="fas fa-times"></i>
+                                                                    No pagado <i class="fas fa-times"></i>
                                                                 </a>
                                                             </td>
                                                             @endif
@@ -229,7 +230,7 @@
                                                     <tfoot>
                                                         <tr>
                                                           <td colspan="2"><strong>Monto total vendido: </strong></td>
-                                                          <td colspan="3" align="left"><strong>s/{{$total_purchases}}</strong></td>
+                                                          <td colspan="3" align="left"><strong>${{number_format($total_purchases)}}</strong></td>
                                                         </tr>
                                                     </tfoot>
                                                 </table>

@@ -13,20 +13,30 @@ class Sale extends Model
         'tax',
         'total',
         'status',
-        
+
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function client(){
+    public function client()
+    {
         return $this->belongsTo(Client::class);
     }
 
-    public function saleDetails(){
+    public function saleDetails()
+    {
         return $this->hasMany(SaleDetail::class);
     }
 
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::deleting(function ($sale) {
+            $sale->saleDetails()->delete();
+        });
+    }
 }

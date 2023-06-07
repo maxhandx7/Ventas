@@ -123,7 +123,7 @@
                                         <hr>
 
                                         <strong> <i class="fas fa-money-bill mr-1"> Precio </i> </strong>
-                                        <p class="text-muted"> {{$product->sell_price }} </p>
+                                        <p class="text-muted"> {{number_format($product->sell_price) }} </p>
                                         <hr>
                                     </div>
 

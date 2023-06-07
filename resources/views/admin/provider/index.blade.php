@@ -54,7 +54,7 @@
                                     <td>{{$provider->email }}</td>
                                     <td>{{$provider->phone }}</td>
 
-                                    <td style="width: 50px;">
+                                    <td style="width: 110px;">
                                         {!! Form::open(['route'=>['providers.destroy', $provider], 'method'=>'DELETE']) !!}
                                         <a class="btn btn-outline-info" href="{{ route('providers.edit', $provider)}}" title="Editar">
                                             <i class="far fa-edit"></i>

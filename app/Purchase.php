@@ -16,16 +16,27 @@ class Purchase extends Model
         'picture',
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function provider(){
+    public function provider()
+    {
         return $this->belongsTo(Provider::class);
     }
 
-    public function purchaseDetails(){
+    public function purchaseDetails()
+    {
         return $this->hasMany(PurchaseDetails::class);
     }
-  
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($purchase) {
+            $purchase->purchaseDetails()->delete();
+        });
+    }
 }

@@ -77,6 +77,16 @@ class PurchaseController extends Controller
         return view('admin.purchase.edit', compact('purchase'));
     }
 
+    public function destroy(purchase $purchase)
+    {
+        try {
+            $purchase->delete();
+            return redirect()->route('purchases.index')->with('success', 'Compra eliminada');
+        } catch (\Exception $th) {
+            return redirect()->back()->with('error', 'Ocurrió un error al eliminar la compra');
+        }
+    } 
+
     public function pdf(purchase $purchase)
     {
         $subtotal = 0;
@@ -86,7 +96,7 @@ class PurchaseController extends Controller
         }
 
         $pdf = PDF::loadView('admin.purchase.pdf', compact('purchase', 'subtotal', 'purchaseDetails'));
-        return $pdf->download('reporte_compra_' . $purchase->id . '.pdf');
+        return $pdf->download('reporte_de_compra_' . $purchase->id . '.pdf');
     }
 
     public function change_status(Purchase $purchase)

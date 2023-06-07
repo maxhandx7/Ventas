@@ -57,7 +57,7 @@
 
 
 
-                                    <td style="width: 50px;">
+                                    <td style="width: 110px;">
                                         {!! Form::open(['route'=>['categories.destroy', $category], 'method'=>'DELETE']) !!}
                                         <a class="btn btn-outline-info" href="{{ route('categories.edit', $category)}}" title="Editar">
                                             <i class="far fa-edit"></i>
