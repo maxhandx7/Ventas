@@ -66,17 +66,15 @@
                                         </a>
 
                                     </td>
-
                                     @else
                                     <td>
                                         <a class="btn btn-danger" href="{{ route('change.status.purchases', $purchase)}}" title="no pago">
                                             No pago<i class="fa fa-times"></i>
                                         </a>
-
                                     </td>
-
                                     @endif
                                     <td style="width:100px;">
+                                        {!! Form::open(['route'=>['purchases.destroy', $purchase], 'method'=>'DELETE']) !!}
                                         <a class="btn btn-outline-info jsgrid-edit-button" href="{{route('purchases.pdf', $purchase)}}" title="PDF"><i class="fa fa-file-pdf" aria-hidden="true"></i></a>
                                         <a class="btn btn-outline-info jsgrid-edit-button" title="VER" href="{{ route('purchases.show', $purchase)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                         <button class="btn btn-outline-danger jsgrid-delete-button" type="submit" title="Eliminar">

@@ -6,10 +6,6 @@
 @section('preference')
 @endsection
 @section('content')
-
-
-<!-- partial -->
-
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
@@ -110,9 +106,9 @@
                                                             <th>Nombre producto</th>
                                                             <th>Precio</th>
                                                             <th>Cantidad</th>
+                                                            <th>Estado</th>
                                                         </tr>
                                                     </thead>
-
                                                     <tbody>
                                                         @foreach($client->sales as $sale)
                                                         @if (is_array($sale->saleDetails) || is_object($sale->saleDetails))
@@ -124,6 +120,12 @@
                                                             <td>{{$saleDetail->product->name}}</td>
                                                             <td>{{number_format($saleDetail->price)}}</td>
                                                             <td>{{$saleDetail->quantity}}</td>
+                                                            <td>@if($sale->status == 'VALID')
+                                                                Pagado
+                                                                @else
+                                                                No pago
+                                                                @endif
+                                                            </td>
                                                         </tr>
                                                         @endforeach
                                                         @endif
