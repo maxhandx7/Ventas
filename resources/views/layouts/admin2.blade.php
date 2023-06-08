@@ -157,19 +157,17 @@
               <span class="menu-title">Tus Categorias</span>
             </a>
           </li>
-          <li class="nav-item {{ Request::is('business*', 'printers*') ? 'active' : '' }}">
+          <!-- Código HTML del menú mejorado -->
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
               <i class="fas fa-cog menu-icon"></i>
-              <span class="menu-title">Configuracion</span>
+              <span class="menu-title">Configuración</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="page-layouts">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{ route('business.index')}}">Empresa</a></li>
-
-                <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{ route('printers.index')}}">Impresora</a></li>
-
-
+                <li class="nav-item"> <a class="nav-link" href="{{ route('business.index')}}">Empresa</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('printers.index')}}">Impresora</a></li>
               </ul>
             </div>
           </li>
@@ -183,12 +181,11 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{ route('users.index')}}">Usuarios</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{ route('roles.index')}}">Roles</a></li>
-
               </ul>
             </div>
           </li>
 
-          <li class="nav-item d-none d-lg-block">
+          <li class="nav-item ">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="fas fa-chart-line menu-icon"></i>
               <span class="menu-title">Reportes</span>
@@ -234,7 +231,7 @@
 
   @yield('scripts')
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 <script>
   $(document).ready(function() {
     setTimeout(function() {
