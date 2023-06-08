@@ -19,6 +19,10 @@ class Product extends Model
         'provider_id',
     ];
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     public function provider()
     {
         return $this->belongsTo(Provider::class);
