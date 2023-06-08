@@ -31,7 +31,6 @@ class ProductController extends Controller
 
     public function create()
     {
-
         $categories = Category::get();
         dd($categories);
         $providers = Provider::get();
