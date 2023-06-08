@@ -118,7 +118,7 @@
                                                                 <a href="{{ route('sales.show', $saleDetail)}}">{{$saleDetail->id}}</a>
                                                             </th>
                                                             <td>{{$saleDetail->product->name}}</td>
-                                                            <td>{{number_format($saleDetail->price)}}</td>
+                                                            <td>$ {{number_format($saleDetail->quantity*$saleDetail->price - $saleDetail->quantity*$saleDetail->price*$saleDetail->discount/100,2)}}</td>
                                                             <td>{{$saleDetail->quantity}}</td>
                                                             <td>@if($sale->status == 'VALID')
                                                                 Pagado
