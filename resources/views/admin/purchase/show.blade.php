@@ -96,7 +96,7 @@
                                     @foreach($purchaseDetails as $purchaseDetail)
                                     <tr>
                                         <td>{{$purchaseDetail->product->name }}</td>
-                                        <td>$ {{$purchaseDetail->price}}</td>
+                                        <td>$ {{number_format($purchaseDetail->price)}}</td>
                                         <td>{{$purchaseDetail->quantity}}</td>
                                         <td>$ {{number_format($purchaseDetail->quantity*$purchaseDetail->price,2)}}</td>
                                     </tr>

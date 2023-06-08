@@ -33,6 +33,7 @@ class ProductController extends Controller
     {
 
         $categories = Category::get();
+        dd($categories);
         $providers = Provider::get();
         return view('admin.product.create', compact('categories', 'providers'));
     }

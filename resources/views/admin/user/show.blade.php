@@ -111,7 +111,7 @@
                                         <div class="d-flex align-items-start profile-feed-item">
     
                                             <div class="table-responsive">
-                                                <table id="order-listing" class="table">
+                                                <table id="order-listing-small" class="table">
                                                     <thead>
                                                         <tr>
                                                             <th>Id</th>
