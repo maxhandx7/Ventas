@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\category;
+use App\Category;
 use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
 
@@ -43,13 +43,13 @@ class CategoryController extends Controller
         }
     }
 
-    public function show(category $category)
+    public function show(Category $category)
     {
         return view('admin.category.show', compact('category'));
     }
 
 
-    public function edit(category $category)
+    public function edit(Category $category)
     {
         return view('admin.category.edit', compact('category'));
     }
@@ -65,7 +65,7 @@ class CategoryController extends Controller
     }
 
 
-    public function destroy(category $category)
+    public function destroy(Category $category)
     {
         try {
             $category->delete();
