@@ -28,7 +28,7 @@ class Sale extends Model
 
     public function saleDetails()
     {
-        return $this->hasMany(SaleDetail::class);
+        return $this->hasMany(saleDetail::class);
     }
 
     protected static function boot()
