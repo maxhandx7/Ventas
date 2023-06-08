@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\SaleDetail;
+use App\saleDetail;
 use Illuminate\Http\Request;
 
 class SaleDetailController extends Controller
