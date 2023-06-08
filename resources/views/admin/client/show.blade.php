@@ -104,7 +104,7 @@
                                                         <tr>
                                                             <th>Id</th>
                                                             <th>Nombre producto</th>
-                                                            <th>Precio</th>
+                                                            <th>Total</th>
                                                             <th>Cantidad</th>
                                                             <th>Estado</th>
                                                         </tr>
