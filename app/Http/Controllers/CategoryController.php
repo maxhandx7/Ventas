@@ -54,11 +54,11 @@ class CategoryController extends Controller
         return view('admin.category.edit', compact('category'));
     }
 
-    public function update(UpdateRequest $request, category $category)
+    public function update(UpdateRequest $request, Category $category)
     {
         try {
             $category->update($request->all());
-            return redirect()->route('categories.index')->with('success', 'Categoria modificado');
+            return redirect()->route('categories.index')->with('success', 'Categoria modificada');
         } catch (\Exception $th) {
             return redirect()->back()->with('error', 'Ocurrió un error al actualizar la categoria');
         }
