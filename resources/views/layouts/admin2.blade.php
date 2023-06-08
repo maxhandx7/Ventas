@@ -166,12 +166,12 @@
             </a>
             <div class="collapse" id="page-layouts">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('business.index')}}">Empresa</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('printers.index')}}">Impresora</a></li>
+                <li class="nav-item {{ Request::segment(1) === 'business' ? 'active' : '' }}"> <a class="nav-link" href="{{ route('business.index')}}">Empresa</a></li>
+                <li class="nav-item {{ Request::segment(1) === 'printers' ? 'active' : '' }}"> <a class="nav-link" href="{{ route('printers.index')}}">Impresora</a></li>
               </ul>
             </div>
           </li>
-          <li class="nav-item {{ Request::is('users*', 'roles*') ? 'active' : '' }} d-none d-lg-block">
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#sidebar-layouts" aria-expanded="false" aria-controls="sidebar-layouts">
               <i class="fas fa-users menu-icon"></i>
               <span class="menu-title">Gestion de usuarios</span>
@@ -179,8 +179,8 @@
             </a>
             <div class="collapse" id="sidebar-layouts">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('users.index')}}">Usuarios</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('roles.index')}}">Roles</a></li>
+                <li class="nav-item {{ Request::segment(1) === 'users' ? 'active' : '' }}"> <a class="nav-link" href="{{ route('users.index')}}">Usuarios</a></li>
+                <li class="nav-item {{ Request::segment(1) === 'roles' ? 'active' : '' }}"> <a class="nav-link" href="{{ route('roles.index')}}">Roles</a></li>
               </ul>
             </div>
           </li>
@@ -193,8 +193,8 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{route('reports.day')}}">Reportes por día</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{route('reports.date')}}">Reportes por fecha</a></li>
+                <li class="nav-item {{ Request::segment(1) === 'reports' ? 'active' : '' }}"> <a class="nav-link" href="{{route('reports.day')}}">Reportes por día</a></li>
+                <li class="nav-item {{ Request::segment(1) === 'reports' ? 'active' : '' }}"> <a class="nav-link" href="{{route('reports.date')}}">Reportes por fecha</a></li>
 
               </ul>
             </div>
