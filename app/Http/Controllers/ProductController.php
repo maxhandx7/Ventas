@@ -31,7 +31,7 @@ class ProductController extends Controller
 
     public function create()
     {
-       dd( $categories = Category::get());
+        $categories = Category::get();
         $providers = Provider::get();
         return view('admin.product.create', compact('categories', 'providers'));
     }
