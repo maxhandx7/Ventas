@@ -20,7 +20,7 @@
 
 <div class="form-group">
     <label for="tax">Impuesto (IVA)</label>
-    <input type="number" name="tax" id="tax" class="form-control" placeholder="19%" >
+    <input type="number" name="tax" id="tax" class="form-control" value="0" placeholder="19%" >
 </div>
 
 <div class="form-group">
@@ -30,7 +30,7 @@
 
 <div class="form-group">
     <label for="price">Precio (*)</label>
-    <input data-inputmask="'alias': 'currency'" style="text-align: right;" name="price" id="price" class="form-control" placeholder="precio de compra">
+    <input type="number" name="price" id="price" class="form-control" placeholder="precio de compra">
 </div>
 <div class="card text-muted" >
 <button type="button" id="agregar" class="btn btn-primary">Agregar</button>
