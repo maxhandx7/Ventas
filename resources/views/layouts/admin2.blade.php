@@ -13,7 +13,7 @@
   <link rel="shortcut icon" href="{{asset('melody/images/favicon.png')}}" />
 </head>
 
-<body >
+<body>
   <div class="container-scroller">
     <nav id="navbar" class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -232,4 +232,5 @@
   @yield('scripts')
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
 </html>

@@ -18,6 +18,14 @@ const cambiarTema = () => {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+    setTimeout(function () {
+        var successMessage = document.getElementById('success-message');
+        successMessage.style.opacity = '0';
+        setTimeout(function () {
+            successMessage.style.display = 'none';
+        }, 1000);
+    }, 5000);
+
     const temaGuardado = localStorage.getItem("tema");
     if (temaGuardado === "oscuro") {
         temaOscuro();
@@ -27,9 +35,5 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-$(document).ready(function () {
-    setTimeout(function () {
-        $('#success-message').fadeOut('slow');
-    }, 5000);
-});
+
 
