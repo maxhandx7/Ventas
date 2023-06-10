@@ -244,9 +244,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla laravel.users: ~2 rows (aproximadamente)
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-	(1, 'Alan', 'Alancarabali@gmail.com', NULL, '$2y$10$liZl2fBn4wBbJEAzsUobLuArOrEgurYORgMMPIw8J2yUU/BVSs/4y', NULL, '2023-06-05 00:48:15', '2023-06-05 00:48:15'),
-	(2, 'Diana', 'dianaamaamiranda@gmail.com', NULL, '$2y$10$ibEo1nNFmnsU3hctJ0LLHuTJO8Jf/pwk056kYlVqKaIbDCO9p0ltK', NULL, '2023-06-05 00:51:22', '2023-06-05 00:51:22');
+  INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+    (3, 'Diana', 'dianaamaamiranda@gmail.com', NULL, '$2y$10$ibEo1nNFmnsU3hctJ0LLHuTJO8Jf/pwk056kYlVqKaIbDCO9p0ltK', NULL, '2023-06-05 00:51:22', '2023-06-05 00:51:22');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

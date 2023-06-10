@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="provider_id">Proveedor</label>
+    <label for="provider_id">Proveedor (*)</label>
     <select id="provider_id"  class="form-control js-example-basic-single" name="provider_id">
         <option selected disabled value="">Seleccione Proveedor</option>
         @foreach ($providers as $provider)
@@ -9,7 +9,7 @@
 </div>
 
 <div class="form-group">
-    <label for="product_id">Productos</label>
+    <label for="product_id">Productos (*)</label>
     <select id="product_id"  class="form-control js-example-basic-single" name="product_id">
         <option selected disabled value="">Seleccione Productos</option>
         @foreach ($products as $product)
@@ -20,17 +20,17 @@
 
 <div class="form-group">
     <label for="tax">Impuesto (IVA)</label>
-    <input type="number" name="tax" id="tax" class="form-control" value="19" >
+    <input type="number" name="tax" id="tax" class="form-control" placeholder="19%" >
 </div>
 
 <div class="form-group">
-    <label for="quantity">Cantidad</label>
+    <label for="quantity">Cantidad (*)</label>
     <input type="number" name="quantity" id="quantity" class="form-control" placeholder="Cantidad" >
 </div>
 
 <div class="form-group">
-    <label for="price">Precio</label>
-    <input type="number" name="price" id="price" class="form-control" placeholder="precio de compra">
+    <label for="price">Precio (*)</label>
+    <input data-inputmask="'alias': 'currency'" style="text-align: right;" name="price" id="price" class="form-control" placeholder="precio de compra">
 </div>
 <div class="card text-muted" >
 <button type="button" id="agregar" class="btn btn-primary">Agregar</button>

@@ -13,9 +13,9 @@
   <link rel="shortcut icon" href="{{asset('melody/images/favicon.png')}}" />
 </head>
 
-<body>
+<body >
   <div class="container-scroller">
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
+    <nav id="navbar" class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo" href="/"><img src="{{asset('melody/images/logo.svg')}}" alt="logo" /></a>
         <a class="navbar-brand brand-logo-mini" href="/"><img src="{{asset('melody/images/logo-mini.svg')}}" alt="logo" /></a>
@@ -46,6 +46,7 @@
           <li class="nav-item dropdown">
           </li>
           <li class="nav-item dropdown">
+            <button onclick="cambiarTema()" class="btn btn-rounded"><i id="dl-icon" class="fa fa-moon"></i></button>
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="/" data-toggle="dropdown" id="profileDropdown">
@@ -218,7 +219,7 @@
       </div>
     </div>
   </div>
-
+  {!! Html::script('melody/js/main.js') !!}
   {!! Html::script('melody/vendors/js/vendor.bundle.base.js') !!}
   {!! Html::script('melody/vendors/js/vendor.bundle.addons.js') !!}
   {!! Html::script('melody/js/off-canvas.js') !!}
@@ -228,16 +229,7 @@
   {!! Html::script('melody/js/settings.js') !!}
   {!! Html::script('melody/js/todolist.js') !!}
   {!! Html::script('melody/js/dashboard.js') !!}
-
   @yield('scripts')
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-<script>
-  $(document).ready(function() {
-    setTimeout(function() {
-      $('#success-message').fadeOut('slow');
-    }, 5000);
-  });
-</script>
-
 </html>
