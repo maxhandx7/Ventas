@@ -22,7 +22,7 @@
                     <div class="float-right">
                         <i class="fas fa-cart-arrow-down fa-4x"></i>
                     </div>
-                    <div class="text-value h4"><strong>COL {{number_format($total->totalcompra)}} (MES ACTUAL)</strong>
+                    <div class="text-value h4"><strong>COL {{number_format($total->totalcompra)}} (Hoy)</strong>
                     </div>
                     <div class="h3">Compras</div>
                 </div>
@@ -40,7 +40,7 @@
                     <div class="float-right">
                         <i class="fas fa-shopping-cart fa-4x"></i>
                     </div>
-                    <div class="text-value h4"><strong>COL {{number_format($total->totalventa)}} (MES ACTUAL) </strong>
+                    <div class="text-value h4"><strong>COL {{number_format($total->totalventa)}} (Hoy) </strong>
                     </div>
                     <div class="h3">Ventas</div>
                 </div>
