@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body ">
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Productos</h4>
                         <div class="btn-group">
@@ -35,7 +35,7 @@
                     <br>
                     @include('admin.product.message')
                     <div class="table-responsive">
-                        <table id="order-listing" class="table table-striped">
+                        <table id="order-listing" class="table table-striped table-dark">
                             <thead>
                                 <tr>
                                     <th><i class="fa fa-image"></i></th>
