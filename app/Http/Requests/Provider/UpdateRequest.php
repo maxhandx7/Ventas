@@ -21,7 +21,7 @@ class UpdateRequest extends FormRequest
             'email'=>'nullable|email|string|max:200|unique:providers,email,'. $this->route('provider')->id. '|max:255',
             'nit_number'=>'nullable|string|max:11|unique:providers,nit_number,'. $this->route('provider')->id. '|max:11', 
             'address'=>'nullable|string|max:255', 
-            'phone'=>'nullable|integer|min:0|unique:providers,phone,'. $this->route('provider')->id. 'max:15',
+            'phone'=>'nullable|string',
         ]; 
         
     }
@@ -46,10 +46,8 @@ class UpdateRequest extends FormRequest
             'address.max'=>'Solo se permiten 255 caracteres.',
             'address.string'=>'El valor no es correcto.',
 
-            'phone.integer'=>'El valor no es correcto.',
-            'phone.max'=>'Solo se permiten 15 numeros.',
-            'phone.min'=>'Solo se permiten al menos 1 numero',    
-            'phone.unique'=>'Ya se encuentra registrado.',
+            'phone.string'=>'El valor no es correcto.',
+
             
         ];
     } 

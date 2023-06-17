@@ -203,6 +203,12 @@ class PermissionsTableSeeder extends Seeder
                 'slug'=>'purchases.create',
                 'description'=>'Crea cualquier dato de un compra del sistema.',
             ]);
+            Permission::create([
+                'name'=>'Eliminar compras',
+                'slug'=>'purchases.destroy',
+                'description'=>'Eliminar cualquier dato de una compra del sistema.',
+            ]);
+    
     
              
             Permission::create([
@@ -219,6 +225,11 @@ class PermissionsTableSeeder extends Seeder
                 'name'=>'Creación de ventas',
                 'slug'=>'sales.create',
                 'description'=>'Crea cualquier dato de un venta del sistema.',
+            ]);
+            Permission::create([
+                'name'=>'Eliminar ventas',
+                'slug'=>'sales.destroy',
+                'description'=>'Eliminar cualquier dato de una venta del sistema.',
             ]);
     
     

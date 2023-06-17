@@ -19,6 +19,8 @@ class PurchaseController extends Controller
         $this->middleware('can:purchases.create')->only(['create', 'store']);
         $this->middleware('can:purchases.index')->only(['index']);
         $this->middleware('can:purchases.show')->only(['show']);
+        $this->middleware('can:purchases.destroy')->only(['destroy']);
+        
         $this->middleware('can:change.status.purchases')->only(['change_status']);
         $this->middleware('can:purchases.pdf')->only(['pdf']);
         $this->middleware('can:upload.purchases')->only(['upload']);
