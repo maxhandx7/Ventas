@@ -35,5 +35,10 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
+function confirmDelete() {
+    return confirm('¿Estás seguro de que deseas eliminar este registro?');
+}
+
+
 
 

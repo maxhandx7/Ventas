@@ -74,10 +74,10 @@
                                     </td>
                                     @endif
                                     <td style="width:100px;">
-                                        {!! Form::open(['route'=>['purchases.destroy', $purchase], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['purchases.destroy', $purchase], 'method'=>'DELETE', 'id'=>'delete-form']) !!}
                                         <a class="btn btn-outline-info jsgrid-edit-button" href="{{route('purchases.pdf', $purchase)}}" title="PDF"><i class="fa fa-file-pdf" aria-hidden="true"></i></a>
                                         <a class="btn btn-outline-info jsgrid-edit-button" title="VER" href="{{ route('purchases.show', $purchase)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                        <button class="btn btn-outline-danger jsgrid-delete-button" type="submit" title="Eliminar">
+                                        <button class="btn btn-outline-danger jsgrid-delete-button" type="submit" title="Eliminar" onclick="return confirmDelete()">
                                             <i class="fa fa-trash-alt"></i>
                                         </button>
                                         {!! Form::close() !!}

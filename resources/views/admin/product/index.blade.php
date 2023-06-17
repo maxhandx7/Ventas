@@ -79,12 +79,12 @@
                                     <td>{{$product->category->name }}</td>
 
                                     <td style="width: 100px;">
-                                        {!! Form::open(['route'=>['products.destroy', $product], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['products.destroy', $product], 'method'=>'DELETE', 'id'=>'delete-form']) !!}
                                         <a class="btn btn-outline-info" href="{{ route('products.edit', $product)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
 
-                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar">
+                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar" onclick="return confirmDelete()">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {!! Form::close() !!}

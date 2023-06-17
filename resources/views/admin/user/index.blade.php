@@ -60,12 +60,12 @@
 
 
                                     <td style="width: 100px;">
-                                        {!! Form::open(['route'=>['users.destroy', $user], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['users.destroy', $user], 'method'=>'DELETE', 'id'=>'delete-form']) !!}
                                         <a class="btn btn-outline-info" href="{{ route('users.edit', $user)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
                                         
-                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar">
+                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar" onclick="return confirmDelete()">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {!! Form::close() !!}

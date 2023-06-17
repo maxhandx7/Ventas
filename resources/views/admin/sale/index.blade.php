@@ -78,11 +78,11 @@
 
 
                                     <td style="width:110px;">
-                                        {!! Form::open(['route'=>['sales.destroy', $sale], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['sales.destroy', $sale], 'method'=>'DELETE', 'id'=>'delete-form']) !!}
                                         <a class="btn btn-outline-info jsgrid-edit-button" href="{{route('sales.pdf', $sale)}}" title="PDF"><i class="fa fa-file-pdf" aria-hidden="true"></i></a>
                                         <!-- <a class="btn btn-outline-info jsgrid-edit-button" title="Imprimir" href="{{route('sales.print', $sale)}}"> <i class="fa fa-print" aria-hidden="true"></i></a> -->
                                         <a class="btn btn-outline-info jsgrid-edit-button" title="VER" href="{{ route('sales.show', $sale)}}"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                        <button class="btn btn-outline-danger jsgrid-delete-button" type="submit" title="Eliminar">
+                                        <button class="btn btn-outline-danger jsgrid-delete-button" type="submit" title="Eliminar" onclick="return confirmDelete()">
                                             <i class="fa fa-trash-alt"></i>
                                         </button>
                                         {!! Form::close() !!}
