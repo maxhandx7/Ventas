@@ -35,11 +35,10 @@
                     <br>
                     @include('admin.product.message')
                     <div class="table-responsive">
-                        <table id="order-listing" class="table">
+                        <table id="order-listing" class="table table-striped">
                             <thead>
                                 <tr>
-
-                                    <th>Id</th>
+                                    <th><i class="fa fa-image"></i></th>
                                     <th>Nombre</th>
                                     <th>Stock</th>
                                     <th>Estado</th>
@@ -51,13 +50,12 @@
                                 @foreach ($products as $product)
 
                                 <tr>
-                                    <th scope="row">{{$product->id }}</th>
-
+                                    <td class="py-1">
+                                        <img src="{{asset('image/'.$product->image) }}" alt="image" />
+                                    </td>
                                     <td> <a href="{{ route('products.show', $product )  }}"> {{$product->name }} </a></td>
 
                                     <td>{{$product->stock }}</td>
-
-
                                     @if ($product->status=='ACTIVE')
                                     <td>
                                         <a class="btn btn-sucess" href="{{ route('change.status.products', $product)}}" title="Activado">
