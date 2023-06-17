@@ -35,7 +35,7 @@
                     <br>
                     @include('admin.product.message')
                     <div class="table-responsive">
-                        <table id="order-listing" class="table table-striped table-dark">
+                        <table id="order-listing" class="table table-striped">
                             <thead>
                                 <tr>
                                     <th><i class="fa fa-image"></i></th>
