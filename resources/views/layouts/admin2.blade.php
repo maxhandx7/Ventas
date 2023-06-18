@@ -226,6 +226,7 @@
   {!! Html::script('melody/js/hoverable-collapse.js') !!}
   {!! Html::script('melody/js/misc.js') !!}
   {!! Html::script('melody/js/select2.js') !!}
+  {!! Html::script('melody/js/toastDemo.js') !!}
   {!! Html::script('melody/js/settings.js') !!}
   {!! Html::script('melody/js/todolist.js') !!}
   {!! Html::script('melody/js/dashboard.js') !!}

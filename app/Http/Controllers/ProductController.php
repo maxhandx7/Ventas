@@ -113,10 +113,10 @@ class ProductController extends Controller
     {
         if ($product->status == 'ACTIVE') {
             $product->update(['status' => 'DESACTIVATED']);
-            return redirect()->back()->with('error', 'Producto inactivado');
+            return redirect()->back()->with('info', 'Producto inactivado');
         } else {
             $product->update(['status' => 'ACTIVE']);
-            return redirect()->back()->with('success', 'Producto activado');
+            return redirect()->back()->with('info', 'Producto activado');
         }
     }
 }

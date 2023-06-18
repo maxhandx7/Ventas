@@ -94,9 +94,9 @@
                               </div>
 
                             @if ($product->status == 'ACTIVE')
-                            <button class="btn btn-primary btn-block">Activo</button>
+                            <a href="{{ route('change.status.products', $product)}}" onclick="showInfoToast()" class="btn btn-primary btn-block">Activo</a>
                                 @else
-                                <button class="btn btn-danger btn-block">Inactivo</button>
+                                <a href="{{ route('change.status.products', $product)}}" onclick="showInfoToast()" class="btn btn-danger btn-block">Inactivo</a>
                             @endif
 
                         </div>

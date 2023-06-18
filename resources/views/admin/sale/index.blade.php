@@ -59,7 +59,7 @@
 
                                     @if ($sale->status=='VALID')
                                     <td>
-                                        <a class="btn btn-sucess" href="{{ route('change.status.sales', $sale)}}" title="Esta pago">
+                                        <a class="badge badge-success" href="{{ route('change.status.sales', $sale)}}" title="Esta pago">
                                             pagado<i class="fa fa-check"></i>
                                         </a>
 
@@ -67,8 +67,8 @@
 
                                     @else
                                     <td>
-                                        <a class="btn btn-danger" href="{{ route('change.status.sales', $sale)}}" title="no pago">
-                                            No pago<i class="fa fa-times"></i>
+                                        <a class="badge badge-danger" href="{{ route('change.status.sales', $sale)}}" title="no pago">
+                                            No pago
                                         </a>
 
                                     </td>
