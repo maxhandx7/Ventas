@@ -27,7 +27,7 @@
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Gestión de empresa</h4>
                     </div>
-                    @include('admin.business.message')
+                    @include('errors.message')
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <strong><i class="fas fa-file-signature mr-1"></i> Nombre </strong>

@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <br>
-                    @include('admin.category.message')
+                    @include('errors.message')
                     <div class="table-responsive">
                         <table id="order-listing" class="table">
                             <thead>

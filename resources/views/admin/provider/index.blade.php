@@ -33,7 +33,8 @@
                         </div>
                     </div>
                     <br>
-                    @include('admin.provider.message') <div class="table-responsive">
+                    @include('errors.message')
+                    <div class="table-responsive">
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>

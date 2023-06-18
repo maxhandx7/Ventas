@@ -23,7 +23,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="/">Panel administrador</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Configuración de impresora</li>
             </ol>
         </nav>
@@ -46,7 +46,7 @@
                     </div>
                 </div> --}}
             </div>
-
+            @include('errors.message')
             <div class="form-group">
                 <strong><i class="fas fa-file-signature mr-1"></i> Nombre </strong>
 
