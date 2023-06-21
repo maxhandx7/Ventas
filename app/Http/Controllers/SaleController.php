@@ -31,7 +31,7 @@ class SaleController extends Controller
 
     public function index()
     {
-        $sales = Sale::get();
+        $sales = Sale::orderBy('created_at', 'desc')->get();
         return view('admin.sale.index', compact('sales'));
     }
 
@@ -74,7 +74,7 @@ class SaleController extends Controller
 
     public function edit(sale $sale)
     {
-        $products = Product::orderBy('created_at', 'desc')->get();
+        $products = Product::get();
         $clients = Client::get();
         return view('admin.sale.edit', compact('sale'));
     }

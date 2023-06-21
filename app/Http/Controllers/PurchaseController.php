@@ -30,14 +30,14 @@ class PurchaseController extends Controller
 
     public function index()
     {
-        $purchases = Purchase::get();
+        $purchases = Purchase::orderBy('created_at', 'desc')->get();
         return view('admin.purchase.index', compact('purchases'));
     }
 
 
     public function create()
     {
-        $providers = Provider::orderBy('created_at', 'desc')->get();
+        $providers = Provider::get();
         $products = Product::where('status', 'ACTIVE')->get();
 
         return view('admin.purchase.create', compact('providers', 'products'));
