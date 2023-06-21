@@ -30,7 +30,7 @@ class PurchaseController extends Controller
 
     public function index()
     {
-        $purchases = Purchase::orderBy('created_at', 'desc')->get();
+        $purchases = Purchase::get();
         return view('admin.purchase.index', compact('purchases'));
     }
 

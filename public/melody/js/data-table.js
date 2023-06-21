@@ -2,7 +2,7 @@
   'use strict';
   $(function () {
     $('#order-listing').DataTable({
-
+      "order": [[ 0, "desc" ]],
       "aLengthMenu": [
         [5, 10, 15, -1],
         [5, 10, 15, "All"]
