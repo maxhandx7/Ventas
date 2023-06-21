@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <h4 class="card-title">Detalles de venta</h4>
                         <div class="table-responsive col-md-12">
-                            <table id="saleDetails" class="table">
+                            <table id="detalles" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>Producto</th>
