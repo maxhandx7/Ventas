@@ -74,7 +74,7 @@ class SaleController extends Controller
 
     public function edit(sale $sale)
     {
-        $products = Product::get();
+        $products = Product::orderBy('created_at', 'desc')->get();
         $clients = Client::get();
         return view('admin.sale.edit', compact('sale'));
     }
