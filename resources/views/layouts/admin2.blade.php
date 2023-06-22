@@ -33,7 +33,9 @@
                     <i class="fas fa-search"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" placeholder="Buscar" aria-label="Search">
+                <form action="{{ route('buscar') }}" method="GET">
+                <input type="text" class="form-control" name="query" placeholder="Buscar" aria-label="Search">
+                </form>
               </div>
             </div>
           </li>

@@ -54,3 +54,5 @@ Route::get('change_status/sales/{sale}', 'SaleController@change_status')->name('
 Auth::routes();
 //Route::get('sendPushNotification/users/{user}', 'UserController@sendPushNotification')->name('sendPushNotification');
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/buscar', 'SearchController@buscar')->name('buscar');
