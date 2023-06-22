@@ -20,10 +20,12 @@ const cambiarTema = () => {
 window.addEventListener("DOMContentLoaded", () => {
     setTimeout(function () {
         var successMessage = document.getElementById('success-message');
+        if (successMessage) {
         successMessage.style.opacity = '0';
         setTimeout(function () {
             successMessage.style.display = 'none';
         }, 1000);
+    }
     }, 5000);
 
     const temaGuardado = localStorage.getItem("tema");

@@ -44,13 +44,11 @@
         </div>
     </div>
 </div>
-
 @endsection
 @section('scripts')
 {!! Html::script('melody/js/alerts.js') !!}
 {!! Html::script('melody/js/avgrund.js') !!}
 
-{!! Html::script('select/dist/js/bootstrap-select.min.js') !!}
 <script>
     $(document).ready(function() {
         $("#agregar").click(function() {

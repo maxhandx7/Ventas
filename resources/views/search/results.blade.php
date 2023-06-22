@@ -220,7 +220,7 @@
                     @if ($products->count() === 0 && $users->count() === 0 && $clients->count() === 0 && $providers->count() === 0)
                     <div class="alert alert-fill-danger">
                     <i class="fa fa-exclamation-triangle"></i>    
-                    No hubo resultados para: {{$query}}</div>
+                    No hubo resultados para "{{$query}}"</div>
                     @endif
                 </div>
             </div>
