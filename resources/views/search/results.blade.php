@@ -35,7 +35,7 @@
                     <hr>
                     <h4 class="card-title">Productos</h4>
                     <div class="table-responsive">
-                        <table id="order-listing" class="table table-info">
+                        <table  class="table table-info">
                             <thead>
                                 <tr>
                                     <th><i class="fa fa-image"></i></th>
@@ -97,7 +97,7 @@
                     <hr>
                     <h4 class="card-title">Usuarios</h4>
                     <div class="table-responsive">
-                        <table id="order-listing" class="table table-success">
+                        <table  class="table table-success">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -143,7 +143,7 @@
                     <hr>
                     <h4 class="card-title">Clientes</h4>
                     <div class="table-responsive">
-                        <table id="order-listing" class="table table-warning">
+                        <table  class="table table-warning">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -180,7 +180,7 @@
                     <hr>
                     <h4 class="card-title">Proveedores</h4>
                     <div class="table-responsive">
-                        <table id="order-listing" class="table table-danger">
+                        <table  class="table table-danger">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -201,12 +201,12 @@
                                     <td>{{$provider->phone }}</td>
 
                                     <td style="width: 110px;">
-                                        {!! Form::open(['route'=>['providers.destroy', $provider], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['providers.destroy', $provider], 'method'=>'DELETE', 'id'=>'delete-form']) !!}
                                         <a class="btn btn-outline-info" href="{{ route('providers.edit', $provider)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
 
-                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar">
+                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar" onclick="return confirmDelete()">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {!! Form::close() !!}

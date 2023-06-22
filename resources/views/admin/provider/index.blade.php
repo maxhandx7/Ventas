@@ -56,12 +56,12 @@
                                     <td>{{$provider->phone }}</td>
 
                                     <td style="width: 110px;">
-                                        {!! Form::open(['route'=>['providers.destroy', $provider], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['providers.destroy', $provider], 'method'=>'DELETE', 'id'=>'delete-form']) !!}
                                         <a class="btn btn-outline-info" href="{{ route('providers.edit', $provider)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
 
-                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar">
+                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar" onclick="return confirmDelete()">
                                             <i class="far fa-trash-alt"></i>
                                         </button>
                                         {!! Form::close() !!}
