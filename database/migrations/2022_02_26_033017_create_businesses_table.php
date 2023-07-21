@@ -21,6 +21,7 @@ class CreateBusinessesTable extends Migration
             $table->string('logo');
             $table->string('mail');
             $table->string('address');
+            $table->string('phone');
             $table->string('nit');
 
             $table->timestamps();

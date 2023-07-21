@@ -19,15 +19,16 @@ class CreateProductsTable extends Migration
 
             $table->string('code')->unique()->nullable();
             $table->string('name')->unique();
-            $table->integer('stock')->default(0);
-            $table->string('image')->nullable();
+            $table->string('slug')->unique();
+            $table->integer('stock')->default(0);   
             $table->decimal('sell_price', 12,2);
-
+            $table->mediumText('short_description')->nullable();
+            $table->longText('long_description')->nullable();
             $table->enum('status',['ACTIVE', 'DESACTIVATED'])->default('ACTIVE');
 
 
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->unsignedBigInteger('subcategory_id');
+            $table->foreign('subcategory_id')->references('id')->on('subcategories');
             $table->unsignedBigInteger('provider_id');
             $table->foreign('provider_id')->references('id')->on('providers');
 

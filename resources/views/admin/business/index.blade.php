@@ -48,10 +48,10 @@
                                 {{$business->address}}
                             </p>
                             <hr>
-                            {{-- <strong><i class="fas fa-mobile-alt mr-1"></i> Teléfono</strong>
+                            <strong><i class="fas fa-mobile-alt mr-1"></i> Teléfono</strong>
                             
-                            <p class="text-muted">{{$business->telephone}}</p>
-                            <hr> --}}
+                            <p class="text-muted">{{$business->phone}}</p>
+                            <hr> 
                         </div>
                         <div class="form-group col-md-6">
                             <strong><i class="far fa-address-card mr-1"></i> NIT</strong>
@@ -111,6 +111,12 @@
                     <input type="text" class="form-control" name="name" id="name" value="{{$business->name}}" aria-describedby="helpId">
                 </div>
 
+                
+                <div class="form-group">
+                    <label for="ruc">NIT</label>
+                    <input type="text" class="form-control" name="nit" id="nit" value="{{$business->nit}}" aria-describedby="helpId">
+                </div>
+
                 <div class="form-group">
                     <label for="description">Descripción</label>
                     <textarea class="form-control" name="description" id="description" rows="3">{{$business->description}}</textarea>
@@ -125,11 +131,11 @@
                     <label for="address">Dirección</label>
                     <input type="text" class="form-control" name="address" id="address" value="{{$business->address}}" aria-describedby="helpId">
                 </div>
-
                 <div class="form-group">
-                    <label for="ruc">Numero de nit</label>
-                    <input type="text" class="form-control" name="nit" id="nit" value="{{$business->nit}}" aria-describedby="helpId">
+                    <label for="phone">Telefono</label>
+                    <input type="text" class="form-control" name="phone" id="phone" value="{{$business->phone}}" aria-describedby="helpId">
                 </div>
+
 
                 <div class="card-body">
                     <h5 class="card-title d-flex">Logo

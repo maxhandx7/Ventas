@@ -7,6 +7,9 @@ use App\Category;
 use App\Provider;
 use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
+use App\Subcategory;
+use App\Tag;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -33,31 +36,39 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $providers = Provider::get();
-        return view('admin.product.create', compact('categories', 'providers'));
+        $tags = Tag::all();
+        return view('admin.product.create', compact('categories', 'providers', 'tags'));
     }
 
 
-    public function store(StoreRequest $request)
+    public function store(StoreRequest $request, Product $product)
     {
 
         try {
-            if ($request->hasFile('picture')) {
+            /* if ($request->hasFile('picture')) {
                 $file = $request->file('picture');
                 $image_name = time() . '_' . $file->getClientOriginalName();
                 $file->move(public_path("/image"), $image_name);
-            }
-            if (empty($image_name)) {
+            } */
+            /* if (empty($image_name)) {
                 $defaultImage = 'system/default.jpg';
                 $product = Product::create($request->except('image') + [
                     'image' => $defaultImage,
                 ]);
             } else {
+                $product->my_store($request);
                 $product = Product::create($request->all() + [
                     'image' => $image_name,
                 ]);
-            }
 
-            $product->update(['code' => $product->id]);
+                if ($request->code == "") {
+                    $numero = $product->id;
+                    $numeroConCero = str_pad($numero, 8, "0", STR_PAD_LEFT);
+                    $product->update(['code' => $numeroConCero]);
+                }
+            } */
+
+            $lol = $product->my_store($request);
             return redirect()->route('products.index')->with('success', 'Producto creado con éxito');
         } catch (\Exception $th) {
             return redirect()->back()->with('error', 'Ocurrió un error al crear el producto.');
@@ -74,24 +85,17 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $providers = Provider::get();
-        return view('admin.product.edit', compact('product', 'categories', 'providers'));
+        $tags = Tag::all();
+        $subcategories = Subcategory::get();
+        return view('admin.product.edit', compact('product', 'categories', 'providers', 'tags', 'subcategories'));
     }
 
     public function update(UpdateRequest $request, product $product)
     {
         try {
-            if ($request->hasFile('picture')) {
-                $file = $request->file('picture');
-                $image_name = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path("/image"), $image_name);
-            }
-            if (isset($image_name)) {
-                $product->update($request->all() + [
-                    'image' => $image_name,
-                ]);
-                return redirect()->route('products.index')->with('success', 'Producto modificado');
-            }
-            $product->update($request->all());
+            
+            $product->my_store($request);
+            
             return redirect()->route('products.index')->with('success', 'Producto modificado');
         } catch (\Exception $th) {
             return redirect()->back()->with('error', 'Ocurrió un error al modificar el producto.');
@@ -118,5 +122,19 @@ class ProductController extends Controller
             $product->update(['status' => 'ACTIVE']);
             return redirect()->back()->with('info', 'Producto activado');
         }
+    }
+
+    public function upload_image(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        if ( $request->hasFile('image')) {
+            $file =  $request->file('image');
+            $image_name = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path("/image"), $image_name);
+            $urlImages = '/image/' . $image_name;
+        } 
+        $product->images()->create([
+            'url' => $urlImages,
+        ]);
     }
 }

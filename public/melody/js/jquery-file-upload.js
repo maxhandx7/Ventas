@@ -1,9 +1,10 @@
-(function($) {
+(function ($) {
   'use strict';
   if ($("#fileuploader").length) {
     $("#fileuploader").uploadFile({
-      url: "YOUR_FILE_UPLOAD_URL",
-      fileName: "myfile"
+      url: "/upload/product/{{$product->id}}/image",
+      fileName: "image",
     });
+    console.log($("#fileuploader"));
   }
 })(jQuery);

@@ -12,8 +12,8 @@ class Business extends Model
     'logo',
     'mail',
     'address',
+    'phone',
     'nit',
-
    ];
 
    

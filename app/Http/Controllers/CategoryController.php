@@ -33,9 +33,10 @@ class CategoryController extends Controller
     }
 
 
-    public function store(StoreRequest $request)
+    public function store(StoreRequest $request, Category $category)
     {
         try {
+            $category->my_store($request);
             Category::create($request->all());
             return redirect()->route('categories.index')->with('success', 'Categoria credada con éxito');
         } catch (\Exception $th) {
@@ -57,7 +58,7 @@ class CategoryController extends Controller
     public function update(UpdateRequest $request, Category $category)
     {
         try {
-            $category->update($request->all());
+            $category->my_update($request);
             return redirect()->route('categories.index')->with('success', 'Categoria modificada');
         } catch (\Exception $th) {
             return redirect()->back()->with('error', 'Ocurrió un error al actualizar la categoria');

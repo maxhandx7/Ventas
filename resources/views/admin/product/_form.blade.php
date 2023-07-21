@@ -6,41 +6,31 @@
     @enderror
 </div>
 
-<div class="form-group">
-    <label for="sell_price">Precio (*)</label>
-    <input type="number" name="sell_price" id="sell_price" class="form-control" placeholder="Precio de venta" require>
-    @error('sell_price')
-    <span class="text-danger">{{ $message }}</span>
-    @enderror
+<div class="form-row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="code">Código de barras</label>
+            <input type="text" name="code" id="code" class="form-control">
+            <small id="helpId" class="text-muted">Campo opcional</small>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="sell_price">Precio de venta</label>
+            <input type="number" name="sell_price" id="sell_price" class="form-control"
+                aria-describedby="helpId" required>
+        </div>
+    </div>
 </div>
 
 <div class="form-group">
-    <label for="category_id">Categoria</label>
-    <select id="category_id" class="form-control js-example-basic-single" name="category_id">
-        <option selected disabled value="">Seleccione Categoria</option>
-        @foreach ($categories as $category)
-        <option value="{{ $category->id }}">{{$category->name}}</option>
-        @endforeach
-    </select>
+    <label for="short_description">Extracto</label>
+    <textarea class="form-control" name="short_description" id="short_description"
+        rows="3"></textarea>
 </div>
-
 
 <div class="form-group">
-    <label for="provider_id">Proveedor</label>
-    <select id="provider_id" class="form-control js-example-basic-single" name="provider_id">
-        <option selected disabled value="">Seleccione Proveedor</option>
-        @foreach ($providers as $provider)
-        <option value="{{ $provider->id }}">{{$provider->name}}</option>
-        @endforeach
-
-    </select>
-</div>
-
-<div class="card-body">
-    <h4 id="image" class="card-title d-flex">Imagen de producto
-        <small class="ml-auto align-self-end">
-            <a href="dropify.html" class="font-weight-light" target="_blank">Seleccionar Archivo</a>
-        </small>
-    </h4>
-    <input id="picture" name="picture" type="file" class="dropify" />
+    <label for="long_description">Descripción</label>
+    <textarea class="form-control" name="long_description" id="summernoteExample"
+        rows="10"></textarea>
 </div>
