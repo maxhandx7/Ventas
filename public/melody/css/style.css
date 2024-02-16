@@ -33777,8 +33777,9 @@ div.tagsinput span.tag a {
 /* === Landing screens === */
 /* Auth */
 .auth .login-half-bg {
-  background: url("../images/auth/login-bg.jpg");
+  background: url("../images/logo/comercial.webp");
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .auth .register-half-bg {
