@@ -1,5 +1,4 @@
     @extends('layouts.web')
-    @section('meta_description', '')
     @section('title', '')
     @section('styles')
         

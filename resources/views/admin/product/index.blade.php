@@ -38,11 +38,11 @@
                         <table id="order-listing" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th><i class="fa fa-image"></i></th>
+                                    {{-- <th><i class="fa fa-image"></i></th> --}}
                                     <th>Nombre</th>
                                     <th>Stock</th>
                                     <th>Estado</th>
-                                    <th>Categoria</th>
+                                    {{-- <th>Categoria</th> --}}
                                     <th style="width: 100px;">Acciones</th>
                                 </tr>
                             </thead>
@@ -50,9 +50,9 @@
                                 @foreach ($products as $product)
 
                                 <tr>
-                                    <td class="py-1">
+                                    {{-- <td class="py-1">
                                         <img src="{{asset('image/'.$product->image) }}" alt="image" />
-                                    </td>
+                                    </td> --}}
                                     <td> <a href="{{ route('products.show', $product )  }}"> {{$product->name }} </a></td>
 
                                     <td>{{$product->stock }}</td>
@@ -74,7 +74,7 @@
 
                                     @endif
 
-                                    <td>{{$product->category->name }}</td>
+                                   {{--  <td>{{$product->category->name }}</td> --}}
 
                                     <td style="width: 100px;">
                                         {!! Form::open(['route'=>['products.destroy', $product], 'method'=>'DELETE', 'id'=>'delete-form']) !!}

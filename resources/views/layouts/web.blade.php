@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="@yield('name_description'), 'AF">
+    <meta name="description" content="{{$business->name}}, {{$business->description}}">
 
     <!-- Site title -->
     <title>@yield('title')</title>
-    <link rel="shortcut icon" href="{!!asset('galio/assets/img/favicon.ico')!!}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{asset('image/'.$business->logo)}}" type="image/x-icon" />
     {!! Html::style('galio/assets/css/bootstrap.min.css') !!}
     {!! Html::style('galio/assets/css/font-awesome.min.css') !!}
     {!! Html::style('galio/assets/css/helper.min.css') !!}
@@ -126,11 +126,11 @@
                             <div class="header-call-action">
                                 <a href="#">
                                     <i class="fa fa-envelope"></i>
-                                    info@website.com
+                                    {{$business->mail}}
                                 </a>
                                 <a href="#">
                                     <i class="fa fa-phone"></i>
-                                    0123456789
+                                    {{$business->phone}}
                                 </a>
                             </div>
                         </div>
@@ -145,7 +145,7 @@
                                                     <i class="fa fa-angle-down"></i>
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="myaccount">
-                                                    <a class="dropdown-item" href="my-account.html">my account</a>
+                                                    <a class="dropdown-item" href="/micuenta">my account</a>
                                                     <a class="dropdown-item" href="login-register.html"> login</a>
                                                     <a class="dropdown-item" href="login-register.html">register</a>
                                                 </div>
@@ -175,8 +175,8 @@
                     <div class="row align-items-center">
                         <div class="col-lg-3">
                             <div class="brand-logo">
-                                <a href="index-2.html">
-                                    <img src="galio/assets/img/logo/logo.png" alt="brand logo">
+                                <a href="/">
+                                    <img src="{{asset('image/'.$business->logo)}}" alt="brand logo">
                                 </a>
                             </div>
                         </div> <!-- end logo area -->
@@ -544,9 +544,9 @@
                                 </div>
                                 <div class="widget-body">
                                     <ul class="location">
-                                        <li><i class="fa fa-envelope"></i>support@galio.com</li>
-                                        <li><i class="fa fa-phone"></i>(800) 0123 456 789</li>
-                                        <li><i class="fa fa-map-marker"></i>Address: 1234 - Bandit Tringi Aliquam Vitae. New York</li>
+                                        <li><i class="fa fa-envelope"></i>{{$business->mail}}</li>
+                                        <li><i class="fa fa-phone"></i>{{$business->phone}}</li>
+                                        <li><i class="fa fa-map-marker"></i>{{$business->address}}</li>
                                     </ul>
                                     <a class="map-btn" href="contact-us.html">open in google map</a>
                                 </div>
@@ -610,7 +610,7 @@
                 <div class="container">
                     <div class="footer-bottom-wrap">
                         <div class="copyright-text d-flex flex-row justify-content-center">
-                            <span class="text-muted text-left d-block d-sm-inline-block">Copyright © 2023.
+                            <span class="text-muted text-left d-block d-sm-inline-block">Copyright © 2024.
                                 Todos los derechos reservados.&nbsp;</span>
 
                         </div>
