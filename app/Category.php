@@ -15,6 +15,10 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function subcategories(){
+        return $this->hasMany(Subcategory::class);
+    }
+
     public function my_store($request){
         self::create([
             'name'=> $request->name,

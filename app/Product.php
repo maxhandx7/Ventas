@@ -49,7 +49,6 @@ class Product extends Model
 
     public function my_store($request)
     {
-
         $product = self::create([
             'code' => $request->code,
             'name' => $request->name,
@@ -73,18 +72,14 @@ class Product extends Model
             'code' => $request->code,
             'name' => $request->name,
             'slug' => Str::slug($request->name, '_'),
-            'stock' => $request->stock,
             'short_description' => $request->short_description,
             'long_description' => $request->long_description,
-            'image' => $request->image,
             'sell_price' => $request->sell_price,
-            'status' => $request->status,
             'subcategory_id' => $request->subcategory_id,
             'provider_id' => $request->provider_id,
         ]);
         $this->tags()->sync($request->get('tags'));
         $this->GenerarCodigo($this);
-        $this->upload_files($request, $this);
     }
 
     public function GenerarCodigo($product)

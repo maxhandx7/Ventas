@@ -33,7 +33,7 @@ class BusinessController extends Controller
                 ]);
                 return redirect()->route('business.index')->with('success', 'Se ha actualizado la empresa');
             }
-
+             
             $business->update($request->all());
             return redirect()->route('business.index')->with('success', 'Se ha actualizado la empresa');
 

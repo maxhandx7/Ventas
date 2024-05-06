@@ -13,7 +13,7 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
-                Editación producto
+                Edición producto
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-custom">
@@ -75,10 +75,10 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="category">Categoria</label>
-                            <select id="category" class="form-control js-example-basic-single">
+                            <select id="category" class="form-control js-example-basic-single" name="category_id">
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
-                                        {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
+                                        {{ old('category')}}>
                                         {{ $category->name }}</option>
                                 @endforeach
                             </select>
@@ -87,11 +87,7 @@
                             <label for="subcategory_id">Subcategoría</label>
                             <select class="form-control js-example-basic-single" name="subcategory_id" id="subcategory_id"
                                 style="width: 100%">
-                                @foreach ($subcategories as $subcategory)
-                                    <option value="{{ $subcategory->id }}"
-                                        {{ old('subcategory_id', $product->subcategory_id) == $subcategory->id ? 'selected' : '' }}>
-                                        {{ $category->name }}</option>
-                                @endforeach
+                                <option value="0" disabled selected> --Seleccione una categoria-- </option>
                             </select>
                         </div>
 
@@ -129,7 +125,13 @@
             </div>
         </div>
 
-        <div class="row grid-margin">
+        <button type="submit" class="btn btn-primary float-right">Actualizar</button>
+        <a href="{{ URL::previous() }}" class="btn btn-light">
+            Cancelar
+        </a>
+        {!! Form::close() !!}
+
+        <div class="row grid-margin mt-4">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
@@ -144,13 +146,6 @@
                 </div>
             </div>
         </div>
-
-        <button type="submit" class="btn btn-primary float-right">Registrar</button>
-        <a href="{{ URL::previous() }}" class="btn btn-light">
-            Cancelar
-        </a>
-        {!! Form::close() !!}
-
     </div>
 
 @endsection
@@ -171,5 +166,31 @@
                 });
             }
         })(jQuery);
+    </script>
+
+    <script>
+        var subcategory_id = $('#subcategory_id');
+        var category = $('#category');
+
+        category.change(function (){
+            $.ajax({
+                url:"{{route('get_subcategories')}}",
+                method: 'GET',
+                data:{
+                    category: category.val(),
+                },
+                success: function(data){
+                    subcategory_id.empty();
+                    subcategory_id.append('<option disable selected>-- selecciona una categoria ---</ option>');
+                    $.each(data, function(index, element){
+                        subcategory_id.append('<option value="'+element.id+'">'+element.name+'"</option>"');
+                    });
+
+
+                }
+            })
+        });
+
+
     </script>
 @endsection

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Subcategory\StoreRequest;
+use App\Http\Requests\Subcategory\UpdateRequest;
 use App\Subcategory;
 use Illuminate\Http\Request;
 
@@ -31,7 +33,6 @@ class SubcategoryController extends Controller
     {
         try {
             $subcategory->my_store($request);
-            Subcategory::create($request->all());
             return redirect()->route('subcategories.index')->with('success', 'Categoria credada con éxito');
         } catch (\Exception $th) {
             return redirect()->back()->with('error', 'Ocurrió un error al crear la categoria');

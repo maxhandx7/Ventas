@@ -45,30 +45,7 @@ class ProductController extends Controller
     {
 
         try {
-            /* if ($request->hasFile('picture')) {
-                $file = $request->file('picture');
-                $image_name = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path("/image"), $image_name);
-            } */
-            /* if (empty($image_name)) {
-                $defaultImage = 'system/default.jpg';
-                $product = Product::create($request->except('image') + [
-                    'image' => $defaultImage,
-                ]);
-            } else {
-                $product->my_store($request);
-                $product = Product::create($request->all() + [
-                    'image' => $image_name,
-                ]);
-
-                if ($request->code == "") {
-                    $numero = $product->id;
-                    $numeroConCero = str_pad($numero, 8, "0", STR_PAD_LEFT);
-                    $product->update(['code' => $numeroConCero]);
-                }
-            } */
-
-            $lol = $product->my_store($request);
+           $product->my_store($request);
             return redirect()->route('products.index')->with('success', 'Producto creado con éxito');
         } catch (\Exception $th) {
             return redirect()->back()->with('error', 'Ocurrió un error al crear el producto.');
@@ -86,16 +63,13 @@ class ProductController extends Controller
         $categories = Category::get();
         $providers = Provider::get();
         $tags = Tag::all();
-        $subcategories = Subcategory::get();
-        return view('admin.product.edit', compact('product', 'categories', 'providers', 'tags', 'subcategories'));
+        return view('admin.product.edit', compact('product', 'categories', 'providers', 'tags'));
     }
 
     public function update(UpdateRequest $request, product $product)
     {
         try {
-            
-            $product->my_store($request);
-            
+            $product->my_update($request);
             return redirect()->route('products.index')->with('success', 'Producto modificado');
         } catch (\Exception $th) {
             return redirect()->back()->with('error', 'Ocurrió un error al modificar el producto.');

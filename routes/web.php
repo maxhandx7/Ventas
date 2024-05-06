@@ -95,6 +95,11 @@ Route::get('purchases/upload/{purchase}', 'PurchaseController@upload')->name('up
 Route::get('change_status/products/{product}', 'ProductController@change_status')->name('change.status.products');
 Route::get('change_status/purchases/{purchase}', 'PurchaseController@change_status')->name('change.status.purchases');
 Route::get('change_status/sales/{sale}', 'SaleController@change_status')->name('change.status.sales');
+Route::get('get_subcategories', 'AjaxController@get_subcategories')->name('get_subcategories');
+
+//subcategorias
+
+Route::resource('subcategories', 'SubcategoryController')->names('subcategories');
 
 Auth::routes();
 

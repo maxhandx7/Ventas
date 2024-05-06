@@ -17,7 +17,7 @@ class Subcategory extends Model
             'name'=> $request->name,
             'description'=> $request->description,
             'slug' => Str::slug($request->name, '_'),
-            'category_type' => $request->category_id,
+            'category_id' => $request->category_id,
         ]);
     }
 

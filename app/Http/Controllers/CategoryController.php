@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Requests\Category\StoreRequest;
 use App\Http\Requests\Category\UpdateRequest;
+use App\Subcategory;
 
 class CategoryController extends Controller
 {
@@ -37,7 +38,6 @@ class CategoryController extends Controller
     {
         try {
             $category->my_store($request);
-            Category::create($request->all());
             return redirect()->route('categories.index')->with('success', 'Categoria credada con éxito');
         } catch (\Exception $th) {
             return redirect()->back()->with('error', 'Ocurrió un error al crear la categoria');
@@ -46,7 +46,8 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        return view('admin.category.show', compact('category'));
+        $subcategories = $category->subcategories;
+        return view('admin.category.show', compact('category', 'subcategories'));
     }
 
 
