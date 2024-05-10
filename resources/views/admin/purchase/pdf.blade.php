@@ -270,8 +270,8 @@
         </div>
         <div class="contenedor-padre">
             <div id="footer">
-                <span class="AF">Copyright © 2022. Todos los derechos reservados.</span>
-                <span class="AF2"><a href="https://www.instagram.com/tribie17/">AF</a></span>
+                <span class="AF">Copyright © 2024. Todos los derechos reservados.</span>
+                <span class="AF2"><a href="https://afdeveloper.com/" target="_blank">AF</a></span>
             </div>
         </div>
     </footer>

@@ -616,8 +616,8 @@
                         </div>
                         <div class="copyright-text d-flex flex-row justify-content-center">
                             <span class="text-muted text-right d-block d-sm-inline-block">
-                                <b> POWER BY
-                                    <a style="text-decoration: none; color:rgb(17, 15, 129);" href="https://www.instagram.com/tribie17/">&nbsp;AF</a>
+                                <b> POWER BY&nbsp;
+                                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><i class="fa fa-code text-dark"></i><b><a style="text-decoration: none; color:rgb(17, 15, 129);" href="https://afdeveloper.com/" target="_blank">&nbsp;AF</a> </b> </span>
                                 </b></span>
                         </div>
                     </div>

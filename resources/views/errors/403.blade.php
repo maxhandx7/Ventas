@@ -42,7 +42,7 @@
             </div>
             <div class="row mt-5">
               <div class="col-12 mt-xl-2">
-                <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2024 | Todos los derechos reservados <b><a style="text-decoration: none; color:white" href="https://www.instagram.com/tribie17/"> AF</a> </b></p>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><i class="fa fa-code text-dark"></i>&nbsp;<b><a style="text-decoration: none; color:rgb(17, 15, 129);" href="https://afdeveloper.com/" target="_blank">&nbsp;AF</a> </b> </span>
               </div>
             </div>
           </div>

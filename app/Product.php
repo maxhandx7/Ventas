@@ -23,18 +23,13 @@ class Product extends Model
         'provider_id',
     ];
 
-    public function category()
+    public function subcategory()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Subcategory::class);
     }
     public function provider()
     {
         return $this->belongsTo(Provider::class);
-    }
-
-    public function images1()
-    {
-        return $this->morphMany('App\Image', 'imageable');
     }
 
     public function images()
@@ -53,11 +48,9 @@ class Product extends Model
             'code' => $request->code,
             'name' => $request->name,
             'slug' => Str::slug($request->name, '_'),
-            /* 'stock' => $request->stock, */
             'short_description' => $request->short_description,
             'long_description' => $request->long_description,
             'sell_price' => $request->sell_price,
-            /* 'status' => $request->status, */
             'subcategory_id' => $request->subcategory_id,
             'provider_id' => $request->provider_id,
         ]);
@@ -97,7 +90,7 @@ class Product extends Model
 
             $images = $request->file('images');
 
-            foreach ($images as  $image) {
+            foreach ($images as $image) {
                 $nombre = time() . $image->getClientOriginalName();
                 $ruta = public_path() . '/image';
                 $image->move($ruta, $nombre);
@@ -105,5 +98,9 @@ class Product extends Model
             }
             $product->images()->createMany($urlImages);
         }
+    }
+
+    public function get_products_active(){
+        return self::where('status', 'ACTIVE');
     }
 }

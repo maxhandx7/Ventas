@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests\Subcategory\StoreRequest;
 use App\Http\Requests\Subcategory\UpdateRequest;
 use App\Subcategory;
@@ -12,13 +13,12 @@ class SubcategoryController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        
+
     }
 
     public function index()
     {
         $subcategories = Subcategory::get();
-
         return view('admin.subcategory.index', compact('subcategories'));
     }
 
@@ -33,9 +33,9 @@ class SubcategoryController extends Controller
     {
         try {
             $subcategory->my_store($request);
-            return redirect()->route('subcategories.index')->with('success', 'Categoria credada con éxito');
+            return redirect()->back()->with('success', 'Subcategoria credada con éxito');
         } catch (\Exception $th) {
-            return redirect()->back()->with('error', 'Ocurrió un error al crear la categoria');
+            return redirect()->back()->with('error', 'Ocurrió un error al crear la subcategoria');
         }
     }
 
@@ -45,18 +45,18 @@ class SubcategoryController extends Controller
     }
 
 
-    public function edit(Subcategory $subcategory)
+    public function edit(Category $category, Subcategory $subcategory)
     {
-        return view('admin.subcategory.edit', compact('subcategory'));
+        return view('admin.subcategory.edit', compact('category', 'subcategory'));
     }
 
-    public function update(UpdateRequest $request, Subcategory $subcategory)
+    public function update(UpdateRequest $request, Category $category, Subcategory $subcategory)
     {
         try {
             $subcategory->my_update($request);
-            return redirect()->route('subcategories.index')->with('success', 'Categoria modificada');
+            return redirect()->route('categories.show', $category)->with('success', 'Subcategoria modificada');
         } catch (\Exception $th) {
-            return redirect()->back()->with('error', 'Ocurrió un error al actualizar la categoria');
+            return redirect()->back()->with('error', 'Ocurrió un error al actualizar la subcategoria');
         }
     }
 
@@ -65,9 +65,9 @@ class SubcategoryController extends Controller
     {
         try {
             $subcategory->delete();
-            return redirect()->route('subcategories.index')->with('success', 'Categoria eliminada');
+            return redirect()->back()->with('success', 'Subcategoria eliminada');
         } catch (\Exception $th) {
-            return redirect()->back()->with('error', 'Ocurrió un error al eliminar la categoria');
+            return redirect()->back()->with('error', 'Ocurrió un error al eliminar la subcategoria');
         }
     }
 }

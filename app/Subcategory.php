@@ -12,6 +12,10 @@ class Subcategory extends Model
         'name', 'description', 'slug', 'category_id',
     ];
 
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+
     public function my_store($request){
         self::create([
             'name'=> $request->name,
@@ -22,11 +26,10 @@ class Subcategory extends Model
     }
 
     public function my_update($request){
-        $this->update([
+            $this->update([
             'name'=> $request->name,
-            'description'=> $request->description,
             'slug' => Str::slug($request->name, '_'),
-            'category_type' => $request->category_id,
+            'description'=> $request->description            
         ]);
     }
 }

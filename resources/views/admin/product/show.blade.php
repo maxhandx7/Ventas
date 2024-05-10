@@ -35,27 +35,11 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="border-bottom text-center pb-4">
-                                <img src="{{asset('image/'.$product->image) }}" alt="profile" class="img-lg img-thumbnail mb-3">
+                               
                                 <h3>{{$product->name }}</h3>
                                 <div class="d-flex justify-content-between">
                                 </div>
                             </div>
-                            {{-- <div class="border-bottom py-4">
-
-                                <div class="list-group">
-                                    <button type="button" class="list-group-item list-group-item-action active">
-                                        sobre producto
-                                    </button>
-
-                                    <button type="button" class="list-group-item list-group-item-action">
-                                        Productos
-                                    </button>
-
-                                    <button type="button" class="list-group-item list-group-item-action">
-                                        Registrar producto
-                                    </button>
-                                </div>
-                            </div> --}}
 
                             <div class="py-4">
                                 <p class="clearfix">
@@ -86,8 +70,7 @@
                                     Categoria
                                   </span>
                                   <span class="float-right text-muted">
-                                      <a href="{{route('categories.index')}}">
-                                    {{$product->category->name }}</a>
+                                    {{$product->subcategory->name }}
                                   </span>
                                 </p>
                                
@@ -137,7 +120,7 @@
                                         @endif
                                         <hr>
                                         <strong> <i class="fas fa-list mr-1"> Categoria </i> </strong>
-                                        <p class="text-muted"> {{$product->category->name}} </p>
+                                        <p class="text-muted"> {{$product->subcategory->name}} </p>
                                         <hr>
 
                                         <strong> <i class="fas fa-truck mr-1"> Proveedor </i> </strong>

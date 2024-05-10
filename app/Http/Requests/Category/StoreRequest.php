@@ -28,15 +28,5 @@ class StoreRequest extends FormRequest
             'description'=>'nullable|string|max:250'
         ];
     }
-    public function messages()
-    {
-        return[
-            'name.required'=>'este campo es requerido.',
-            'name.string'=>'el valor ingresado no es correcto.', 
-            'name.max'=>'se permite maximo 50 caracteres.',  
-            'description.string'=>'el valor ingresado no es correcto.', 
-            'description.max'=>'se permite maximo 250 caracteres.', 
-            
-        ];
-    }
+   
 }

@@ -1,13 +1,35 @@
-<div class="footer-bottom-wrap">
-                        <div class="copyright-text d-flex flex-row justify-content-center">
-                            <span class="text-muted text-left d-block d-sm-inline-block">Copyright © 2023.
-                                Todos los derechos reservados.&nbsp;</span>
-
-                        </div>
-                        <div class="copyright-text d-flex flex-row justify-content-center">
-                            <span class="text-muted text-right d-block d-sm-inline-block">
-                                <b> POWER BY
-                                    <a style="text-decoration: none; color:rgb(17, 15, 129);" href="https://www.instagram.com/tribie17/">&nbsp;AF</a>
-                                </b></span>
-                        </div>
-                    </div>
+'/image/product-b-1.jpg',
+'/image/product-b-2.jpg',
+'/image/product-b-3.jpg',
+'/image/product-b-4.jpg',
+'/image/product-details-img1.jpg',
+'/image/product-details-img2.jpg',
+'/image/product-details-img3.jpg',
+'/image/product-details-img4.jpg',
+'/image/product-details-img5.jpg',
+'/image/product-f-1.jpg',
+'/image/product-f-2.jpg',
+'/image/product-f-3.jpg',
+'/image/product-f-4.jpg',
+'/image/product-img1.jpg',
+'/image/product-img2.jpg',
+'/image/product-img3.jpg',
+'/image/product-img4.jpg',
+'/image/product-img5.jpg',
+'/image/product-img6.jpg',
+'/image/product-img7.jpg',
+'/image/product-img8.jpg',
+'/image/product-img9.jpg',
+'/image/product-img10.jpg',
+'/image/product-img11.jpg',
+'/image/product-img12.jpg',
+'/image/product-img13.jpg',
+'/image/product-img14.jpg',
+'/image/product-img15.jpg',
+'/image/product-img16.jpg',
+'/image/product-s-1.jpg',
+'/image/product-s-2.jpg',
+'/image/product-s-3.jpg',
+'/image/product-s-4.jpg',
+'/image/product-s-5.jpg',
+'/image/product-s-6.jpg',

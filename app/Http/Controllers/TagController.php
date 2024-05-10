@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Tag\StoreRequest;
+use App\Http\Requests\Tag\UpdateRequest;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -28,12 +30,11 @@ class TagController extends Controller
     }
 
 
-    public function store(Request $request, Tag $tag)
+    public function store(StoreRequest $request, Tag $tag)
     {
         try {
             $tag->my_store($request);
-            Tag::create($request->all());
-            return redirect()->route('tags.index')->with('success', 'Categoria credada con éxito');
+            return redirect()->route('tags.index')->with('success', 'Etiqueta credada con éxito');
         } catch (\Exception $th) {
             return redirect()->back()->with('error', 'Ocurrió un error al crear la etiqueta');
         }
@@ -50,11 +51,11 @@ class TagController extends Controller
         return view('admin.tag.edit', compact('tag'));
     }
 
-    public function update(Request $request, Tag $tag)
+    public function update(UpdateRequest $request, Tag $tag)
     {
         try {
             $tag->my_update($request);
-            return redirect()->route('tags.index')->with('success', 'Categoria modificada');
+            return redirect()->route('tags.index')->with('success', 'Etiqueta modificada');
         } catch (\Exception $th) {
             return redirect()->back()->with('error', 'Ocurrió un error al actualizar la etiqueta');
         }
@@ -65,7 +66,7 @@ class TagController extends Controller
     {
         try {
             $tag->delete();
-            return redirect()->route('tags.index')->with('success', 'Categoria eliminada');
+            return redirect()->route('tags.index')->with('success', 'Etiqueta eliminada');
         } catch (\Exception $th) {
             return redirect()->back()->with('error', 'Ocurrió un error al eliminar la etiqueta');
         }

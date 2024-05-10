@@ -127,37 +127,43 @@
           <li class="nav-item {{ Request::segment(1) === 'clients' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('clients.index')}}">
               <i class="fa fa-user  menu-icon"></i>
-              <span class="menu-title">Tus Clientes</span>
+              <span class="menu-title">Mis Clientes</span>
             </a>
           </li>
           <li class="nav-item {{ Request::segment(1) === 'sales' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('sales.index')}}">
               <i class="fa fa-money-bill menu-icon"></i>
-              <span class="menu-title">Tus ventas</span>
+              <span class="menu-title">Mis ventas</span>
             </a>
           </li>
           <li class="nav-item {{ Request::segment(1) === 'purchases' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('purchases.index')}}">
               <i class="fa fa-shopping-cart menu-icon"></i>
-              <span class="menu-title">Tus Compras</span>
+              <span class="menu-title">Mis Compras</span>
             </a>
           </li>
           <li class="nav-item {{ Request::segment(1) === 'products' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('products.index')}}">
               <i class="fa fa-archive menu-icon"></i>
-              <span class="menu-title">Tus Productos</span>
+              <span class="menu-title">Mis Productos</span>
             </a>
           </li>
           <li class="nav-item {{ Request::segment(1) === 'providers' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('providers.index')}}">
               <i class="fa fa-truck menu-icon"></i>
-              <span class="menu-title">Tus Proveedores</span>
+              <span class="menu-title">Mis Proveedores</span>
             </a>
           </li>
           <li class="nav-item {{ Request::segment(1) === 'categories' ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('categories.index')}}">
               <i class="fa fa-list menu-icon"></i>
-              <span class="menu-title">Tus Categorias</span>
+              <span class="menu-title">Mis Categorias</span>
+            </a>
+          </li>
+          <li class="nav-item {{ Request::segment(1) === 'tags' ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('tags.index')}}">
+              <i class="fa fa-tags menu-icon"></i>
+              <span class="menu-title">Mis Etiquetas</span>
             </a>
           </li>
           <!-- Código HTML del menú mejorado -->
@@ -213,9 +219,9 @@
         <footer class="footer">
           <div class="col-lg-12 login-half-bg d-flex flex-row justify-content-center">
             {{-- <div class="d-sm-flex justify-content-center justify-content-sm-between"> --}}
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022.
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2024.
               Todos los derechos reservados.&nbsp;</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><b><a style="text-decoration: none; color:rgb(17, 15, 129);" href="https://www.instagram.com/tribie17/">&nbsp;AF</a> </b> <i class="far fa-heart text-danger"></i>&nbsp;</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><i class="fa fa-code text-dark"></i>&nbsp;<b><a style="text-decoration: none; color:rgb(17, 15, 129);" href="https://afdeveloper.com/" target="_blank">&nbsp;AF</a> </b> </span>
           </div>
         </footer>
       </div>

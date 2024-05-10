@@ -18,7 +18,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.4",
         "laravelcollective/html": "^6.2",
-        "mike42/escpos-php": "^3.0"
+        "mike42/escpos-php": "^3.0",
+        "yajra/laravel-datatables-oracle": "^9.21"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
