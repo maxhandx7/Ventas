@@ -101,6 +101,6 @@ class Product extends Model
     }
 
     public function get_products_active(){
-        return self::where('status', 'ACTIVE');
+        return self::where('status', 'ACTIVE')->orderBy('id', 'desc');
     }
 }

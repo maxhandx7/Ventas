@@ -1,6 +1,6 @@
  @extends('layouts.web')
  @section('meta_description', '')
- @section('title', '')
+ @section('title', $business->name. " | Productos")
  @section('styles')
 
  @endsection
@@ -12,8 +12,8 @@
                      <div class="breadcrumb-wrap">
                          <nav aria-label="breadcrumb">
                              <ul class="breadcrumb">
-                                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                 <li class="breadcrumb-item active" aria-current="page">shop right sidebar 3 col</li>
+                                 <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                 <li class="breadcrumb-item active" aria-current="page">Productos</li>
                              </ul>
                          </nav>
                      </div>

@@ -47,9 +47,9 @@ class WebController extends Controller
         return view('web.myAccount');
     }
 
-    public function productsDetails()
+    public function productsDetails(Product $product)
     {
-        return view('web.productsDetails');
+        return view('web.productsDetails', compact('product'));
     }
 
     public function shopGrid()

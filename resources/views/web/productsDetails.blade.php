@@ -1,6 +1,6 @@
 @extends('layouts.web')
 @section('meta_description', '')
-@section('title', '')
+@section('title', $business->name. " | Detalles de producto")
 @section('styles')
 
 @endsection
@@ -35,35 +35,22 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="product-large-slider mb-20 slick-arrow-style_2">
-                                <div class="pro-large-img img-zoom" id="img1">
-                                    <img src="galio/assets/img/product/product-details-img1.jpg" alt="" />
+                                @foreach ($product->images as $key => $image)
+                                <div class="pro-large-img img-zoom" id="img{{$key}}">
+                                    <img src="{{$image->url}}" alt="{{$product->name}}" />
                                 </div>
-                                <div class="pro-large-img img-zoom" id="img2">
-                                    <img src="galio/assets/img/product/product-details-img2.jpg" alt="" />
-                                </div>
-                                <div class="pro-large-img img-zoom" id="img3">
-                                    <img src="galio/assets/img/product/product-details-img3.jpg" alt="" />
-                                </div>
-                                <div class="pro-large-img img-zoom" id="img4">
-                                    <img src="galio/assets/img/product/product-details-img4.jpg" alt="" />
-                                </div>
+                                @endforeach
                             </div>
                             <div class="pro-nav slick-padding2 slick-arrow-style_2">
-                                <div class="pro-nav-thumb"><img src="galio/assets/img/product/product-details-img1.jpg"
-                                        alt="" /></div>
-                                <div class="pro-nav-thumb"><img src="galio/assets/img/product/product-details-img2.jpg"
-                                        alt="" /></div>
-                                <div class="pro-nav-thumb"><img src="galio/assets/img/product/product-details-img3.jpg"
-                                        alt="" /></div>
-                                <div class="pro-nav-thumb"><img src="galio/assets/img/product/product-details-img4.jpg"
-                                        alt="" /></div>
-                                <div class="pro-nav-thumb"><img src="galio/assets/img/product/product-details-img2.jpg"
-                                        alt="" /></div>
+                                @foreach ($product->images as $key => $image)
+                                <div class="pro-nav-thumb"><img src="{{$image->url}}"
+                                    alt="{{$product->name}}" /></div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="product-details-des mt-md-34 mt-sm-34">
-                                <h3><a href="product-details.html">external product 12</a></h3>
+                                <h3><a href="{{route('web.productsDetails', $product)}}">{{$product->name}}</a></h3>
                                 <div class="ratings">
                                     <span class="good"><i class="fa fa-star"></i></span>
                                     <span class="good"><i class="fa fa-star"></i></span>
@@ -78,26 +65,14 @@
                                     <a href="#">(1 customer review)</a>
                                 </div>
                                 <div class="availability mt-10">
-                                    <h5>Availability:</h5>
-                                    <span>1 in stock</span>
+                                    <h5>Disponible:</h5>
+                                    <span>{{$product->stock}} en stock</span>
                                 </div>
                                 <div class="pricebox">
-                                    <span class="regular-price">$160.00</span>
+                                    <span class="regular-price">${{number_format($product->sell_price)}}</span>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.<br>
-                                    Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea
-                                    dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris
-                                    consequat nisi ut mauris efficitur lacinia.</p>
-                                <div class="quantity-cart-box d-flex align-items-center">
-                                    <div class="quantity">
-                                        <div class="pro-qty"><input type="text" value="1"></div>
-                                    </div>
-                                    <div class="action_link">
-                                        <a class="buy-btn" href="#">add to cart<i
-                                                class="fa fa-shopping-cart"></i></a>
-                                    </div>
-                                </div>
+                                <p>{{$product->short_description}}</p>
+                                @include('web._add_to_shopping_cart_form')
                                 <div class="useful-links mt-20">
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i
                                             class="fa fa-refresh"></i>compare</a>
@@ -135,40 +110,7 @@
                                 <div class="tab-content reviews-tab">
                                     <div class="tab-pane fade show active" id="tab_one">
                                         <div class="tab-one">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla
-                                                augue nec est tristique auctor. Ipsum metus feugiat sem, quis fermentum
-                                                turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa
-                                                massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero
-                                                hendrerit est, sed commodo augue nisi non neque.</p>
-                                            <div class="review-description">
-                                                <div class="tab-thumb">
-                                                    <img src="galio/assets/img/about/services.jpg" alt="">
-                                                </div>
-                                                <div class="tab-des mt-sm-24">
-                                                    <h3>Product Information :</h3>
-                                                    <ul>
-                                                        <li>Donec non est at libero vulputate rutrum.</li>
-                                                        <li>Morbi ornare lectus quis justo gravida semper.</li>
-                                                        <li>Pellentesque aliquet, sem eget laoreet ultrices</li>
-                                                        <li>Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
-                                                            nulla</li>
-                                                        <li>Donec a neque libero.</li>
-                                                        <li>Pellentesque aliquet, sem eget laoreet ultrices</li>
-                                                        <li>Morbi ornare lectus quis justo gravida semper.</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <p>Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida
-                                                vehicula tellus, in imperdiet ligula euismod eget. Pellentesque habitant
-                                                morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                                                Nam erat mi, rutrum at sollicitudin rhoncus, ultricies posuere erat.
-                                                Duis convallis, arcu nec aliquam consequat, purus felis vehicula felis,
-                                                a dapibus enim lorem nec augue. Nunc facilisis sagittis ullamcorper.</p>
-                                            <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed
-                                                et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et
-                                                ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus
-                                                adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada
-                                                tincidunt.</p>
+                                            {!! $product->long_description !!}
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="tab_two">
@@ -190,7 +132,7 @@
                                             <h5>1 review for Simple product 12</h5>
                                             <div class="total-reviews">
                                                 <div class="rev-avatar">
-                                                    <img src="galio/assets/img/about/avatar.jpg" alt="">
+                                                    <img src="{!! asset('galio/assets/img/about/avatar.jpg')!!}" alt="">
                                                 </div>
                                                 <div class="review-box">
                                                     <div class="ratings">
@@ -276,8 +218,8 @@
                         <div class="product-item fix">
                             <div class="product-thumb">
                                 <a href="product-details.html">
-                                    <img src="galio/assets/img/product/product-img1.jpg" class="img-pri" alt="">
-                                    <img src="galio/assets/img/product/product-img2.jpg" class="img-sec" alt="">
+                                    <img src="{!! asset('galio/assets/img/product/product-img1.jpg')!!}" class="img-pri" alt="">
+                                    <img src="{!! asset('galio/assets/img/product/product-img2.jpg')!!}" class="img-sec" alt="">
                                 </a>
                                 <div class="product-label">
                                     <span>hot</span>
@@ -316,8 +258,8 @@
                         <div class="product-item fix">
                             <div class="product-thumb">
                                 <a href="product-details.html">
-                                    <img src="galio/assets/img/product/product-img3.jpg" class="img-pri" alt="">
-                                    <img src="galio/assets/img/product/product-img4.jpg" class="img-sec" alt="">
+                                    <img src="{!! asset('galio/assets/img/product/product-img3.jpg')!!}" class="img-pri" alt="">
+                                    <img src="{!! asset('galio/assets/img/product/product-img4.jpg')!!}" class="img-sec" alt="">
                                 </a>
                                 <div class="product-label">
                                     <span>hot</span>
@@ -356,8 +298,8 @@
                         <div class="product-item fix">
                             <div class="product-thumb">
                                 <a href="product-details.html">
-                                    <img src="galio/assets/img/product/product-img5.jpg" class="img-pri" alt="">
-                                    <img src="galio/assets/img/product/product-img6.jpg" class="img-sec" alt="">
+                                    <img src="{!! asset('galio/assets/img/product/product-img5.jpg')!!}" class="img-pri" alt="">
+                                    <img src="{!! asset('galio/assets/img/product/product-img6.jpg')!!}" class="img-sec" alt="">
                                 </a>
                                 <div class="product-label">
                                     <span>hot</span>
@@ -396,8 +338,8 @@
                         <div class="product-item fix">
                             <div class="product-thumb">
                                 <a href="product-details.html">
-                                    <img src="galio/assets/img/product/product-img7.jpg" class="img-pri" alt="">
-                                    <img src="galio/assets/img/product/product-img8.jpg" class="img-sec" alt="">
+                                    <img src="{!! asset('galio/assets/img/product/product-img7.jpg')!!}" class="img-pri" alt="">
+                                    <img src="{!! asset('galio/assets/img/product/product-img8.jpg')!!}" class="img-sec" alt="">
                                 </a>
                                 <div class="product-label">
                                     <span>hot</span>
@@ -436,8 +378,8 @@
                         <div class="product-item fix">
                             <div class="product-thumb">
                                 <a href="product-details.html">
-                                    <img src="galio/assets/img/product/product-img9.jpg" class="img-pri" alt="">
-                                    <img src="galio/assets/img/product/product-img10.jpg" class="img-sec" alt="">
+                                    <img src="{!! asset('galio/assets/img/product/product-img9.jpg')!!}" class="img-pri" alt="">
+                                    <img src="{!! asset('galio/assets/img/product/product-img10.jpg')!!}" class="img-sec" alt="">
                                 </a>
                                 <div class="product-label">
                                     <span>hot</span>
@@ -476,8 +418,8 @@
                         <div class="product-item fix">
                             <div class="product-thumb">
                                 <a href="product-details.html">
-                                    <img src="galio/assets/img/product/product-img11.jpg" class="img-pri" alt="">
-                                    <img src="galio/assets/img/product/product-img12.jpg" class="img-sec" alt="">
+                                    <img src="{!! asset('galio/assets/img/product/product-img11.jpg')!!}" class="img-pri" alt="">
+                                    <img src="{!! asset('galio/assets/img/product/product-img12.jpg')!!}" class="img-sec" alt="">
                                 </a>
                                 <div class="product-label">
                                     <span>hot</span>
@@ -532,7 +474,7 @@
                                 <div class="category-item">
                                     <div class="category-thumb">
                                         <a href="product-details.html">
-                                            <img src="galio/assets/img/product/product-img1.jpg" alt="">
+                                            <img src="{!! asset('galio/assets/img/product/product-img1.jpg')!!}" alt="">
                                         </a>
                                     </div>
                                     <div class="category-content">
@@ -562,7 +504,7 @@
                                 <div class="category-item">
                                     <div class="category-thumb">
                                         <a href="product-details.html">
-                                            <img src="galio/assets/img/product/product-img2.jpg" alt="">
+                                            <img src="{!! asset('galio/assets/img/product/product-img2.jpg')!!}" alt="">
                                         </a>
                                     </div>
                                     <div class="category-content">
@@ -592,7 +534,7 @@
                                 <div class="category-item">
                                     <div class="category-thumb">
                                         <a href="product-details.html">
-                                            <img src="galio/assets/img/product/product-img3.jpg" alt="">
+                                            <img src="{!! asset('galio/assets/img/product/product-img3.jpg')!!}" alt="">
                                         </a>
                                     </div>
                                     <div class="category-content">
@@ -622,7 +564,7 @@
                                 <div class="category-item">
                                     <div class="category-thumb">
                                         <a href="product-details.html">
-                                            <img src="galio/assets/img/product/product-img4.jpg" alt="">
+                                            <img src="{!! asset('galio/assets/img/product/product-img4.jpg')!!}" alt="">
                                         </a>
                                     </div>
                                     <div class="category-content">
@@ -652,7 +594,7 @@
                                 <div class="category-item">
                                     <div class="category-thumb">
                                         <a href="product-details.html">
-                                            <img src="galio/assets/img/product/product-img5.jpg" alt="">
+                                            <img src="{!! asset('galio/assets/img/product/product-img5.jpg')!!}" alt="">
                                         </a>
                                     </div>
                                     <div class="category-content">
@@ -682,7 +624,7 @@
                                 <div class="category-item">
                                     <div class="category-thumb">
                                         <a href="product-details.html">
-                                            <img src="galio/assets/img/product/product-img6.jpg" alt="">
+                                            <img src="{!! asset('galio/assets/img/product/product-img6.jpg')!!}" alt="">
                                         </a>
                                     </div>
                                     <div class="category-content">
@@ -712,7 +654,7 @@
                                 <div class="category-item">
                                     <div class="category-thumb">
                                         <a href="product-details.html">
-                                            <img src="galio/assets/img/product/product-img10.jpg" alt="">
+                                            <img src="{!! asset('galio/assets/img/product/product-img10.jpg')!!}" alt="">
                                         </a>
                                     </div>
                                     <div class="category-content">
@@ -742,7 +684,7 @@
                                 <div class="category-item">
                                     <div class="category-thumb">
                                         <a href="product-details.html">
-                                            <img src="galio/assets/img/product/product-img12.jpg" alt="">
+                                            <img src="{!! asset('galio/assets/img/product/product-img12.jpg')!!}" alt="">
                                         </a>
                                     </div>
                                     <div class="category-content">
@@ -816,7 +758,7 @@
                     <!-- sidebar banner start -->
                     <div class="sidebar-widget mb-22">
                         <div class="img-container fix img-full mt-30">
-                            <a href="#"><img src="galio/assets/img/banner/banner_shop.jpg" alt=""></a>
+                            <a href="#"><img src="{!! asset('galio/assets/img/banner/banner_shop.jpg')!!}" alt=""></a>
                         </div>
                     </div>
                     <!-- sidebar banner end -->
@@ -845,25 +787,25 @@
             <div class="col-12">
                 <div class="brand-active slick-padding slick-arrow-style">
                     <div class="brand-item text-center">
-                        <a href="#"><img src="galio/assets/img/brand/br1.png" alt=""></a>
+                        <a href="#"><img src="{!! asset('galio/assets/img/brand/br1.png')!!}" alt=""></a>
                     </div>
                     <div class="brand-item text-center">
-                        <a href="#"><img src="galio/assets/img/brand/br2.png" alt=""></a>
+                        <a href="#"><img src="{!! asset('galio/assets/img/brand/br2.png')!!}" alt=""></a>
                     </div>
                     <div class="brand-item text-center">
-                        <a href="#"><img src="galio/assets/img/brand/br3.png" alt=""></a>
+                        <a href="#"><img src="{!! asset('galio/assets/img/brand/br3.png')!!}" alt=""></a>
                     </div>
                     <div class="brand-item text-center">
-                        <a href="#"><img src="galio/assets/img/brand/br4.png" alt=""></a>
+                        <a href="#"><img src="{!! asset('galio/assets/img/brand/br4.png')!!}" alt=""></a>
                     </div>
                     <div class="brand-item text-center">
-                        <a href="#"><img src="galio/assets/img/brand/br5.png" alt=""></a>
+                        <a href="#"><img src="{!! asset('galio/assets/img/brand/br5.png')!!}" alt=""></a>
                     </div>
                     <div class="brand-item text-center">
-                        <a href="#"><img src="galio/assets/img/brand/br6.png" alt=""></a>
+                        <a href="#"><img src="{!! asset('galio/assets/img/brand/br6.png')!!}" alt=""></a>
                     </div>
                     <div class="brand-item text-center">
-                        <a href="#"><img src="galio/assets/img/brand/br4.png" alt=""></a>
+                        <a href="#"><img src="{!! asset('galio/assets/img/brand/br4.png')!!}" alt=""></a>
                     </div>
                 </div>
             </div>

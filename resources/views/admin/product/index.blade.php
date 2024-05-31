@@ -38,7 +38,7 @@
                         <table id="order-listing" class="table table-striped">
                             <thead>
                                 <tr>
-                                    {{--  <th><i class="fa fa-image"></i></th>  --}}
+                                    <th><i class="fa fa-image"></i></th> 
                                     <th>Nombre</th>
                                     <th>Stock</th>
                                     <th>Estado</th>
@@ -50,9 +50,9 @@
                                 @foreach ($products as $product)
 
                                 <tr>
-                                    {{-- <td class="py-1">
-                                        <img src="{{asset('image/'.$product->image) }}" alt="image" />
-                                    </td> --}}
+                                     <td class="py-1">
+                                        <img src="{{$product->images->pluck('url')[0]}}" alt="image" />
+                                    </td> 
                                     <td> <a href="{{ route('products.show', $product )  }}"> {{$product->name }} </a></td>
 
                                     <td>{{$product->stock }}</td>

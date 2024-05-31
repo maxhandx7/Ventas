@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\ShoppingCartDetailController;
+use App\Http\Controllers\WebController;
+use App\ShoppingCart;
+use App\ShoppingCartDetail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +18,20 @@ Route::get('carrito', 'WebController@cart')->name('web.cart');
 Route::get('contactanos', 'WebController@contactUs')->name('web.contactUs');
 Route::get('registro', 'WebController@loginRegister')->name('web.loginRegister');
 Route::get('micuenta', 'WebController@myAccount')->name('web.myAccount');
-Route::get('detalles', 'WebController@productsDetails')->name('web.productsDetails');
+Route::get('producto/{product}', 'WebController@productsDetails')->name('web.productsDetails');
 Route::get('productos', 'WebController@shopGrid')->name('web.shopGrid');
 Route::get('/', 'WebController@welcome')->name('web.welcome');
+
+
+Route::resource('shopping_cart_detail', 'ShoppingCartDetailController')->only([
+     'update'
+    ])->names('shopping_cart_details');
+    
+    Route::post('add_to_shopping_cart/{product}/store', [ShoppingCartDetailController::class, 'store'])->name('shopping_cart_details.store');
+    Route::get('add_a_product_to_the_shopping_cart/{product}/store', [ShoppingCartDetailController::class, 'store_a_product'])->name('store_a_product');
+  /*   route::get('shopping_cart_detail/{shopping_cart_detail}/destroy', [ShoppingCartDetailController::class, 'destroy'])->name('shopping_cart_details.destroy');
+    Route::post('shopping_cart/update', [ShoppingCart::class, 'update'])->name('shopping_cart.update');
+    Route::get('login_error', [WebController::class, 'login_error'])->name('web.login_error'); */
 
 //============================== fin =====================================//
 Route::get('sales/reports_day', 'ReportController@reports_day')->name('reports.day');

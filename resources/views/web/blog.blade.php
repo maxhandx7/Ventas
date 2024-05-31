@@ -1,6 +1,6 @@
 @extends('layouts.web')
 @section('meta_description', '')
-@section('title', '')
+@section('title', $business->name. " | Blog")
 @section('styles')
 
 @endsection

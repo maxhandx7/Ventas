@@ -13,7 +13,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'name'=>$faker->streetName,
         'slug'=>$faker->unique()->slug,
         'stock'=> 150,
-        'short_description'=>$faker->sentence($nbWords = 360, $variableNbWords = true),
+        'short_description'=>$faker->realText($maxNbChars = 360, $indexSize = 2),
         'long_description'=>$faker->sentence($nbWords = 360, $variableNbWords = true),
         'sell_price'=>$faker->randomNumber(2),
         'status'=>'ACTIVE',

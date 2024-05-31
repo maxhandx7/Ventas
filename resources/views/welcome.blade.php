@@ -1,7 +1,6 @@
     @extends('layouts.web')
-    @section('title', '')
+    @section('title', $business->name )
     @section('styles')
-        
     @endsection
     @section('content')
     
