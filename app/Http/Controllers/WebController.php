@@ -42,10 +42,7 @@ class WebController extends Controller
         return view('web.loginRegister');
     }
 
-    public function myAccount()
-    {
-        return view('web.myAccount');
-    }
+  
 
     public function productsDetails(Product $product)
     {

@@ -34,11 +34,11 @@
 
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Roles del sistema</h4>
-                        <div class="btn-group">
+                        {{-- <div class="btn-group">
                             <a href="{{route('roles.create')}}" class="btn btn-success" type="button">
                                 <i class="fa fa-plus"></i>
                                 Agregar</a>
-                        </div>
+                        </div> --}}
                     </div>
                     <br>
                     @include('errors.message')
@@ -48,7 +48,6 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Nombre</th>
-                                    <th>description</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -59,19 +58,13 @@
                                     <td>
                                         <a href="{{route('roles.show',$role)}}">{{$role->name}}</a>
                                     </td>
-                                    <td>{{$role->description}}</td>
                                     <td style="width: 50px;">
-                                        {!! Form::open(['route'=>['roles.destroy',$role], 'method'=>'DELETE']) !!}
 
                                         <a class="jsgrid-button jsgrid-edit-button" href="{{route('roles.edit', $role)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>
 
-                                        <button class="jsgrid-button jsgrid-delete-button unstyled-button" type="submit" title="Eliminar">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button>
-
-                                        {!! Form::close() !!}
+             
                                     </td>
                                 </tr>
                                 @endforeach

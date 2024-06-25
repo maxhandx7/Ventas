@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{$business->name}}, {{$business->description}}">
+    <meta name="description" content="{{ $business->name }}, {{ $business->description }}">
 
     <!-- Site title -->
     <title>@yield('title')</title>
-    <link rel="shortcut icon" href="{{asset('image/'.$business->logo)}}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('image/' . $business->logo) }}" type="image/x-icon" />
     {!! Html::style('galio/assets/css/bootstrap.min.css') !!}
     {!! Html::style('galio/assets/css/font-awesome.min.css') !!}
     {!! Html::style('galio/assets/css/helper.min.css') !!}
@@ -19,38 +19,58 @@
     <style>
         .tt-query {
             -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-               -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-                    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          }
-          .tt-hint {
+            -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        }
+
+        .tt-hint {
             color: #999
-          }
-          .tt-menu {
-            width: 100% ;
+        }
+
+        .tt-menu {
+            width: 100%;
             margin-top: 4px;
             padding: 4px 0;
             background-color: #f8f8f8;
             border: 1px solid #ccc;
             border: 1px solid rgba(0, 0, 0, 0.2);
             -webkit-border-radius: 0px;
-               -moz-border-radius: 0px;
-                    border-radius: 0px;
-            -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-               -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-                    box-shadow: 0 5px 10px rgba(0,0,0,.2);
-          }
-          .tt-suggestion {
+            -moz-border-radius: 0px;
+            border-radius: 0px;
+            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+            -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+        }
+
+        .tt-suggestion {
             padding: 3px 20px;
             line-height: 24px;
-          }
-          .tt-suggestion.tt-cursor,.tt-suggestion:hover {
+        }
+
+        .tt-suggestion.tt-cursor,
+        .tt-suggestion:hover {
             color: #f8f8f8;
             background-color: #001123;
-          
-          }
-          .tt-suggestion p {
+
+        }
+
+        .tt-suggestion p {
             margin: 0;
-          }
+        }
+
+        .profile-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .profile-name {
+            margin-left: 10px;
+        }
+
+        .navbar {
+            padding: 0;
+        }
     </style>
     {!! Html::style('bootstrap_star_rating/css/star-rating.css') !!}
     {!! Html::style('bootstrap_star_rating/themes/krajee-fa/theme.css') !!}
@@ -69,12 +89,18 @@
             <div class="switcher-panel-item">
                 <h3>Color Schemes</h3>
                 <ul class="nav flex-wrap colors">
-                    <li class="default active" data-color="default" data-toggle="tooltip" data-placement="top" title="Red"></li>
-                    <li class="green" data-color="green" data-toggle="tooltip" data-placement="top" title="Green"></li>
-                    <li class="soft-green" data-color="soft-green" data-toggle="tooltip" data-placement="top" title="Soft-Green"></li>
-                    <li class="sky-blue" data-color="sky-blue" data-toggle="tooltip" data-placement="top" title="Sky-Blue"></li>
-                    <li class="orange" data-color="orange" data-toggle="tooltip" data-placement="top" title="Orange"></li>
-                    <li class="violet" data-color="violet" data-toggle="tooltip" data-placement="top" title="Violet"></li>
+                    <li class="default active" data-color="default" data-toggle="tooltip" data-placement="top"
+                        title="Red"></li>
+                    <li class="green" data-color="green" data-toggle="tooltip" data-placement="top" title="Green">
+                    </li>
+                    <li class="soft-green" data-color="soft-green" data-toggle="tooltip" data-placement="top"
+                        title="Soft-Green"></li>
+                    <li class="sky-blue" data-color="sky-blue" data-toggle="tooltip" data-placement="top"
+                        title="Sky-Blue"></li>
+                    <li class="orange" data-color="orange" data-toggle="tooltip" data-placement="top" title="Orange">
+                    </li>
+                    <li class="violet" data-color="violet" data-toggle="tooltip" data-placement="top" title="Violet">
+                    </li>
                 </ul>
             </div>
 
@@ -126,11 +152,11 @@
                             <div class="header-call-action">
                                 <a href="#">
                                     <i class="fa fa-envelope"></i>
-                                    {{$business->mail}}
+                                    {{ $business->mail }}
                                 </a>
                                 <a href="#">
                                     <i class="fa fa-phone"></i>
-                                    {{$business->phone}}
+                                    {{ $business->phone }}
                                 </a>
                             </div>
                         </div>
@@ -140,25 +166,41 @@
                                     <ul>
                                         <li>
                                             <div class="dropdown header-top-dropdown">
-                                                <a class="dropdown-toggle" id="myaccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    my account
-                                                    <i class="fa fa-angle-down"></i>
-                                                </a>
-                                                <div class="dropdown-menu" aria-labelledby="myaccount">
-                                                    <a class="dropdown-item" href="/micuenta">my account</a>
-                                                    <a class="dropdown-item" href="login-register.html"> login</a>
-                                                    <a class="dropdown-item" href="login-register.html">register</a>
-                                                </div>
+                                                @auth
+                                                    <a class="dropdown-toggle" id="myaccount" data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">
+                                                        {{ Auth::user()->name }}
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="myaccount">
+                                                        <a class="dropdown-item" href="{{ route('web.myAccount') }}">mi
+                                                            cuenta</a>
+                                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                                            onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">Salir</a>
+                                                        <form id="logout-form" action="{{ route('logout') }}"
+                                                            method="POST" style="display: none;">
+                                                            @csrf
+                                                        </form>
+                                                    </div>
+                                                @endauth
+
+                                                @guest
+                                                    <a href="{{ route('web.loginRegister') }}">Sesión/Registro</a>
+
+                                                @endguest
+
+
                                             </div>
                                         </li>
                                         <li>
-                                            <a href="#">my wishlist</a>
+                                            <a href="#">Lista de deseos</a>
                                         </li>
                                         <li>
-                                            <a href="#">my cart</a>
+                                            <a href="{{ route('web.cart') }}">Carrito</a>
                                         </li>
                                         <li>
-                                            <a href="#">checkout</a>
+                                            <a href="{{ route('web.checkout') }}">Pasarela de pagos</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -176,7 +218,7 @@
                         <div class="col-lg-3">
                             <div class="brand-logo">
                                 <a href="/">
-                                    <img src="{{asset('image/'.$business->logo)}}" alt="brand logo">
+                                    <img src="{{ asset('image/' . $business->logo) }}" alt="brand logo">
                                 </a>
                             </div>
                         </div> <!-- end logo area -->
@@ -188,8 +230,8 @@
                                             <i class="fa fa-clock-o"></i>
                                         </div>
                                         <div class="shipping-content">
-                                            <h5>Working time</h5>
-                                            <span>Mon- Sun: 8.00 - 18.00</span>
+                                            <h5>Horarios</h5>
+                                            <span>Lun- Sab: 8:00 - 18:00</span>
                                         </div>
                                     </div> <!-- end single shipping -->
                                     <div class="single-block-shipping">
@@ -197,8 +239,8 @@
                                             <i class="fa fa-truck"></i>
                                         </div>
                                         <div class="shipping-content">
-                                            <h5>free shipping</h5>
-                                            <span>On order over $199</span>
+                                            <h5>ENVÍO GRATIS</h5>
+                                            <span>En pedidos superiores a $135.000</span>
                                         </div>
                                     </div> <!-- end single shipping -->
                                     <div class="single-block-shipping">
@@ -206,18 +248,18 @@
                                             <i class="fa fa-money"></i>
                                         </div>
                                         <div class="shipping-content">
-                                            <h5>money back 100%</h5>
-                                            <span>Within 30 Days after delivery</span>
+                                            <h5>DEVOLUCIÓN DE DINERO 100%</h5>
+                                            <span>Dentro de los 30 días posteriores a la entrega</span>
                                         </div>
                                     </div> <!-- end single shipping -->
                                 </div>
                                 <div class="header-middle-block">
                                     <div class="header-middle-searchbox">
-                                        <input type="text" placeholder="Search...">
+                                        <input type="text" placeholder="Buscar...">
                                         <button class="search-btn"><i class="fa fa-search"></i></button>
                                     </div>
 
-                                 @include('layouts._mini_cart')
+                                    @include('layouts._mini_cart')
 
                                 </div>
                             </div>
@@ -235,204 +277,159 @@
                             <div class="main-header-inner">
                                 <div class="category-toggle-wrap">
                                     <div class="category-toggle">
-                                        category
+                                        Categorias
                                         <div class="cat-icon">
                                             <i class="fa fa-angle-down"></i>
                                         </div>
                                     </div>
                                     <nav class="category-menu category-style-2">
                                         <ul>
-                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-desktop"></i> computer</a></li>
-                                            <li class="menu-item-has-children"><a href="shop-grid-left-sidebar.html"><i class="fa fa-camera"></i> camera</a>
+                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-desktop"></i>
+                                                    computer</a></li>
+                                            <li class="menu-item-has-children"><a
+                                                    href="shop-grid-left-sidebar.html"><i class="fa fa-camera"></i>
+                                                    camera</a>
                                                 <!-- Mega Category Menu Start -->
                                                 <ul class="category-mega-menu">
                                                     <li class="menu-item-has-children">
                                                         <a href="shop-grid-left-sidebar.html">Smartphone</a>
                                                         <ul>
                                                             <li><a href="shop-grid-left-sidebar.html">Samsome</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">GL Stylus</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">GL Stylus</a>
+                                                            </li>
                                                             <li><a href="shop-grid-left-sidebar.html">Uawei</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Cherry Berry</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Cherry Berry</a>
+                                                            </li>
                                                         </ul>
                                                     </li>
                                                     <li class="menu-item-has-children">
                                                         <a href="shop-grid-left-sidebar.html">headphone</a>
                                                         <ul>
-                                                            <li><a href="shop-grid-left-sidebar.html">Desktop Headphone</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Mobile Headphone</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Wireless Headphone</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">LED Headphone</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Desktop
+                                                                    Headphone</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Mobile
+                                                                    Headphone</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Wireless
+                                                                    Headphone</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">LED Headphone</a>
+                                                            </li>
                                                         </ul>
                                                     </li>
                                                     <li class="menu-item-has-children">
                                                         <a href="shop-grid-left-sidebar.html">accessories</a>
                                                         <ul>
-                                                            <li><a href="shop-grid-left-sidebar.html">Power Bank</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Data Cable</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Power Cable</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Power Bank</a>
+                                                            </li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Data Cable</a>
+                                                            </li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Power Cable</a>
+                                                            </li>
                                                             <li><a href="shop-grid-left-sidebar.html">Battery</a></li>
                                                         </ul>
                                                     </li>
                                                     <li class="menu-item-has-children">
                                                         <a href="shop-grid-left-sidebar.html">headphone</a>
                                                         <ul>
-                                                            <li><a href="shop-grid-left-sidebar.html">Desktop Headphone</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Mobile Headphone</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Wireless Headphone</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">LED Headphone</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Desktop
+                                                                    Headphone</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Mobile
+                                                                    Headphone</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Wireless
+                                                                    Headphone</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">LED Headphone</a>
+                                                            </li>
                                                         </ul>
                                                     </li>
                                                 </ul><!-- Mega Category Menu End -->
                                             </li>
-                                            <li class="menu-item-has-children"><a href="shop-grid-left-sidebar.html"><i class="fa fa-book"></i> smart phones</a>
+                                            <li class="menu-item-has-children"><a
+                                                    href="shop-grid-left-sidebar.html"><i class="fa fa-book"></i>
+                                                    smart phones</a>
                                                 <!-- Mega Category Menu Start -->
                                                 <ul class="category-mega-menu">
                                                     <li class="menu-item-has-children">
                                                         <a href="shop-grid-left-sidebar.html">Smartphone</a>
                                                         <ul>
                                                             <li><a href="shop-grid-left-sidebar.html">Samsome</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">GL Stylus</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">GL Stylus</a>
+                                                            </li>
                                                             <li><a href="shop-grid-left-sidebar.html">Uawei</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Cherry Berry</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Cherry Berry</a>
+                                                            </li>
                                                             <li><a href="shop-grid-left-sidebar.html">uPhone</a></li>
                                                         </ul>
                                                     </li>
                                                     <li class="menu-item-has-children">
                                                         <a href="shop-grid-left-sidebar.html">headphone</a>
                                                         <ul>
-                                                            <li><a href="shop-grid-left-sidebar.html">Desktop Headphone</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Mobile Headphone</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Wireless Headphone</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">LED Headphone</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Desktop
+                                                                    Headphone</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Mobile
+                                                                    Headphone</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Wireless
+                                                                    Headphone</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">LED Headphone</a>
+                                                            </li>
                                                             <li><a href="shop-grid-left-sidebar.html">Over-ear</a></li>
                                                         </ul>
                                                     </li>
                                                     <li class="menu-item-has-children">
                                                         <a href="shop-grid-left-sidebar.html">accessories</a>
                                                         <ul>
-                                                            <li><a href="shop-grid-left-sidebar.html">Power Bank</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Data Cable</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Power Cable</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Power Bank</a>
+                                                            </li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Data Cable</a>
+                                                            </li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Power Cable</a>
+                                                            </li>
                                                             <li><a href="shop-grid-left-sidebar.html">Battery</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">OTG Cable</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">OTG Cable</a>
+                                                            </li>
                                                         </ul>
                                                     </li>
                                                     <li class="menu-item-has-children">
                                                         <a href="shop-grid-left-sidebar.html">accessories</a>
                                                         <ul>
-                                                            <li><a href="shop-grid-left-sidebar.html">Power Bank</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Data Cable</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">Power Cable</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Power Bank</a>
+                                                            </li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Data Cable</a>
+                                                            </li>
+                                                            <li><a href="shop-grid-left-sidebar.html">Power Cable</a>
+                                                            </li>
                                                             <li><a href="shop-grid-left-sidebar.html">Battery</a></li>
-                                                            <li><a href="shop-grid-left-sidebar.html">OTG Cable</a></li>
+                                                            <li><a href="shop-grid-left-sidebar.html">OTG Cable</a>
+                                                            </li>
                                                         </ul>
                                                     </li>
                                                 </ul><!-- Mega Category Menu End -->
                                             </li>
-                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-clock-o"></i> watch</a></li>
-                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-television"></i> electronic</a></li>
-                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-tablet"></i> tablet</a></li>
-                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-book"></i> books</a></li>
-                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-microchip"></i> microchip</a></li>
-                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-bullhorn"></i> bullhorn</a></li>
+                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-clock-o"></i>
+                                                    watch</a></li>
+                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-television"></i>
+                                                    electronic</a></li>
+                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-tablet"></i>
+                                                    tablet</a></li>
+                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-book"></i>
+                                                    books</a></li>
+                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-microchip"></i>
+                                                    microchip</a></li>
+                                            <li><a href="shop-grid-left-sidebar.html"><i class="fa fa-bullhorn"></i>
+                                                    bullhorn</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                                 <div class="main-menu">
                                     <nav id="mobile-menu">
                                         <ul>
-                                            <li class="active"><a href="#"><i class="fa fa-home"></i>Home <i class="fa fa-angle-down"></i></a>
-                                                <ul class="dropdown">
-                                                    <li><a href="index.html">Home version 01</a></li>
-                                                    <li><a href="index-2.html">Home version 02</a></li>
-                                                    <li><a href="index-3.html">Home version 03</a></li>
-                                                    <li><a href="index-4.html">Home version 04</a></li>
-                                                </ul>
+                                            <li class="active"><a href="{{url('/')}}"><i class="fa fa-home"></i>Home </a>
                                             </li>
-                                            <li class="static"><a href="#">pages <i class="fa fa-angle-down"></i></a>
-                                                <ul class="megamenu dropdown">
-                                                    <li class="mega-title"><a href="#">column 01</a>
-                                                        <ul>
-                                                            <li><a href="shop-grid-left-sidebar.html">shop grid left sidebar</a></li>
-                                                            <li><a href="shop-grid-right-sidebar.html">shop grid right sidebar</a></li>
-                                                            <li><a href="shop-grid-full-3-col.html">shop grid full 3 column</a></li>
-                                                            <li><a href="shop-grid-full-4-col.html">shop grid full 4 column</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="mega-title"><a href="#">column 02</a>
-                                                        <ul>
-                                                            <li><a href="product-details.html">product details</a></li>
-                                                            <li><a href="product-details-affiliate.html">product details
-                                                                    affiliate</a></li>
-                                                            <li><a href="product-details-variable.html">product details
-                                                                    variable</a></li>
-                                                            <li><a href="product-details-group.html">product details group</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="mega-title"><a href="#">column 03</a>
-                                                        <ul>
-                                                            <li><a href="cart.html">cart</a></li>
-                                                            <li><a href="checkout.html">checkout</a></li>
-                                                            <li><a href="compare.html">compare</a></li>
-                                                            <li><a href="wishlist.html">wishlist</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="mega-title"><a href="#">column 04</a>
-                                                        <ul>
-                                                            <li><a href="my-account.html">my-account</a></li>
-                                                            <li><a href="login-register.html">login-register</a></li>
-                                                            <li><a href="about-us.html">about us</a></li>
-                                                            <li><a href="contact-us.html">contact us</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
+                                            <li class="static"><a href="{{route('web.shopGrid')}}">Productos </a>
                                             </li>
-                                            <li><a href="#">shop <i class="fa fa-angle-down"></i></a>
-                                                <ul class="dropdown">
-                                                    <li><a href="#">shop grid layout <i class="fa fa-angle-right"></i></a>
-                                                        <ul class="dropdown">
-                                                            <li><a href="shop-grid-left-sidebar.html">shop grid left sidebar</a></li>
-                                                            <li><a href="shop-grid-left-sidebar-3-col.html">left sidebar 3 col</a></li>
-                                                            <li><a href="shop-grid-right-sidebar.html">shop grid right sidebar</a></li>
-                                                            <li><a href="shop-grid-right-sidebar-3-col.html">grid right sidebar 3 col</a></li>
-                                                            <li><a href="shop-grid-full-3-col.html">shop grid full 3 column</a></li>
-                                                            <li><a href="shop-grid-full-4-col.html">shop grid full 4 column</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">shop list layout <i class="fa fa-angle-right"></i></a>
-                                                        <ul class="dropdown">
-                                                            <li><a href="shop-list-left-sidebar.html">shop list left sidebar</a></li>
-                                                            <li><a href="shop-list-right-sidebar.html">shop list right sidebar</a></li>
-                                                            <li><a href="shop-list-full.html">shop list full width</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">products details <i class="fa fa-angle-right"></i></a>
-                                                        <ul class="dropdown">
-                                                            <li><a href="product-details.html">product details</a></li>
-                                                            <li><a href="product-details-affiliate.html">product details
-                                                                    affiliate</a></li>
-                                                            <li><a href="product-details-variable.html">product details
-                                                                    variable</a></li>
-                                                            <li><a href="product-details-group.html">product details group</a></li>
-                                                            <li><a href="product-details-box.html">product details box slider</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
+                                            <li><a href="{{route('web.aboutUs')}}">Sobre Nosotros </a>
                                             </li>
-                                            <li><a href="#">Blog <i class="fa fa-angle-down"></i></a>
-                                                <ul class="dropdown">
-                                                    <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
-                                                    <li><a href="blog-left-sidebar-2-col.html">blog left sidebar 2 col</a></li>
-                                                    <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
-                                                    <li><a href="blog-full-2-column.html">blog full 2 column</a></li>
-                                                    <li><a href="blog-full-3-column.html">blog full 3 column</a></li>
-                                                    <li><a href="blog-details.html">blog details</a></li>
-                                                    <li><a href="blog-details-audio.html">blog details audio</a></li>
-                                                    <li><a href="blog-details-video.html">blog details video</a></li>
-                                                    <li><a href="blog-details-image.html">blog details image</a></li>
-                                                </ul>
+                                            <li><a href="{{route('web.blog')}}">Blog </i></a>
                                             </li>
-                                            <li><a href="contact-us.html">Contact us</a></li>
+                                            <li><a href="{{route('web.contactUs')}}">Contáctanos</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -482,11 +479,16 @@
                             <!-- mailchimp-alerts end -->
                         </div>
                         <div class="social-icons">
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="fa fa-instagram"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Google-plus"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i
+                                    class="fa fa-facebook"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i
+                                    class="fa fa-twitter"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i
+                                    class="fa fa-instagram"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Google-plus"><i
+                                    class="fa fa-google-plus"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Youtube"><i
+                                    class="fa fa-youtube"></i></a>
                         </div>
                     </div>
                 </div>
@@ -504,9 +506,9 @@
                                 </div>
                                 <div class="widget-body">
                                     <ul class="location">
-                                        <li><i class="fa fa-envelope"></i>{{$business->mail}}</li>
-                                        <li><i class="fa fa-phone"></i>{{$business->phone}}</li>
-                                        <li><i class="fa fa-map-marker"></i>{{$business->address}}</li>
+                                        <li><i class="fa fa-envelope"></i>{{ $business->mail }}</li>
+                                        <li><i class="fa fa-phone"></i>{{ $business->phone }}</li>
+                                        <li><i class="fa fa-map-marker"></i>{{ $business->address }}</li>
                                     </ul>
                                     <a class="map-btn" href="contact-us.html">open in google map</a>
                                 </div>
@@ -520,8 +522,8 @@
                                 <div class="widget-body">
                                     <ul>
                                         <li><a href="#">my account</a></li>
-                                        <li><a href="#">my cart</a></li>
-                                        <li><a href="#">checkout</a></li>
+                                        <li><a href="{{ route('web.cart') }}">my cart</a></li>
+                                        <li><a href="{{ route('web.checkout') }}">checkout</a></li>
                                         <li><a href="#">my wishlist</a></li>
                                         <li><a href="#">login</a></li>
                                     </ul>
@@ -577,7 +579,11 @@
                         <div class="copyright-text d-flex flex-row justify-content-center">
                             <span class="text-muted text-right d-block d-sm-inline-block">
                                 <b> POWER BY&nbsp;
-                                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><i class="fa fa-code text-dark"></i><b><a style="text-decoration: none; color:rgb(17, 15, 129);" href="https://afdeveloper.com/" target="_blank">&nbsp;AF</a> </b> </span>
+                                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><i
+                                            class="fa fa-code text-dark"></i><b><a
+                                                style="text-decoration: none; color:rgb(17, 15, 129);"
+                                                href="https://afdeveloper.com/" target="_blank">&nbsp;AF</a> </b>
+                                    </span>
                                 </b></span>
                         </div>
                     </div>
@@ -592,7 +598,7 @@
 
 
     <!-- Quick view modal start -->
-  
+
     <!-- Quick view modal end -->
 
     <!-- Scroll to top start -->

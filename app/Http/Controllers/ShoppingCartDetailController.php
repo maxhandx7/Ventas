@@ -49,48 +49,15 @@ class ShoppingCartDetailController extends Controller
         $shopping_cart->store_a_product($product);
         return back();
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\ShoppingCartDetail  $shoppingCartDetail
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ShoppingCartDetail $shoppingCartDetail)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\ShoppingCartDetail  $shoppingCartDetail
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ShoppingCartDetail $shoppingCartDetail)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ShoppingCartDetail  $shoppingCartDetail
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, ShoppingCartDetail $shoppingCartDetail)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\ShoppingCartDetail  $shoppingCartDetail
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(ShoppingCartDetail $shoppingCartDetail)
     {
-        //
+        $shoppingCartDetail->delete();
+        return back();
     }
 }

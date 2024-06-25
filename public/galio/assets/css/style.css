@@ -4060,7 +4060,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
     text-align: center;
     line-height: 36px;
     float: right;
-    background-color: #a32025;
+    background-color: #2c2352;
 }
 
 /*------- product list item end -------*/
@@ -7128,7 +7128,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .footer-top-wrapper .newsletter__wrap .newsletter__box form button:hover {
-    background-color: #a32025;
+    background-color: #2c2352;
 }
 
 @media only screen and (max-width: 479px) {

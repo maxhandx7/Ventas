@@ -52,13 +52,17 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="/" data-toggle="dropdown" id="profileDropdown">
-              <img src="{{asset('image/'.$business->logo)}}" alt="profile" />
+              <img src="{{asset('image/'.Auth::user()->image)}}" alt="profile" />
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{ route('business.index')}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout">
+              <a class="dropdown-item" href="{{ route('business.index')}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Empresa">
                 <i class="fas fa-briefcase text-primary"></i>
                 {{$business->name}}
+              </a>
+              <a class="dropdown-item" href="{{ route('web.welcome')}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Empresa">
+                <i class="fas fa-home text-primary"></i>
+                ← Ir a web
               </a>
               <a class="dropdown-item" href="{{ route('logout') }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout" onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
@@ -78,35 +82,12 @@
     </nav>
     <div class="container-fluid page-body-wrapper">
       @yield('preference')
-      <!-- <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="fas fa-fill-drip"></i></div>
-        <div id="theme-settings" class="settings-panel">
-          <i class="settings-close fa fa-times"></i>
-          <p class="settings-heading">Color barra lateral</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme">
-            <div class="img-ss rounded-circle bg-light border mr-3"></div>Light
-          </div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme">
-            <div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark
-          </div>
-          <p class="settings-heading mt-2">Color del Head</p>
-          <div class="color-tiles mx-0 px-4">
-            <div class="tiles primary"></div>
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
-          </div>
-        </div>
-      </div> -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="profile-image">
-                <img src="{{asset('image/'.$business->logo)}}" alt="image" />
+                <img src="{{asset('image/'.Auth::user()->image)}}" alt="image" />
               </div>
               <div class="profile-name">
                 <p class="name">

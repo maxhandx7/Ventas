@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\MyAccountController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShoppingCartDetailController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebController;
 use App\ShoppingCart;
 use App\ShoppingCartDetail;
@@ -9,15 +14,15 @@ use Illuminate\Support\Facades\Route;
 
 
 //============================== rutas del cliente ========================// 
-
-Route::get('pagar', 'WebController@checkout')->name('web.checkout');
+Route::post('/payments/pay', [PaymentController::class, 'pay'])->name('pay');
+Route::get('pagar', 'MyAccountController@checkout')->name('web.checkout');
 Route::get('nosotros', 'WebController@aboutUs')->name('web.aboutUs');
 Route::get('blog-detalles', 'WebController@blogDetails')->name('web.blogDetails');
 Route::get('blog', 'WebController@blog')->name('web.blog');
-Route::get('carrito', 'WebController@cart')->name('web.cart');
+Route::get('mis_compras', 'WebController@cart')->name('web.cart');
 Route::get('contactanos', 'WebController@contactUs')->name('web.contactUs');
 Route::get('registro', 'WebController@loginRegister')->name('web.loginRegister');
-Route::get('micuenta', 'WebController@myAccount')->name('web.myAccount');
+Route::get('mi_cuenta', 'MyAccountController@myAccount')->name('web.myAccount');
 Route::get('producto/{product}', 'WebController@productsDetails')->name('web.productsDetails');
 Route::get('productos', 'WebController@shopGrid')->name('web.shopGrid');
 Route::get('/', 'WebController@welcome')->name('web.welcome');
@@ -29,11 +34,31 @@ Route::resource('shopping_cart_detail', 'ShoppingCartDetailController')->only([
     
     Route::post('add_to_shopping_cart/{product}/store', [ShoppingCartDetailController::class, 'store'])->name('shopping_cart_details.store');
     Route::get('add_a_product_to_the_shopping_cart/{product}/store', [ShoppingCartDetailController::class, 'store_a_product'])->name('store_a_product');
-  /*   route::get('shopping_cart_detail/{shopping_cart_detail}/destroy', [ShoppingCartDetailController::class, 'destroy'])->name('shopping_cart_details.destroy');
+    route::get('shopping_cart_detail/{shopping_cart_detail}/destroy', [ShoppingCartDetailController::class, 'destroy'])->name('shopping_cart_details.destroy');
+  /*   
     Route::post('shopping_cart/update', [ShoppingCart::class, 'update'])->name('shopping_cart.update');
     Route::get('login_error', [WebController::class, 'login_error'])->name('web.login_error'); */
+    Route::post('shopping_cart/update', 'ShoppingCartController@update')->name('shopping_cart.update');
+
+    Route::get('mis_ordenes', 'MyAccountController@orders')->name('web.orders');
+    Route::get('detalles_de_la_cuenta', [MyAccountController::class, 'account_info'])->name('web.account_info');
+    Route::put('update_client/{user}/update', [UserController::class, 'update_client'])->name('web.update_client');
+    Route::get('editar_direccion', [MyAccountController::class, 'address_edit'])->name('web.address_edit');
+    Route::get('cambiar_contrasena', [MyAccountController::class, 'change_password'])->name('web.change_password');
+    Route::put('update_profile/{profile}/update', [ProfileController::class, 'update'])->name('update_profile');
 
 //============================== fin =====================================//
+
+Route::put('orders_update/{id}', [OrderController::class, 'orders_update'])->name('orders_update');
+
+Route::resource('orders', 'OrderController')->names('orders')->only([
+    'index',
+    'show'
+]);
+
+Route::get('/payments/approval', [PaymentController::class, 'approval'])->name('approval');
+Route::get('/payments/cancelled', [PaymentController::class, 'cancelled'])->name('cancelled');
+
 Route::get('sales/reports_day', 'ReportController@reports_day')->name('reports.day');
 Route::get('sales/reports_date', 'ReportController@reports_date')->name('reports.date');
 
@@ -50,7 +75,11 @@ Route::resource('printers', 'PrinterController')->names('printers')->only([
 
 Route::resource('users', 'UserController')->names('users');
 
-Route::resource('roles', 'RoleController')->names('roles');
+Route::resource('roles', 'RoleController')->names('roles')->except([
+    'create',
+    'store',
+    'destroy'
+]);
 
 Route::resource('categories', 'CategoryController')->names('categories');
 Route::resource('clients', 'ClientController')->names('clients');
@@ -75,7 +104,7 @@ Route::get('sales/pdf/{sale}', 'SaleController@pdf')->name('sales.pdf');
 Route::get('sales/print/{sale}', 'SaleController@print')->name('sales.print');
 
 Route::get('/prueba', function () {
-    return view('prueba');
+    return view('pruebas');
 });
 
 Route::get('purchases/upload/{purchase}', 'PurchaseController@upload')->name('upload.purchases');
@@ -104,3 +133,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/buscar', 'SearchController@buscar')->name('buscar');
+

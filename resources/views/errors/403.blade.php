@@ -7,7 +7,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>AF Admin</title>
+  <title>403 no autorizado</title>
   <!-- plugins:css -->
   {!! Html::style('melody/vendors/iconfonts/font-awesome/css/all.min.css') !!}
   {!! Html::style('melody/vendors/css/vendor.bundle.base.css') !!}
@@ -16,7 +16,7 @@
   <!-- inject:css -->
   {!! Html::style('melody/css/style.css') !!}
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link rel="shortcut icon" href="{{asset('image/'.$business->logo)}}" />
 </head>
 
 <body>
@@ -30,14 +30,14 @@
                 <h1 class="display-1 mb-0">403</h1>
               </div>
               <div class="col-lg-6 error-page-divider text-lg-left pl-lg-4">
-                <h2>LO SIENTO!</h2>
+                <h2><i class="far fa-frown"> </i> LO SIENTO!</h2>
                 <h3 class="font-weight-light">No está autorizado</h3>
                 <span class="font-weight-light">Consulta con el administrador</span>
               </div>
             </div>
             <div class="row mt-5">
               <div class="col-12 text-center mt-xl-2">
-                <a class="text-white font-weight-medium" href="{{route('home')}}">Volver al panel administrador</a>
+                <a class="text-white font-weight-medium" href="{{ url()->previous() }}">Volver Atrás</a>
               </div>
             </div>
             <div class="row mt-5">

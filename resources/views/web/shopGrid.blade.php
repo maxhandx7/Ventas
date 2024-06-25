@@ -1,6 +1,6 @@
  @extends('layouts.web')
  @section('meta_description', '')
- @section('title', $business->name. " | Productos")
+ @section('title', $business->name . ' | Productos')
  @section('styles')
 
  @endsection
@@ -31,26 +31,19 @@
                  <div class="col-lg-3 order-2">
                      <div class="shop-sidebar-wrap mt-md-28 mt-sm-28">
                          <!-- sidebar categorie start -->
-                         <div class="sidebar-widget mb-30">
-                             <div class="sidebar-category">
-                                 <ul>
-                                     <li class="title"><i class="fa fa-bars"></i> categories</li>
-                                     <li><a href="#">books</a><span>(10)</span></li>
-                                     <li><a href="#">camera</a><span>(12)</span></li>
-                                     <li><a href="#">computer</a><span>(08)</span></li>
-                                     <li><a href="#">electronic</a><span>(16)</span></li>
-                                     <li><a href="#">Necklaces</a><span>(11)</span></li>
-                                     <li><a href="#">Rugby</a><span>(20)</span></li>
-                                     <li><a href="#">smart phones</a><span>(15)</span></li>
-                                     <li><a href="#">tablet</a><span>(12)</span></li>
-                                     <li><a href="#">watch</a><span>(10)</span></li>
-                                 </ul>
-                             </div>
-                         </div>
+                         @include('web._sidebar_categorie')
                          <!-- sidebar categorie start -->
 
+                         <!-- featured category start -->
+                         @include('web._featured_category')
+                         <!-- featured category end -->
+                         
+                         <!-- product tag start -->
+                         @include('web._product_tag')
+                         <!-- product tag end -->
+
                          <!-- manufacturer start -->
-                         <div class="sidebar-widget mb-30">
+                         {{-- <div class="sidebar-widget mb-30">
                              <div class="sidebar-title mb-10">
                                  <h3>Manufacturers</h3>
                              </div>
@@ -66,11 +59,11 @@
                                      </li>
                                  </ul>
                              </div>
-                         </div>
+                         </div> --}}
                          <!-- manufacturer end -->
 
                          <!-- pricing filter start -->
-                         <div class="sidebar-widget mb-30">
+                         {{-- <div class="sidebar-widget mb-30">
                              <div class="sidebar-title mb-10">
                                  <h3>filter by price</h3>
                              </div>
@@ -88,11 +81,11 @@
                                      </div>
                                  </div>
                              </div>
-                         </div>
+                         </div> --}}
                          <!-- pricing filter end -->
 
                          <!-- product size start -->
-                         <div class="sidebar-widget mb-30">
+                         {{-- <div class="sidebar-widget mb-30">
                              <div class="sidebar-title mb-10">
                                  <h3>size</h3>
                              </div>
@@ -104,11 +97,11 @@
                                      <li><i class="fa fa-angle-right"></i><a href="#">XL</a><span>(12)</span></li>
                                  </ul>
                              </div>
-                         </div>
+                         </div> --}}
                          <!-- product size end -->
 
                          <!-- product tag start -->
-                         <div class="sidebar-widget mb-30">
+                         {{-- <div class="sidebar-widget mb-30">
                              <div class="sidebar-title mb-10">
                                  <h3>tags</h3>
                              </div>
@@ -124,15 +117,15 @@
                                      <a href="#">men</a>
                                  </div>
                              </div>
-                         </div>
+                         </div> --}}
                          <!-- product tag end -->
 
                          <!-- sidebar banner start -->
-                         <div class="sidebar-widget mb-30">
+                         {{-- <div class="sidebar-widget mb-30">
                              <div class="img-container fix img-full">
                                  <a href="#"><img src="galio/assets/img/banner/banner_shop.jpg" alt=""></a>
                              </div>
-                         </div>
+                         </div> --}}
                          <!-- sidebar banner end -->
                      </div>
                  </div>
@@ -183,7 +176,7 @@
                          <!-- product item start -->
                          <div class="shop-product-wrap grid row">
                              @foreach ($products as $product)
-                             @include('web._product_item')
+                                 @include('web._product_item')
                              @endforeach
 
                          </div>
@@ -215,48 +208,10 @@
      <!-- page wrapper end -->
 
      <!-- brand area start -->
-     <div class="brand-area pt-28 pb-30 pt-md-4 pt-sm-4">
-         <div class="container">
-             <div class="row">
-                 <div class="col-12">
-                     <div class="section-title mb-30">
-                         <div class="title-icon">
-                             <i class="fa fa-crop"></i>
-                         </div>
-                         <h3>Popular Brand</h3>
-                     </div> <!-- section title end -->
-                 </div>
-             </div>
-             <div class="row">
-                 <div class="col-12">
-                     <div class="brand-active slick-padding slick-arrow-style">
-                         <div class="brand-item text-center">
-                             <a href="#"><img src="galio/assets/img/brand/br1.png" alt=""></a>
-                         </div>
-                         <div class="brand-item text-center">
-                             <a href="#"><img src="galio/assets/img/brand/br2.png" alt=""></a>
-                         </div>
-                         <div class="brand-item text-center">
-                             <a href="#"><img src="galio/assets/img/brand/br3.png" alt=""></a>
-                         </div>
-                         <div class="brand-item text-center">
-                             <a href="#"><img src="galio/assets/img/brand/br4.png" alt=""></a>
-                         </div>
-                         <div class="brand-item text-center">
-                             <a href="#"><img src="galio/assets/img/brand/br5.png" alt=""></a>
-                         </div>
-                         <div class="brand-item text-center">
-                             <a href="#"><img src="galio/assets/img/brand/br6.png" alt=""></a>
-                         </div>
-                         <div class="brand-item text-center">
-                             <a href="#"><img src="galio/assets/img/brand/br4.png" alt=""></a>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- <!-- brand area end -->@endsection
+     @include('web._brand_area')
+     <!-- brand area end -->
+
+ @endsection
 
  @section('scripts')
 

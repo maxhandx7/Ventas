@@ -67,9 +67,11 @@ class ShoppingCartController extends Controller
      * @param  \App\ShoppingCart  $shoppingCart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ShoppingCart $shoppingCart)
+    public function update(Request $request)
     {
-        //
+        $shopping_cart = ShoppingCart::get_the_session_shopping_cart();
+        $shopping_cart->my_update($request);
+        return back();
     }
 
     /**

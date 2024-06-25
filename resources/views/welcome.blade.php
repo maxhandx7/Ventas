@@ -12,9 +12,9 @@
                         <div class="container">
                             <div class="slider-main-content">
                                 <div class="slider-text">
-                                    <h2>our new range of</h2>
+                                    <h2>Nueva colección</h2>
                                     <h1>woman</h1>
-                                    <h5>for less than $199.00</h5>
+                                    <h5>desde $199.00</h5>
                                 </div>
                             </div>
                         </div>

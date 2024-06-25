@@ -12,12 +12,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        $this->call(PaymentPlatformSeeder::class);
         $this->call(PermissionsTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
-
         $this->call(BusinessTableSeeder::class);
         $this->call(PrinterTableSeeder::class);
-        factory(App\Client::class, 10)->create();
         factory(App\Category::class, 10)->create();
         factory(App\Subcategory::class, 50)->create();
         factory(App\Provider::class, 10)->create();

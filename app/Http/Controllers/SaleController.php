@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Sale;
-use App\Client;
+use App\User;
 use App\Product;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -18,14 +18,6 @@ class SaleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('can:sales.create')->only(['create', 'store']);
-        $this->middleware('can:sales.index')->only(['index']);
-        $this->middleware('can:sales.show')->only(['show']);
-        $this->middleware('can:sales.destroy')->only(['destroy']);
-        
-        $this->middleware('can:change.status.sales')->only(['change_status']);
-        $this->middleware('can:sales.pdf')->only(['pdf']);
-        $this->middleware('can:sales.print')->only(['print']);
     }
 
 
@@ -39,7 +31,7 @@ class SaleController extends Controller
     public function create()
     {
         $products = Product::where('status', 'ACTIVE')->get();
-        $clients = Client::get();
+        $clients = User::role('Client')->get();
         return view('admin.sale.create', compact('clients', 'products'));
     }
 
@@ -75,7 +67,7 @@ class SaleController extends Controller
     public function edit(sale $sale)
     {
         $products = Product::get();
-        $clients = Client::get();
+        $clients = User::role('Client')->get();
         return view('admin.sale.edit', compact('sale'));
     }
 

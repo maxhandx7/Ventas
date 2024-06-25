@@ -1,5 +1,5 @@
 @extends('layouts.admin2')
-@section('title','Editar rol')
+@section('title','Modificar permisos de '.$role->name)
 @section('styles')
 @endsection
 @section('options')
@@ -10,13 +10,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Editar rol
+            Modificar permisos de {{$role->name}}
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
                 <li class="breadcrumb-item"><a href="/">Panel administrador</a></li>
                 <li class="breadcrumb-item"><a href="{{route('roles.index')}}">Roles</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Editar rol</li>
+                <li class="breadcrumb-item active" aria-current="page">Modificar permisos de {{$role->name}}</li>
             </ol>
         </nav>
     </div>
@@ -26,24 +26,10 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Editar rol</h4>
+                        <h4 class="card-title">Modificar permisos de {{$role->name}}</h4>
                     </div>
                     {!! Form::model($role,['route'=>['roles.update',$role], 'method'=>'PUT']) !!}
-                    
-                    <div class="form-group">
-                        <label for="name">Nombre</label>
-                        <input type="text"
-                          class="form-control" name="name" id="name" value="{{$role->name}}" aria-describedby="helpId" placeholder="">
-                      </div>
-                      <div class="form-group">
-                          <label for="slug">Slug</label>
-                          <input type="text"
-                            class="form-control" name="slug" id="slug" value="{{$role->slug}}" aria-describedby="helpId" placeholder="">
-                        </div>
-                      <div class="form-group">
-                        <label for="description">Descripción</label>
-                        <textarea class="form-control" name="description" id="description" rows="3">{{$role->description}}</textarea>
-                      </div>
+
 
                     @include('admin.role._form')
                     

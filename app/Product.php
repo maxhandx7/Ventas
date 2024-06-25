@@ -23,6 +23,12 @@ class Product extends Model
         'provider_id',
     ];
 
+    public function add_stock($quantity){
+        $this->increment('stock', $quantity);
+    }
+    public function subtract_stock($quantity){
+        $this->decrement('stock', $quantity);
+    }
     public function subcategory()
     {
         return $this->belongsTo(Subcategory::class);

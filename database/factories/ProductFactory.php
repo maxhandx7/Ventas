@@ -15,7 +15,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'stock'=> 150,
         'short_description'=>$faker->realText($maxNbChars = 360, $indexSize = 2),
         'long_description'=>$faker->sentence($nbWords = 360, $variableNbWords = true),
-        'sell_price'=>$faker->randomNumber(2),
+        'sell_price' => $faker->numberBetween(10000, 200000),
         'status'=>'ACTIVE',
         'subcategory_id'=>rand(1,10),
         'provider_id'=>rand(1,10),

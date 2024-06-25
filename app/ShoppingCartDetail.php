@@ -8,13 +8,18 @@ class ShoppingCartDetail extends Model
 {
     protected $fillable = [
         'quantity',
-        'price',
         'shopping_cart_id',
         'product_id',
     ];
 
     public function product(){
         return $this->belongsTo(Product::class);
+    }
+
+    public function total(){
+         return $this->quantity * $this->product->sell_price;
+     //   return round(($this->quantity * $this->product->discountedPrice), 2);
+        
     }
 
 }

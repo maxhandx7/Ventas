@@ -1,6 +1,6 @@
 @extends('layouts.web')
 @section('meta_description', '')
-@section('title', $business->name. " | Sobre nosotros")
+@section('title', $business->name. " | Mi cuenta")
 @section('styles')
 
 @endsection
@@ -35,39 +35,52 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-4">
                                 <div class="myaccount-tab-menu nav" role="tablist">
-                                    <a href="#dashboad" class="active" data-toggle="tab"><i class="fa fa-dashboard"></i>
+                                    <a href="#dashboad"><i class="fa fa-dashboard"></i>
                                         Dashboard</a>
-                                    <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
-                                        Orders</a>
-                                    <a href="#download" data-toggle="tab"><i class="fa fa-cloud-download"></i>
-                                        Download</a>
-                                    <a href="#payment-method" data-toggle="tab"><i class="fa fa-credit-card"></i>
-                                        Payment
-                                        Method</a>
-                                    <a href="#address-edit" data-toggle="tab"><i class="fa fa-map-marker"></i>
-                                        address</a>
-                                    <a href="#account-info" data-toggle="tab"><i class="fa fa-user"></i> Account
-                                        Details</a>
-                                    <a href="login-register.html"><i class="fa fa-sign-out"></i> Logout</a>
+                                    {{--  <a href="#orders"><i class="fa fa-cart-arrow-down"></i> Orders</a>  --}}
+                                    <a href="{{route('web.orders')}}"
+                                    class="{!! active_class(route('web.orders')) !!}"
+                                    ><i class="fa fa-cart-arrow-down"></i> Pedidos</a>
+                                    {{--  <a href="#download"><i class="fa fa-cloud-download"></i> Download</a>  --}}
+                                    
+                                    
+    
+                                    <a href="{{route('web.address_edit')}}"
+                                    class="{!! active_class(route('web.address_edit')) !!}"
+                                    ><i class="fa fa-map-marker"></i> Dirección</a>
+                                    <a href="{{route('web.account_info')}}"
+                                    class="{!! active_class(route('web.account_info')) !!}"
+                                    ><i class="fa fa-user"></i> Detalles de la cuenta</a>
+                                    <a 
+                                    class="{!! active_class(route('web.change_password')) !!}"
+                                    href="{{route('web.change_password')}}"><i class="fa fa-credit-card"></i> Cambiar contraseña</a>
+                                    <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i>  Cerrar sesión</a>
+                                    
                                 </div>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </div>
                             <!-- My Account Tab Menu End -->
 
                             <!-- My Account Tab Content Start -->
-                            <div class="col-lg-9 col-md-8">
+
+
+                            {{-- <div class="col-lg-9 col-md-8">
                                 <div class="tab-content" id="myaccountContent">
                                     <!-- Single Tab Content Start -->
                                     <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
                                         <div class="myaccount-content">
                                             <h3>Dashboard</h3>
                                             <div class="welcome">
-                                                <p>Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni
-                                                        !</strong><a href="login-register.html" class="logout">
-                                                        Logout</a>)</p>
+                                                <p>Hola, <strong>{{ Auth::user()->profile->first_name ." ".Auth::user()->profile->last_name }}</strong> 
                                             </div>
-                                            <p class="mb-0">From your account dashboard. you can easily check &
-                                                view your recent orders, manage your shipping and billing addresses
-                                                and edit your password and account details.</p>
+                                            <p class="mb-0">Desde el dashboard, 
+                                                usted puede verificar y ver fácilmente sus pedidos recientes, 
+                                                administrar sus direcciones de envío y facturaciónes, editar su contraseña y 
+                                                ver los detalles de su cuenta.</p>
                                         </div>
                                     </div>
                                     <!-- Single Tab Content End -->
@@ -250,7 +263,10 @@
                                         </div>
                                     </div> <!-- Single Tab Content End -->
                                 </div>
-                            </div> <!-- My Account Tab Content End -->
+                            </div> --}} 
+                            @yield('content_tab')
+                            
+                            <!-- My Account Tab Content End -->
                         </div>
                     </div> <!-- My Account Page End -->
                 </div>

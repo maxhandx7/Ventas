@@ -30,68 +30,34 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                    {!! Form::open(['route'=>'shopping_cart.update', 'method'=>'POST']) !!}
                     <!-- Cart Table Area -->
                     <div class="cart-table table-responsive">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th class="pro-thumbnail">Thumbnail</th>
-                                    <th class="pro-title">Product</th>
-                                    <th class="pro-price">Price</th>
-                                    <th class="pro-quantity">Quantity</th>
-                                    <th class="pro-subtotal">Total</th>
-                                    <th class="pro-remove">Remove</th>
+                                    <th class="pro-thumbnail">MINIATURA</th>
+                                    <th class="pro-title">PRODUCTO</th>
+                                    <th class="pro-price">PRECIO</th>
+                                    <th class="pro-quantity">CANTIDAD</th>
+                                    <th class="pro-subtotal">TOTAL</th>
+                                    <th class="pro-remove">ELIMINAR</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($shopping_cart->shopping_cart_details as $shopping_cart_detail)
                                 <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                src="galio/assets/img/product/product-img2.jpg" alt="Product" /></a></td>
-                                    <td class="pro-title"><a href="#">k2 snowboard 2018</a></td>
-                                    <td class="pro-price"><span>$295.00</span></td>
+                                    <td class="pro-thumbnail"><a href="{{route('web.productsDetails', $shopping_cart_detail->product)}}"><img class="img-fluid"
+                                                src="{{$shopping_cart_detail->product->images->pluck('url')[0]}}" alt="{{$shopping_cart_detail->product->name}}" /></a></td>
+                                    <td class="pro-title"><a href="{{route('web.productsDetails', $shopping_cart_detail->product)}}">{{$shopping_cart_detail->product->name}}</a></td>
+                                    <td class="pro-price"><span>${{$shopping_cart_detail->product->sell_price}}</span></td>
                                     <td class="pro-quantity">
-                                        <div class="pro-qty"><input type="text" value="1"></div>
+                                        <div class="pro-qty"><input type="text" name="quantity[]" value="{{$shopping_cart_detail->quantity}}"></div>
                                     </td>
-                                    <td class="pro-subtotal"><span>$295.00</span></td>
-                                    <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                    <td class="pro-subtotal"><span>${{$shopping_cart_detail->total()}}</span></td>
+                                    <td class="pro-remove"><a href="{{route('shopping_cart_details.destroy',$shopping_cart_detail)}}"><i class="fa fa-trash-o"></i></a></td>
                                 </tr>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                src="galio/assets/img/product/product-img3.jpg" alt="Product" /></a></td>
-                                    <td class="pro-title"><a href="#">Aquet Drone D 420</a></td>
-                                    <td class="pro-price"><span>$275.00</span></td>
-                                    <td class="pro-quantity">
-                                        <div class="pro-qty"><input type="text" value="2"></div>
-                                    </td>
-                                    <td class="pro-subtotal"><span>$550.00</span></td>
-                                    <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                src="galio/assets/img/product/product-img4.jpg" alt="Product" /></a></td>
-                                    <td class="pro-title"><a href="#">berzerker snowboard</a></td>
-                                    <td class="pro-price"><span>$295.00</span></td>
-                                    <td class="pro-quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1" />
-                                        </div>
-                                    </td>
-                                    <td class="pro-subtotal"><span>$295.00</span></td>
-                                    <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                src="galio/assets/img/product/product-img5.jpg" alt="Product" /></a></td>
-                                    <td class="pro-title"><a href="#">element snowboard</a></td>
-                                    <td class="pro-price"><span>$110.00</span></td>
-                                    <td class="pro-quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="3" />
-                                        </div>
-                                    </td>
-                                    <td class="pro-subtotal"><span>$110.00</span></td>
-                                    <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -99,15 +65,16 @@
                     <!-- Cart Update Option -->
                     <div class="cart-update-option d-block d-md-flex justify-content-between">
                         <div class="apply-coupon-wrapper">
-                            <form action="#" method="post" class=" d-block d-md-flex">
+                           {{--  <form action="#" method="post" class=" d-block d-md-flex">
                                 <input type="text" placeholder="Enter Your Coupon Code" required />
                                 <button class="sqr-btn">Apply Coupon</button>
-                            </form>
+                            </form> --}}
                         </div>
                         <div class="cart-update mt-sm-16">
-                            <a href="#" class="sqr-btn">Update Cart</a>
+                            <button type="submit" class="sqr-btn">Actualizar carrito</button>
                         </div>
                     </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
 
@@ -121,20 +88,20 @@
                                 <table class="table">
                                     <tr>
                                         <td>Sub Total</td>
-                                        <td>$230</td>
+                                        <td>$ {{$shopping_cart->total_price()}}</td>
                                     </tr>
-                                    <tr>
+                                  {{--   <tr>
                                         <td>Shipping</td>
                                         <td>$70</td>
-                                    </tr>
+                                    </tr> --}}
                                     <tr class="total">
                                         <td>Total</td>
-                                        <td class="total-amount">$300</td>
+                                        <td class="total-amount">$ {{$shopping_cart->total_price()}}</td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
-                        <a href="checkout.html" class="sqr-btn d-block">Proceed To Checkout</a>
+                        <a href="{{route('web.checkout')}}" class="sqr-btn d-block">Proceed To Checkout</a>
                     </div>
                 </div>
             </div>
@@ -143,47 +110,7 @@
     <!-- cart main wrapper end -->
 
     <!-- brand area start -->
-    <div class="brand-area pt-34 pb-30">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title mb-30">
-                        <div class="title-icon">
-                            <i class="fa fa-crop"></i>
-                        </div>
-                        <h3>Popular Brand</h3>
-                    </div> <!-- section title end -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="brand-active slick-padding slick-arrow-style">
-                        <div class="brand-item text-center">
-                            <a href="#"><img src="galio/assets/img/brand/br1.png" alt=""></a>
-                        </div>
-                        <div class="brand-item text-center">
-                            <a href="#"><img src="galio/assets/img/brand/br2.png" alt=""></a>
-                        </div>
-                        <div class="brand-item text-center">
-                            <a href="#"><img src="galio/assets/img/brand/br3.png" alt=""></a>
-                        </div>
-                        <div class="brand-item text-center">
-                            <a href="#"><img src="galio/assets/img/brand/br4.png" alt=""></a>
-                        </div>
-                        <div class="brand-item text-center">
-                            <a href="#"><img src="galio/assets/img/brand/br5.png" alt=""></a>
-                        </div>
-                        <div class="brand-item text-center">
-                            <a href="#"><img src="galio/assets/img/brand/br6.png" alt=""></a>
-                        </div>
-                        <div class="brand-item text-center">
-                            <a href="#"><img src="galio/assets/img/brand/br4.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('web._brand_area')
     <!-- brand area end -->
 
 @endsection

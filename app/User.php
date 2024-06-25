@@ -5,12 +5,12 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
-use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRolesAndPermissions;
+    use Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -41,7 +41,14 @@ class User extends Authenticatable
 
     public function routeNotificationForDatabase()
     {
-        return $this->id; // Utiliza el campo que identifique de manera única al usuario en tu tabla de usuarios.
+        return $this->id; 
+    }
+    public function profile(){
+        return $this->hasOne(Profile::class);
+    }
+
+    public function sales(){
+        return $this->hasMany(Sale::class);
     }
 
     public function purchases()
@@ -49,8 +56,10 @@ class User extends Authenticatable
         return $this->hasMany(Purchase::class);
     }
 
-    public function sales()
-    {
-        return $this->hasMany(Sale::class);
+
+    public function orders(){
+        return $this->hasMany(Order::class);
     }
+
+  
 }

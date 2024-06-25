@@ -10,8 +10,6 @@ class BusinessController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('can:business.index')->only(['index']);
-        $this->middleware('can:business.edit')->only(['update']);
     }
     public function index()
     {

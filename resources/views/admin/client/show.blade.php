@@ -131,6 +131,12 @@
                                                         @endif
                                                         @endforeach
                                                     </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                          <td colspan="2"><strong>Total de monto comprado: </strong></td>
+                                                          <td colspan="3" align="left"><strong>$ {{$total_purchases}}</strong></td>
+                                                        </tr>
+                                                    </tfoot>  
                                                 </table>
                                             </div>
                                         </div>

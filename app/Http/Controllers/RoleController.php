@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Caffeinated\Shinobi\Models\Role;
-use Caffeinated\Shinobi\Models\Permission;
+
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -12,12 +13,6 @@ class RoleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-        $this->middleware('can:roles.create')->only(['create', 'store']);
-        $this->middleware('can:roles.index')->only(['index']);
-        $this->middleware('can:roles.edit')->only(['edit', 'update']);
-        $this->middleware('can:roles.show')->only(['show']);
-        $this->middleware('can:roles.destroy')->only(['destroy']);
     }
 
     public function index()
@@ -25,7 +20,7 @@ class RoleController extends Controller
         $roles = Role::get();
         return view('admin.role.index', compact('roles'));
     }
-    public function create()
+    /* public function create()
     {
         $permissions = Permission::get();
         return view('admin.role.create', compact('permissions'));
@@ -39,7 +34,7 @@ class RoleController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Ocurrió un error al crear el rol');
         }
-    }
+    } */
     public function show(Role $role)
     {
         return view('admin.role.show', compact('role'));
@@ -59,7 +54,7 @@ class RoleController extends Controller
             return redirect()->back()->with('error', 'Ocurrió un error al modificar el rol');
         }
     }
-    public function destroy(Role $role)
+/*     public function destroy(Role $role)
     {
         try {
             $role->delete();
@@ -67,5 +62,5 @@ class RoleController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Ocurrió un error al eliminar el rol');
         }
-    }
+    } */
 }
