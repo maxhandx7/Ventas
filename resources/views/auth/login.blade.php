@@ -49,7 +49,7 @@
     </div>
     
       <div class="text-center mt-4 font-weight-light">
-        ← Ir a <a href="/" class="text-primary">{{$business->name}}</a>
+        ← Ir a <a href="/" class="text-primary"></a>
     </div>  
   </form>
 @endsection

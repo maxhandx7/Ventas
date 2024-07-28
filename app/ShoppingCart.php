@@ -31,13 +31,22 @@ class ShoppingCart extends Model
     }
 
 
-    public function total_price()
-    {
-        $total = 0;
-        foreach ($this->shopping_cart_details as $key => $shopping_cart_detail) {
-            $total += $shopping_cart_detail->product->sell_price * $shopping_cart_detail->quantity;
-        }
-        return $total;
+    public function has_products(){
+        if ($this->shopping_cart_details()->count()>0) {
+            return true;
+        } else {
+            return false;
+        } 
+    }
+
+    public function total_price(){
+        $tax = Setting::find(1)->pluck('tax');
+        return round(($this->subtotal() + ($this->subtotal() * $tax[0])), 2); 
+    }
+
+    public function total_tax(){
+        $tax = Setting::find(1)->pluck('tax');
+        return round(($this->subtotal() * $tax[0]), 2); 
     }
 
     public static function get_the_session_shopping_cart()
@@ -76,4 +85,11 @@ class ShoppingCart extends Model
         }
     }
 
+    public function subtotal(){
+        $total = 0;
+        foreach ($this->shopping_cart_details as $key => $shopping_cart_detail) {
+            $total += $shopping_cart_detail->total();
+        }
+        return round(($total), 2);
+    }
 }

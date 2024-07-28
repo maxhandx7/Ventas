@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Pay\PaymentRequest;
 use App\Resolvers\PaymentPlatformResolver;
+use App\Setting;
+use App\ShoppingCart;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -17,26 +20,19 @@ class PaymentController extends Controller
     }
 
 
-    public function pay(Request $request)
-    {
-        $request->validate([
-            'payment_platform' => ['required']
+    public function pay(PaymentRequest $request){
+       
+        $paymentPlatform = $this->paymentPlatformResolver
+        ->resolveService($request->paymentmethod);
+        session()->put('paymentPlatformId', $request->paymentmethod);
+        $shopping_cart = ShoppingCart::get_the_session_shopping_cart();
+        $total_price = $shopping_cart->total_price();
+        $iso = Setting::find(1)->pluck('iso');
+        $request->merge([
+            'value' => $total_price,
+            'currency' => $iso[0],
         ]);
-
-           $paymentPlatform = $this->paymentPlatformResolver
-           ->resolveService($request->payment_platform);
-           session()->put('paymentPlatformId', $request->payment_platform);
-           // if ($request->user()->hasActiveSubscription()) {
-           //     $request->value = round($request->value * 0.9, 2);
-           // }
-          /*  $shopping_cart = ShoppingCart::get_the_session_shopping_cart();
-           $total_price = $shopping_cart->total_price();
-           $iso = Setting::find(1)->pluck('iso');
-           $request->merge([
-               'value' => $total_price,
-               'currency' => $iso[0],
-           ]); */
-           return $paymentPlatform->handlePayment($request);
+        return $paymentPlatform->handlePayment($request);
     }
 
     public function approval(){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -81,5 +82,38 @@ class ProfileController extends Controller
     public function destroy(Profile $profile)
     {
         //
+    }
+
+    public function updateProfileImage(Request $request)
+    {
+        $request->validate([
+            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $user = Auth::user();
+        $profile = $user->profile;
+
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/image');
+            $image->move($destinationPath, $name);
+
+            // Opcional: eliminar la imagen anterior
+            if ($profile->image) {
+                $oldImagePath = public_path('/image/' . $profile->image);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
+
+            // Actualizar perfil con el nuevo nombre de la imagen
+            $profile->image = $name;
+            $profile->save();
+
+            return response()->json(['success' => true, 'image_url' => asset('image/' . $name)]);
+        }
+
+        return response()->json(['success' => false]);
     }
 }

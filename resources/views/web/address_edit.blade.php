@@ -2,12 +2,12 @@
 @section('content_tab')
 <div class="col-lg-9">
     <div class="myaccount-content">
-        <h3>Billing Address</h3>
+        <h3>Dirección de Envio</h3>
         <address>
             <p><strong>{{$user->name}} {{$user->surnames}}</strong></p>
-            <p>{{$profile->address}} <br>
+            <p>Dirección: {{$profile->address}} <br>
             </p>
-            <p>Mobile: {{$profile->phone}}</p>
+            <p>Celular de contacto: {{$profile->phone}}</p>
         </address>
         <button class="check-btn sqr-btn" data-toggle="modal" data-target="#modal-default">
           <i class="fa fa-edit"></i>

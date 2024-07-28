@@ -47,6 +47,10 @@ Route::resource('shopping_cart_detail', 'ShoppingCartDetailController')->only([
     Route::get('cambiar_contrasena', [MyAccountController::class, 'change_password'])->name('web.change_password');
     Route::put('update_profile/{profile}/update', [ProfileController::class, 'update'])->name('update_profile');
 
+    Route::put('update_client/{user}/update', [UserController::class, 'update_client'])->name('web.update_client');
+    Route::post('/profile/image', [ProfileController::class, 'updateProfileImage'])->name('update_profile_image');
+    Route::put('update_password/{user}/update', [UserController::class, 'update_password'])->name('web.update_password');    
+
 //============================== fin =====================================//
 
 Route::put('orders_update/{id}', [OrderController::class, 'orders_update'])->name('orders_update');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Client\ChangePasswordRequest;
 use App\Notifications\PushNotification;
 use Illuminate\Http\Request;
 use App\User;
@@ -92,10 +93,20 @@ class UserController extends Controller
 
     public function sendPushNotification()
     {
-        dd('hola');
         $user = User::find(1); // Reemplaza esto con el usuario al que deseas enviar la notificación
         $notification = new PushNotification();
         $user->notify($notification);
         return back()->with('success', 'Notificacion enviada');
+    }
+
+    public function update_client(Request $request, User $user){
+        $user->update_client($request);
+        return back();
+    }
+    public function update_password(ChangePasswordRequest $request, User $user){
+        $user->update([
+            'password' => Hash::make($request->password)
+        ]);
+        return back();
     }
 }

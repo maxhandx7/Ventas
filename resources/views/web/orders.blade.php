@@ -22,7 +22,7 @@
                                 <td>{{ $order->id }}</td>
                                 <td>{{ $order->order_date }}</td>
                                 <td>{{ $order->shipping_status() }}</td>
-                                <td>{{ number_format($order->total()) }}</td>
+                                <td>${{ number_format($order->total()) }}</td>
                                 <td><a href="cart.html" class="check-btn sqr-btn ">ver</a></td>
                             </tr>
                             @empty

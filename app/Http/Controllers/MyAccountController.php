@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\PaymentPlatform;
+use App\Product;
+use App\Setting;
 use App\ShoppingCart;
 use Illuminate\Http\Request;
 
@@ -14,17 +17,16 @@ class MyAccountController extends Controller
     }
     public function myAccount()
     {
-        return view('web.myAccount');
+        return view('web.account_info_main');
     }
     public function checkout(){
         $shopping_cart = ShoppingCart::get_the_session_shopping_cart();
         $products =$shopping_cart->shopping_cart_details;
-        /* $subtotal = $shopping_cart->subtotal(); */
-/*         $tax = Setting::find(1)->pluck('tax');*/
-        $paymentPlatforms = PaymentPlatform::all(); 
-        
+        $subtotal = $shopping_cart->subtotal(); 
+        $tax = Setting::find(1)->pluck('tax');
+        $paymentPlatforms = PaymentPlatform::all();
 
-        return view('web.checkout', compact('products', 'paymentPlatforms'));
+        return view('web.checkout', compact('paymentPlatforms','products','subtotal', 'tax'));
     }
     public function orders(){
         $orders = auth()->user()->orders;

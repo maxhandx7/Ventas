@@ -7,33 +7,61 @@
     </div>
     <div class="cart-total-price">
         <span>total</span>
-       ${{number_format($shopping_cart->total_price())}}
+        ${{number_format($shopping_cart->subtotal())}}
     </div>
     <ul class="cart-list">
+        @if ($shopping_cart->has_products())
+            @foreach ($shopping_cart->shopping_cart_details as $shopping_cart_detail)
+                <li>
+                    <div class="cart-img">
+                        <a href="{{route('web.productsDetails', $shopping_cart_detail->product)}}"><img src="{{$shopping_cart_detail->product->images->pluck('url')[0]}}" alt="{{$shopping_cart_detail->product->name}}"></a>
 
-        @foreach ($shopping_cart->shopping_cart_details as $shopping_cart_detail)
-        <li>
-            <div class="cart-img">
-                <a href="{{route('web.productsDetails', $shopping_cart_detail->product)}}"><img src="{{$shopping_cart_detail->product->images->pluck('url')[0]}}" alt="{{$shopping_cart_detail->product->name}}"></a>
-            </div>
-            <div class="cart-info">
-                <h4><a href="{{route('web.productsDetails', $shopping_cart_detail->product)}}">{{$shopping_cart_detail->product->name}}</a></h4>
-                <span>$ {{number_format($shopping_cart_detail->product->sell_price)}}</span>
-            </div>
-            <div class="del-icon">
-               <a href="{{route('shopping_cart_details.destroy',$shopping_cart_detail)}}" style="text-decoration: none"><i class="fa fa-times"></i></a> 
-               <strong class="float-right" style="color: black"> x{{$shopping_cart_detail->quantity}}</strong>
-            </div>
-        </li>
-        @endforeach
+                        
+                    </div>
+                    <div class="cart-info">
+                        <h4><a href="{{route('web.productsDetails', $shopping_cart_detail->product)}}">{{$shopping_cart_detail->product->name}}</a></h4>
+                                <span>
+                                    {{-- @if ($shopping_cart_detail->product->has_promotions())
+                                        ${{$shopping_cart_detail->product->discountedPrice}}
+                                        <del>${{$shopping_cart_detail->product->sell_price}}</del>
+                                    @else
+                                        ${{$shopping_cart_detail->product->sell_price}}
+                                    @endif --}}
 
- 
+                                    <strong class="float-right" style="color: black"> x{{$shopping_cart_detail->quantity}}</strong>
+                                
+
+                                </span>
+                            
+                    </div>
+                    <div class="del-icon">
+                        <a href="{{route('shopping_cart_details.destroy',$shopping_cart_detail)}}">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </div>
+                </li>
+            @endforeach
+        @endif
+        
+
         <li class="mini-cart-price">
             <span class="subtotal">subtotal : </span>
-            <span class="subtotal-price">$ {{number_format($shopping_cart->total_price())}}</span>
+            <span class="subtotal-price">${{number_format( $shopping_cart->subtotal())}}</span>
         </li>
-        <li class="checkout-btn">
-            <a href="#">checkout</a>
-        </li>
+
+        <div class="row">
+            @if ($shopping_cart->has_products())
+            <div class="col">
+                <li class="checkout-btn">
+                    <a href="{{route('web.checkout')}}">Pagar</a>
+                </li>
+            </div>
+            <div class="col">
+                <li class="checkout-btn">
+                    <a href="{{route('web.cart')}}">Carrito</a>
+                </li>
+            </div> 
+            @endif
+        </div>
     </ul>
 </div>

@@ -1,5 +1,5 @@
   @extends('layouts.web')
-  @section('meta_description', '')
+  @section('meta_description', $business->description)
   @section('title', $business->name. " | Login")
   @section('styles')
 

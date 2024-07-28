@@ -32,4 +32,5 @@ class Subcategory extends Model
             'description'=> $request->description            
         ]);
     }
+
 }

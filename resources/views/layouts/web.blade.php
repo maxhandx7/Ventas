@@ -1,7 +1,14 @@
+<?php
+  $exibirModal = false;
+  if(!isset($_COOKIE["mostrarModal"]))
+  {
+    $expirar = 3600;
+    setcookie('mostrarModal', 'SI', (time() + $expirar));
+    $exibirModal = true;
+  }
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="es">
-
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,6 +82,7 @@
     {!! Html::style('bootstrap_star_rating/css/star-rating.css') !!}
     {!! Html::style('bootstrap_star_rating/themes/krajee-fa/theme.css') !!}
     @yield('styles')
+    @stack('styles')
 </head>
 
 <body>
@@ -423,7 +431,7 @@
                                         <ul>
                                             <li class="active"><a href="{{url('/')}}"><i class="fa fa-home"></i>Home </a>
                                             </li>
-                                            <li class="static"><a href="{{route('web.shopGrid')}}">Productos </a>
+                                            <li class="static"><a href="{{route('web.shopGrid')}}">Tienda </a>
                                             </li>
                                             <li><a href="{{route('web.aboutUs')}}">Sobre Nosotros </a>
                                             </li>
@@ -634,7 +642,20 @@
     {!! Html::script('bootstrap_star_rating/js/locales/es.js') !!}
     {!! Html::script('bootstrap_star_rating/themes/krajee-fa/theme.js') !!}
 
+  
+
     @yield('scripts')
+    @stack('scripts')
+
+    
+    @if ($exibirModal === true)
+    <script>
+        $(document).ready(function()
+        {
+          $("#modalInicio").modal("show");
+        });
+    </script>
+    @endif  
 </body>
 
 

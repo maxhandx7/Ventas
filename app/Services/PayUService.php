@@ -7,6 +7,7 @@ use App\Traits\ConsumesExternalServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Order;
+use App\ShoppingCart;
 
 class PayUService
 {
@@ -61,6 +62,8 @@ class PayUService
             'payu_email' => 'required',
         ]);
 
+
+        
         $payment = $this->createPayment(
             $request->value,
             $request->currency,
@@ -94,8 +97,9 @@ class PayUService
         //
     }
 
-    public function createPayment($value, $currency, $name, $email, $card, $cvc, $year, $month, $network, $installments = 1, $paymentCountry = 'PE')
+    public function createPayment($value, $currency, $name, $email, $card, $cvc, $year, $month, $network, $installments = 1, $paymentCountry = 'CO')
     {
+       
         return $this->makeRequest(
             'POST',
             '/payments-api/4.0/service.cgi',

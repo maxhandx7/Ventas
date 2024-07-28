@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'surnames', 'email', 'password',
     ];
 
     /**
@@ -61,5 +61,12 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function update_client($request){
+        $this->update($request->all());
+        $this->profile()->update([
+            'cc'=>$request->cc,
+            'rut'=>$request->rut,
+        ]);
+    }
   
 }

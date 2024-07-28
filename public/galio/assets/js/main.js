@@ -517,7 +517,7 @@
 	});
 
 	// nice select active js
-	$('select').niceSelect();
+	// $('select').niceSelect();
 
 	// modal fix
 	$('.modal').on('shown.bs.modal', function (e) {
@@ -599,24 +599,28 @@
 	// google map
 	var map_id = $('#map_content');
 	if (map_id.length > 0) {
-		var $lat = map_id.data('lat'),
-			$lng = map_id.data('lng'),
+		var $lat = parseFloat(map_id.data('lat')),
+			$lng = parseFloat(map_id.data('lng')),
 			$zoom = map_id.data('zoom'),
 			$maptitle = map_id.data('maptitle'),
 			$mapaddress = map_id.data('mapaddress'),
 			mymap = L.map('map_content').setView([$lat, $lng], $zoom);
-
-		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+			
+			L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 			attribution: 'Map',
+			tileSize: 512,
 			maxZoom: 18,
-			id: 'mapbox.streets',
-			scrollWheelZoom: false,
-			accessToken: 'pk.eyJ1Ijoic2hha2lsYWhtbWVlZCIsImEiOiJjamk4anF6NDgwMGd5M3BwM2c4eHU5dmIzIn0.yBLGUAB8kV1I1yGGonxzzg'
-		}).addTo(mymap);
+			zoomOffset: -1,
+			id: 'mapbox/streets-v11',
+			accessToken: 'pk.eyJ1IjoiY3Jpc3RpYW5jYTE1NTQiLCJhIjoiY2ttbmtmbnU5MDgwbzJvbGhycnhyb2lnbCJ9.lyVChARjuCj-saQixP9YKw'
+			}).addTo(mymap);
 
 		var marker = L.marker([$lat, $lng]).addTo(mymap);
+		
 		marker.bindPopup('<b>' + $maptitle + '</b><br>' + $mapaddress).openPopup();
 		mymap.scrollWheelZoom.disable();
+
+		
 	}
 
 }(jQuery));
