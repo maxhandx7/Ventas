@@ -37,7 +37,6 @@ class AppServiceProvider extends ServiceProvider
         } else {
             $saludo = 'Buenas noches,';
         }
-
         if (Schema::hasTable('businesses')) {
             $business = Business::get();
             if ($business->isNotEmpty()) {

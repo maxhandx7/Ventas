@@ -3,6 +3,7 @@
 use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShoppingCartDetailController;
 use App\Http\Controllers\UserController;
@@ -26,6 +27,7 @@ Route::get('mi_cuenta', 'MyAccountController@myAccount')->name('web.myAccount');
 Route::get('producto/{product}', 'WebController@productsDetails')->name('web.productsDetails');
 Route::get('productos', 'WebController@shopGrid')->name('web.shopGrid');
 Route::get('/', 'WebController@welcome')->name('web.welcome');
+Route::get('mis_ordenes/pedido/{order}', [MyAccountController::class, 'order_details'])->name('web.order_details');
 
 
 Route::resource('shopping_cart_detail', 'ShoppingCartDetailController')->only([
@@ -35,9 +37,7 @@ Route::resource('shopping_cart_detail', 'ShoppingCartDetailController')->only([
     Route::post('add_to_shopping_cart/{product}/store', [ShoppingCartDetailController::class, 'store'])->name('shopping_cart_details.store');
     Route::get('add_a_product_to_the_shopping_cart/{product}/store', [ShoppingCartDetailController::class, 'store_a_product'])->name('store_a_product');
     route::get('shopping_cart_detail/{shopping_cart_detail}/destroy', [ShoppingCartDetailController::class, 'destroy'])->name('shopping_cart_details.destroy');
-  /*   
-    Route::post('shopping_cart/update', [ShoppingCart::class, 'update'])->name('shopping_cart.update');
-    Route::get('login_error', [WebController::class, 'login_error'])->name('web.login_error'); */
+
     Route::post('shopping_cart/update', 'ShoppingCartController@update')->name('shopping_cart.update');
 
     Route::get('mis_ordenes', 'MyAccountController@orders')->name('web.orders');
@@ -78,6 +78,8 @@ Route::resource('printers', 'PrinterController')->names('printers')->only([
 ]);
 
 Route::resource('users', 'UserController')->names('users');
+
+Route::resource('posts', 'PostController')->names('posts');
 
 Route::resource('roles', 'RoleController')->names('roles')->except([
     'create',

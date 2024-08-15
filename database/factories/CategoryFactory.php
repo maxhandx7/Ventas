@@ -4,11 +4,17 @@
 
 use App\Category;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 $factory->define(Category::class, function (Faker $faker) {
+    $name = $this->faker->unique()->word();
     return [
-        'name' => $faker->unique()->word,
-        'slug' => $faker->unique()->slug,
+        'name' => $name,
+        'slug' => Str::slug($name),
+        'category_type' => $faker->randomElement([
+            'PRODUCT',
+            'POST'
+        ]),
         'description' => $faker->sentence($nbWords = 360, $variableNbWords = true),
         'icon' => $faker->randomElement(
             [

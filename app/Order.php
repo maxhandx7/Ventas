@@ -41,12 +41,13 @@ class Order extends Model
     }
     public static function my_store(){
         $shopping_cart = ShoppingCart::get_the_session_shopping_cart();
+        $tax = Setting::find(1)->pluck('tax');
         $order = self::create([
             'shipping_status'=> 'PENDING',
             'payment_status'=> 'PAID',
             'user_id' => auth()->user()->id,
             'order_date' => Carbon::now(),
-            'tax'=> '0.19',
+            'tax'=> $tax[0],
         ]);
         $order->add_order_details($shopping_cart);
     }

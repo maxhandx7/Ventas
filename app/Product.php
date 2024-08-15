@@ -19,7 +19,7 @@ class Product extends Model
         'long_description',
         'sell_price',
         'status',
-        'subcategory_id',
+        'category_id',
         'provider_id',
     ];
 
@@ -29,9 +29,9 @@ class Product extends Model
     public function subtract_stock($quantity){
         $this->decrement('stock', $quantity);
     }
-    public function subcategory()
+    public function category()
     {
-        return $this->belongsTo(Subcategory::class);
+        return $this->belongsTo(Category::class);
     }
     public function provider()
     {
@@ -57,7 +57,7 @@ class Product extends Model
             'short_description' => $request->short_description,
             'long_description' => $request->long_description,
             'sell_price' => $request->sell_price,
-            'subcategory_id' => $request->subcategory_id,
+            'category_id' => $request->category_id,
             'provider_id' => $request->provider_id,
         ]);
         $product->tags()->attach($request->get('tags'));
@@ -74,7 +74,7 @@ class Product extends Model
             'short_description' => $request->short_description,
             'long_description' => $request->long_description,
             'sell_price' => $request->sell_price,
-            'subcategory_id' => $request->subcategory_id,
+            'category_id' => $request->category_id,
             'provider_id' => $request->provider_id,
         ]);
         $this->tags()->sync($request->get('tags'));

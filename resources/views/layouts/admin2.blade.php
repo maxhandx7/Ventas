@@ -17,8 +17,8 @@
   <div class="container-scroller">
     <nav id="navbar" class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="/"><img src="{{asset('melody/images/logo.svg')}}" alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="/"><img src="{{asset('melody/images/logo-mini.svg')}}" alt="logo" /></a>
+        <a class="navbar-brand brand-logo" href="/home"><img src="{{asset('melody/images/logo.svg')}}" alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="/home"><img src="{{asset('melody/images/logo-mini.svg')}}" alt="logo" /></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -51,7 +51,7 @@
             <button onclick="cambiarTema()" class="btn btn-rounded"><i id="dl-icon" class="fa fa-moon"></i></button>
           </li>
           <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="/" data-toggle="dropdown" id="profileDropdown">
+            <a class="nav-link dropdown-toggle" href="/home" data-toggle="dropdown" id="profileDropdown">
               <img src="{{asset('image/'.Auth::user()->image)}}" alt="profile" />
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">

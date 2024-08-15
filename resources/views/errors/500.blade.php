@@ -30,7 +30,7 @@
                 <h1 class="display-1 mb-0">500</h1>
               </div>
               <div class="col-lg-6 error-page-divider text-lg-left pl-lg-4">
-                <h2><i class="far fa-frown"> LO SIENTO!</h2>
+                <h2>LO SIENTO!</h2>
                 <h3 class="font-weight-light">Error Interno del Servidor!</h3>
               </div>
             </div>
@@ -41,7 +41,7 @@
             </div>
             <div class="row mt-5">
               <div class="col-12 mt-xl-2">
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"><i class="fa fa-code text-dark"></i>&nbsp;<b><a style="text-decoration: none; color:rgb(17, 15, 129);" href="https://afdeveloper.com/" target="_blank">&nbsp;AF</a> </b> </span>
+                <span class="float-none float-sm-center d-block mt-1 mt-sm-0 text-center"><i class="fa fa-code text-dark"></i>&nbsp;<b><a style="text-decoration: none; color:rgb(58, 63, 81);" href="https://afdeveloper.com/" target="_blank">&nbsp;AF</a> </b> </span>
               </div>
             </div>
           </div>

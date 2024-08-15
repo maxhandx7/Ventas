@@ -23,7 +23,7 @@
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Panel administrador</a></li>
+                <li class="breadcrumb-item"><a href="/home">Panel administrador</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Configuración de impresora</li>
             </ol>
         </nav>

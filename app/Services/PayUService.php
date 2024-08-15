@@ -76,6 +76,7 @@ class PayUService
             $request->payu_network,
         );
 
+
         if ($payment->transactionResponse->state === "APPROVED") {
             $name = $request->payu_name;
 

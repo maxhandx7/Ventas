@@ -21715,7 +21715,7 @@ input:focus {
   font-family: "PTSans", sans-serif;
   font-weight: 400;
   padding: 0;
-  width: 255px;
+  width: auto;
   z-index: 11;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
@@ -22031,7 +22031,7 @@ input:focus {
     top: 70px;
     bottom: 0;
     overflow: auto;
-    right: -255px;
+    right: -500px;
     -webkit-transition: all 0.25s ease-out;
     -o-transition: all 0.25s ease-out;
     transition: all 0.25s ease-out;
@@ -22265,7 +22265,7 @@ input:focus {
 }
 
 .navbar.default-layout-navbar .navbar-menu-wrapper .navbar-nav .nav-item {
-  margin-left: 1rem;
+  margin-left: 0rem;
   margin-right: 1rem;
 }
 
@@ -33530,7 +33530,7 @@ div.tagsinput span.tag a {
   background: #ffffff;
   display: block;
   margin: 0.5em;
-  min-height: 24em;
+  min-height: 28em;
   overflow: hidden;
   position: relative;
   width: auto;
@@ -33777,9 +33777,8 @@ div.tagsinput span.tag a {
 /* === Landing screens === */
 /* Auth */
 .auth .login-half-bg {
-  background: url("../images/logo/comercial.webp");
+  background: url("../images/auth/login-bg.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .auth .register-half-bg {
@@ -34115,7 +34114,7 @@ div.tagsinput span.tag a {
 
 .profile-page .profile-header {
   width: 100%;
-  background: url("http://www.urbanui.com/") no-repeat center center;
+  background: url("") no-repeat center center;
   background-size: cover;
   padding: 60px 0;
   border-radius: 5px;

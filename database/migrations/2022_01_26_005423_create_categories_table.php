@@ -17,8 +17,14 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->string('icon');
+            $table->string('icon')->nullable();
             $table->text('description')->nullable();
+
+            $table->enum('category_type',['PRODUCT','POST'])->nullable();
+            
+            $table->unsignedBigInteger('parent_id')->nullable();
+            
+            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
