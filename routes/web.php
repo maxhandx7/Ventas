@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -92,6 +93,7 @@ Route::resource('clients', 'ClientController')->names('clients');
 Route::resource('products', 'ProductController')->names('products');
 
 Route::post('upload/product/{id}/image', 'ProductController@upload_image')->name('upload.product.image');
+Route::post('upload_image/{id}', [AjaxController::class, 'upload_image'])->name('upload.image');
 
 Route::resource('providers', 'ProviderController')->names('providers');
 Route::resource('purchases', 'PurchaseController')->names('purchases')->except([
@@ -123,13 +125,13 @@ Route::get('get_products_by_subcategory', 'AjaxController@get_products_by_subcat
 
 //subcategorias
 
-Route::resource('subcategories', 'SubcategoryController')
+/* Route::resource('subcategories', 'SubcategoryController')
     ->except(['edit', 'update', 'show'])
     ->names('subcategories');
 Route::put('category/{category}/subcategory/{subcategory}/update', 'SubcategoryController@update')->name('subcategories.update');
 
 Route::get('category/{category}/subcategory/{subcategory}', 'SubcategoryController@edit')->name('subcategories.edit');
-
+ */
 Route::resource('tags', 'TagController')
 ->except(['show'])
 ->names('tags');

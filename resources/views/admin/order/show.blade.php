@@ -1,5 +1,5 @@
 @extends('layouts.admin2')
-@section('title','Detalles de orden')
+@section('title','Detalles de pedido')
 @section('styles')
 
 @endsection
@@ -16,13 +16,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Detalles de orden
+            Detalles de pedido
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
                 <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('orders.index')}}">Ordenes</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Detalles de orden</li>
+                <li class="breadcrumb-item"><a href="{{route('orders.index')}}">Pedidos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Detalles de pedido</li>
             </ol>
         </nav>
     </div>
@@ -64,14 +64,14 @@
                           <br>
                           <b>Order ID:</b> {{$order->code}}<br>
                           <b>Payment Due:</b> {{$order->payment_status}}<br>
-                          <b>Fecha de orden:</b> {{$order->order_date}}
+                          <b>Fecha de pedido:</b> {{$order->order_date}}
                         </div>
                         <!-- /.col -->
                       </div>
                       
                     <br>
                     <div class="form-group">
-                        <h4 class="card-title">Detalles de orden</h4>
+                        <h4 class="card-title">Detalles de pedido</h4>
                         <div class="table-responsive col-md-12">
                             <table id="saleDetails" class="table">
                                 <thead>

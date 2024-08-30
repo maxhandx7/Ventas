@@ -7,6 +7,8 @@
 @section('preference')
 @endsection
 @section('content')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" rel="stylesheet">
+
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
@@ -70,6 +72,7 @@
 </div>
 @endsection
 @section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
 <script>
     function showInp(){
         getSelectValue = document.getElementById("type").value;
@@ -84,6 +87,7 @@
 </script>
 <script>
     $(document).ready(function () {
+        
         document.getElementById("parent_div").style.display = "none";
         document.getElementById("icon_div").style.display = "none";
         
@@ -99,6 +103,7 @@
 </script>
 <script>
     $(document).ready(function () {
+        $('.selectpicker').selectpicker();
         $('#parent_id').select2();
         $('#icon').select2();
     });

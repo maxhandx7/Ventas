@@ -25,7 +25,7 @@ class="treegrid-{{$subcategory_2->id}} treegrid-parent-{{$subcategory_1->id}}"
             ({{$item->item_numbers()}}) {{$item->counter_text()}}
         </label>
     </td>
-    <td>{{$item->description}}</td>
+    <td>{{ Str::words($item->description, 50, '...') }}</td>
     <td style="width: 20%;">
     <form method="POST" action="{{route('categories.destroy', $item)}}" id="delete-item_{{$item->id}}">
         {{ csrf_field() }}

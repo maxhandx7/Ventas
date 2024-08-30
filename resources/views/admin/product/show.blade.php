@@ -70,7 +70,7 @@
                                     Categoria
                                   </span>
                                   <span class="float-right text-muted">
-                                    {{$product->subcategory->name }}
+                                    {{$product->category->name }}
                                   </span>
                                 </p>
                                
@@ -120,7 +120,7 @@
                                         @endif
                                         <hr>
                                         <strong> <i class="fas fa-list mr-1"> Categoria </i> </strong>
-                                        <p class="text-muted"> {{$product->subcategory->name}} </p>
+                                        <p class="text-muted"> {{$product->category->name}} </p>
                                         <hr>
 
                                         <strong> <i class="fas fa-truck mr-1"> Proveedor </i> </strong>

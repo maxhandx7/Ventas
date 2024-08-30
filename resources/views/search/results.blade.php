@@ -74,7 +74,7 @@
 
                                     @endif
 
-                                    <td>{{$product->subcategory->name }}</td>
+                                    <td>{{$product->category->name }}</td>
 
                                     <td style="width: 100px;">
                                         {!! Form::open(['route'=>['products.destroy', $product], 'method'=>'DELETE', 'id'=>'delete-form']) !!}
@@ -139,42 +139,7 @@
                     </div>
                     @endif
 
-                    @if ($clients->count() > 0)
-                    <hr>
-                    <h4 class="card-title">Clientes</h4>
-                    <div class="table-responsive">
-                        <table  class="table table-warning">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Correo</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($clients as $client)
-                                <tr>
-                                    <th scope="row">{{$client->id }}</th>
-                                    <td> <a href="{{ route('clients.show', $client )  }}"> {{$client->name }} </a></td>
-                                    <td>{{$client->email }}</td>
-                                    <td style="width: 110px;">
-                                        {!! Form::open(['route'=>['clients.destroy', $client], 'method'=>'DELETE', 'id'=>'delete-form', 'id'=>'delete-form']) !!}
-                                        <a class="btn btn-outline-info" href="{{ route('clients.edit', $client)}}" title="Editar">
-                                            <i class="far fa-edit"></i>
-                                        </a>
-
-                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar" onclick="return confirmDelete()">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button>
-                                        {!! Form::close() !!}
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    @endif
+                    
 
                     @if ($providers->count() > 0)
                     <hr>
@@ -217,7 +182,7 @@
                         </table>
                     </div>
                     @endif
-                    @if ($products->count() === 0 && $users->count() === 0 && $clients->count() === 0 && $providers->count() === 0)
+                    @if ($products->count() === 0 && $users->count() === 0 && $providers->count() === 0)
                     <div class="alert alert-fill-danger">
                     <i class="fa fa-exclamation-triangle"></i>    
                     No hubo resultados para "{{$query}}"</div>

@@ -17,8 +17,7 @@ class SearchController extends Controller
                    ->orWhere('code', 'LIKE', '%' . $query . '%')
                    ->get();
         $users = User::where('name', 'LIKE', '%' . $query . '%')->get();
-        $clients = Client::where('name', 'LIKE', '%' . $query . '%')->get();
         $providers = Provider::where('name', 'LIKE', '%' . $query . '%')->get();
-        return view('search.results', compact('products', 'users', 'clients', 'providers', 'query'));
+        return view('search.results', compact('products', 'users',  'providers', 'query'));
     }
 }

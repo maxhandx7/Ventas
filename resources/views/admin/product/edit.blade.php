@@ -84,8 +84,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="subcategory_id">Subcategoría</label>
-                            <select class="form-control js-example-basic-single" name="subcategory_id" id="subcategory_id"
+                            <label for="category_id">Subcategoría</label>
+                            <select class="form-control js-example-basic-single" name="category_id" id="category_id"
                                 style="width: 100%">
                                 <option value="0" disabled selected> --Seleccione una categoria-- </option>
                             </select>
@@ -169,21 +169,21 @@
     </script>
 
     <script>
-        var subcategory_id = $('#subcategory_id');
+        var category_id = $('#category_id');
         var category = $('#category');
 
         category.change(function (){
             $.ajax({
-                url:"{{route('get_subcategories')}}",
+                url:"{{route('get_categories')}}",
                 method: 'GET',
                 data:{
                     category: category.val(),
                 },
                 success: function(data){
-                    subcategory_id.empty();
-                    subcategory_id.append('<option disable selected>-- selecciona una categoria ---</ option>');
+                    category_id.empty();
+                    category_id.append('<option disable selected>-- selecciona una categoria ---</ option>');
                     $.each(data, function(index, element){
-                        subcategory_id.append('<option value="'+element.id+'">'+element.name+'"</option>"');
+                        category_id.append('<option value="'+element.id+'">'+element.name+'"</option>"');
                     });
 
 

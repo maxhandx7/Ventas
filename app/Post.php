@@ -42,11 +42,11 @@ class Post extends Model
     }
     public function my_update($request)
     {
-
         if ($request->published_at) {
             $this->update($request->all() + [
                 'slug' => Str::slug($request->title, '_'),
             ]);
+            $this->tags()->sync($request->get('tags'));
         } else {
             $request->merge([
                 'published_at' => Carbon::now(),
@@ -54,15 +54,12 @@ class Post extends Model
             $this->update($request->all() + [
                 'slug' => Str::slug($request->title, '_'),
             ]);
+            $this->tags()->sync($request->get('tags'));
         }
     }
 
-    public function status(){
-        
-        
-        
-         
-        
+    public function status()
+    {
         switch ($this->status) {
             case 'DRAFT':
                 return [
@@ -84,10 +81,12 @@ class Post extends Model
                     'color' => 'primary',
                     'text' => 'programado'
                 ];
-            
+
             default:
-                # code...
-                break;
+                return [
+                    'color' => 'danger',
+                    'text' => 'Error'
+                ];
         }
     }
 }

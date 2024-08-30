@@ -44,8 +44,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="subcategory_id">Subcategoría</label>
-                            <select class="form-control js-example-basic-single" name="subcategory_id" id="subcategory_id"
+                            <label for="category_id">Subcategoría</label>
+                            <select class="form-control js-example-basic-single" name="category_id" id="category_id"
                                 style="width: 100%">
                                 <option selected disabled value="">Seleccione Subcategoria</option>
                                 @foreach ($categories as $category)

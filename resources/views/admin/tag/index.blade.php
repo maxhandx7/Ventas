@@ -48,22 +48,14 @@
                                     @foreach ($tags as $tag)
                                         <tr>
                                             <th scope="row">{{ $tag->id }}</th>
-
-                                            <td> {{ $tag->name }}
-                                            </td>
-
-
-                                            <td>{{ $tag->description }}</td>
-
-
-
+                                            <td> {{ $tag->name }}</td>
+                                            <td> {{ Str::words($tag->description, 50, '...') }}</td>
                                             <td style="width: 200px;">
                                                 {!! Form::open(['route' => ['tags.destroy', $tag], 'method' => 'DELETE', 'id' => 'delete-form']) !!}
-                                                <a class="btn btn-outline-info"
-                                                    href="{{ route('tags.edit', $tag) }}" title="Editar">
+                                                <a class="btn btn-outline-info" href="{{ route('tags.edit', $tag) }}"
+                                                    title="Editar">
                                                     <i class="far fa-edit"></i>
                                                 </a>
-
                                                 <button class="btn btn-outline-danger delete-confirm" type="submit"
                                                     title="Eliminar" onclick="return confirmDelete()">
                                                     <i class="far fa-trash-alt"></i>

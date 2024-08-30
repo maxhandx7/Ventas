@@ -1,5 +1,5 @@
-@extends('layouts.admin')
-@section('title','Categoría' .$category->name)
+@extends('layouts.admin2')
+@section('title','Categoría ' .$category->name)
 @section('styles')
 @endsection
 @section('create')
@@ -46,7 +46,7 @@
                                 <tr>
                                     <th scope="row">{{$product->id}}</th>
                                     <td>
-                                        <a target="_blank" title="Vista previa" href="{{route('web.product_details',$product)}}">{{$product->name}}</a>
+                                        <a target="_blank" title="Vista previa" href="{{route('web.productsDetails',$product)}}">{{$product->name}}</a>
                                     </td>
                                     <td>{{$product->sell_price}}</td>
                                     <td>{{$product->stock}}</td>

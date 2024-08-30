@@ -109,4 +109,23 @@ class Product extends Model
     public function get_products_active(){
         return self::where('status', 'ACTIVE')->orderBy('id', 'desc');
     }
+
+
+    public function product_status(){
+        switch ($this->status) {
+            case 'DRAFT':
+                return 'BORRADOR';
+            case 'SHOP':
+                return 'TIENDA';
+            case 'POS':
+                return 'PUNTO DE VENTA';
+            case 'BOTH':
+                return 'AMBOS';
+            case 'DISABLED':
+                return 'DESACTIVADO';
+            default:
+                # code...
+                break;
+        }
+    }
 }

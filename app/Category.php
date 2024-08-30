@@ -10,12 +10,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Category extends Model
 {
 
-
+    use HasRecursiveRelationships;
     protected $fillable = [
         'name',
         'slug',
         'icon',
         'description',
+        'category_type',
         'parent_id',
         'category_id',
     ];
@@ -36,17 +37,6 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id');
     }
 
-    // =============> SUBCATEGORIA
-    // public function categories()
-    // {
-    //     return $this->hasMany(Category::class);
-    // }
-
-    // public function childrenCategories()
-    // {
-    //     return $this->hasMany(Category::class)->with('categories');
-    // }
-    // =============> FIN DE SUBCATEGORIA
 
     public function has_subcategory(){
         if ($this->subcategories()->count() > 0) {
@@ -57,6 +47,7 @@ class Category extends Model
         
     }
     public function my_store($request, $type){
+
         if ($type == 'PRODUCT') {
             self::create($request->all()+[
                 'slug' => Str::slug($request->name, '_'),

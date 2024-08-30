@@ -1,5 +1,5 @@
 @extends('layouts.admin2')
-@section('title', 'Gestión de Ordenes')
+@section('title', 'Gestión de Pedidos')
 @section('styles')
 @endsection
 
@@ -11,12 +11,12 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
-                Ordenes
+                Pedidos
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-custom">
                     <li class="breadcrumb-item"><a href="/home">Panel administrador</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Ordenes</li>
+                    <li class="breadcrumb-item active" aria-current="page">Pedidos</li>
                 </ol>
             </nav>
         </div>
@@ -25,7 +25,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h4 class="card-title">Ordenes</h4>
+                            <h4 class="card-title">Pedidos</h4>
 
                         </div>
                         <br>
