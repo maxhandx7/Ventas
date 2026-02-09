@@ -51,8 +51,9 @@
                                         @foreach ($products as $product)
                                             <tr>
                                                 <td class="py-1">
-                                                    <img src="{{ asset($product->images->count() > 0 ? $product->images->first()->url : 'image/system/default.jpg') }}"
-                                                        alt="{{ $product->name }}" style="width: 50px;">
+                                                    <img src="{{ (isset($product->images) && $product->images->isNotEmpty()) ? asset($product->images->first()->url) : asset('image/system/default.jpg') }}" 
+     alt="image" 
+     width="50">
                                                 </td>
                                                 <td> <a href="{{ route('products.show', $product) }}"> {{ $product->name }}
                                                     </a></td>
