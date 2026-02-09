@@ -11,11 +11,15 @@ class Tag extends Model
         'name', 'description', 'slug',
     ];
 
-    public function products(){
+    /* public function products(){
         return $this->belongsToMany(Product::class);
     }
+ */
 
-
+    public function products()
+{
+    return $this->morphedByMany(Product::class, 'taggable');
+}
     public function my_store($request){
         self::create([
             'name'=> $request->name,

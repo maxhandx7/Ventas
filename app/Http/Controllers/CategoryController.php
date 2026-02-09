@@ -41,7 +41,7 @@ class CategoryController extends Controller
     {
         $type = $request->type;
         $category->my_store($request, $type);
-        return redirect()->route('categories.index')->with('toast_success', '¡Categoría creada con éxito!');
+        return redirect()->route('categories.index')->with('success', '¡Categoría creada con éxito!');
     }
     public function show(Category $category)
     {
@@ -58,7 +58,7 @@ class CategoryController extends Controller
     public function update(UpdateRequest $request, Category $category)
     {
         $category->my_update($request);
-        return redirect()->route('categories.index')->with('toast_success', '¡Categoría actualizada con éxito!');
+        return redirect()->route('categories.index')->with('success', '¡Categoría actualizada con éxito!');
     }
     public function destroy(Category $category)
     {
@@ -68,6 +68,6 @@ class CategoryController extends Controller
             // report($e);
             return redirect()->back()->with('toast_error', '¡La categoría tiene productos asociados!');
         }
-        return redirect()->route('categories.index')->with('toast_success', '¡Categoría eliminada con éxito!');
+        return redirect()->route('categories.index')->with('success', '¡Categoría eliminada con éxito!');
     }
 }

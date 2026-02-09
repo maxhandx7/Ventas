@@ -41,7 +41,7 @@ class ProductController extends Controller
            $product->my_store($request);
             return redirect()->route('products.index')->with('success', 'Producto creado con éxito');
         } catch (\Exception $th) {
-            return redirect()->back()->with('error', 'Ocurrió un error al crear el producto.');
+            return redirect()->back()->with('error', 'Ocurrió un error al crear el producto.'. $th->getMessage());
         }
     }
 

@@ -22,6 +22,8 @@
                 </ol>
             </nav>
         </div>
+        <br>
+        @include('errors.message')
         {!! Form::open(['route' => 'products.store', 'method' => 'POST', 'files' => true]) !!}
         <div class="row">
             <div class="col-md-8 grid-margin stretch-card">
@@ -36,18 +38,8 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="category">Categoria</label>
-                            <select id="category" class="form-control js-example-basic-single">
+                            <select id="category" name="category_id" id="category_id" class="form-control js-example-basic-single">
                                 <option selected disabled value="">Seleccione Categoria</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="category_id">Subcategoría</label>
-                            <select class="form-control js-example-basic-single" name="category_id" id="category_id"
-                                style="width: 100%">
-                                <option selected disabled value="">Seleccione Subcategoria</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach

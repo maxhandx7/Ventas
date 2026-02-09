@@ -23,10 +23,12 @@ class Product extends Model
         'provider_id',
     ];
 
-    public function add_stock($quantity){
+    public function add_stock($quantity)
+    {
         $this->increment('stock', $quantity);
     }
-    public function subtract_stock($quantity){
+    public function subtract_stock($quantity)
+    {
         $this->decrement('stock', $quantity);
     }
     public function category()
@@ -43,9 +45,15 @@ class Product extends Model
         return $this->morphMany('App\Image', 'imageable');
     }
 
+    /*   public function tags()
+      {
+          return $this->belongsToMany(Tag::class);
+      } */
+
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        // Cambia belongsToMany por morphToMany
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 
     public function my_store($request)
@@ -106,12 +114,14 @@ class Product extends Model
         }
     }
 
-    public function get_products_active(){
+    public function get_products_active()
+    {
         return self::where('status', 'ACTIVE')->orderBy('id', 'desc');
     }
 
 
-    public function product_status(){
+    public function product_status()
+    {
         switch ($this->status) {
             case 'DRAFT':
                 return 'BORRADOR';
