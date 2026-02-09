@@ -1,5 +1,5 @@
 @extends('layouts.admin2')
-@section('title','Gestión de Productos')
+@section('title', 'Gestión de Productos')
 @section('styles')
 @endsection
 
@@ -8,102 +8,107 @@
 @section('preference')
 @endsection
 @section('content')
-<div class="content-wrapper">
-    <div class="page-header">
-        <h3 class="page-title">
-            Administrar Productos
-        </h3>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-custom">
-                <li class="breadcrumb-item"><a href="/home">Panel administrador</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Productos</li>
-            </ol>
-        </nav>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body ">
-                    <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Productos</h4>
-                        <div class="btn-group">
-                            <a href="{{route('products.create')}}" class="btn btn-success" type="button">
-                                <i class="fa fa-plus"></i>
-                                Agregar</a>
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                Administrar Productos
+            </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-custom">
+                    <li class="breadcrumb-item"><a href="/home">Panel administrador</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Productos</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body ">
+                        <div class="d-flex justify-content-between">
+                            <h4 class="card-title">Productos</h4>
+                            <div class="btn-group">
+                                <a href="{{ route('products.create') }}" class="btn btn-success" type="button">
+                                    <i class="fa fa-plus"></i>
+                                    Agregar</a>
+                            </div>
                         </div>
-                    </div>
-                    <br>
-                    @include('errors.message')
-                    <div class="table-responsive">
-                        @if($products->count())
-                        <table id="order-listing" class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th><i class="fa fa-image"></i></th> 
-                                    <th>Nombre</th>
-                                    <th>Stock</th>
-                                    <th>Estado</th>
-                                    <th>Categoria</th> 
-                                    <th style="width: 100px;">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($products as $product)
+                        <br>
+                        @include('errors.message')
+                        <div class="table-responsive">
+                            @if ($products->count())
+                                <table id="order-listing" class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th><i class="fa fa-image"></i></th>
+                                            <th>Nombre</th>
+                                            <th>Stock</th>
+                                            <th>Estado</th>
+                                            <th>Categoria</th>
+                                            <th style="width: 100px;">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($products as $product)
+                                            <tr>
+                                                <td class="py-1">
+                                                    <img src="{{ asset($product->images->count() > 0 ? $product->images->first()->url : 'image/system/default.jpg') }}"
+                                                        alt="{{ $product->name }}" style="width: 50px;">
+                                                </td>
+                                                <td> <a href="{{ route('products.show', $product) }}"> {{ $product->name }}
+                                                    </a></td>
+                                                <td>{{ $product->stock }}</td>
+                                                @if ($product->status == 'ACTIVE')
+                                                    <td>
+                                                        <a class="badge badge-success"
+                                                            href="{{ route('change.status.products', $product) }}"
+                                                            title="Activado">
+                                                            Activo<i class="fa fa-check"></i>
+                                                        </a>
 
-                                <tr>
-                                     <td class="py-1">
-                                        <img src="{{ asset($product->images->pluck('url')->first() ?? 'image/system/default.jpg') }}" alt="image" />
-                                    </td> 
-                                    <td> <a href="{{ route('products.show', $product )  }}"> {{$product->name }} </a></td>
-                                    <td>{{$product->stock }}</td>
-                                    @if ($product->status=='ACTIVE')
-                                    <td>
-                                        <a class="badge badge-success" href="{{ route('change.status.products', $product)}}" title="Activado">
-                                            Activo<i class="fa fa-check"></i>
-                                        </a>
+                                                    </td>
+                                                @else
+                                                    <td>
+                                                        <a class="badge badge-danger"
+                                                            href="{{ route('change.status.products', $product) }}"
+                                                            title="Desactivado">
+                                                            No activo
+                                                        </a>
 
-                                    </td>
+                                                    </td>
+                                                @endif
 
-                                    @else
-                                    <td>
-                                        <a class="badge badge-danger" href="{{ route('change.status.products', $product)}}" title="Desactivado">
-                                            No activo
-                                        </a>
+                                                <td>{{ $product->category->name }}</td>
 
-                                    </td>
+                                                <td style="width: 100px;">
+                                                    {!! Form::open(['route' => ['products.destroy', $product], 'method' => 'DELETE', 'id' => 'delete-form']) !!}
+                                                    <a class="btn btn-outline-info"
+                                                        href="{{ route('products.edit', $product) }}" title="Editar">
+                                                        <i class="far fa-edit"></i>
+                                                    </a>
 
-                                    @endif
-
-                                     <td>{{$product->category->name }}</td> 
-
-                                    <td style="width: 100px;">
-                                        {!! Form::open(['route'=>['products.destroy', $product], 'method'=>'DELETE', 'id'=>'delete-form']) !!}
-                                        <a class="btn btn-outline-info" href="{{ route('products.edit', $product)}}" title="Editar">
-                                            <i class="far fa-edit"></i>
-                                        </a>
-
-                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar" onclick="return confirmDelete()">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button>
-                                        {!! Form::close() !!}
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        @else
-                        <div class="alert alert-info">
-                            No hay ningún producto registrado.
+                                                    <button class="btn btn-outline-danger delete-confirm" type="submit"
+                                                        title="Eliminar" onclick="return confirmDelete()">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </button>
+                                                    {!! Form::close() !!}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @else
+                                <div class="alert alert-info">
+                                    No hay ningún producto registrado.
+                                </div>
+                            @endif
                         </div>
-                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 @endsection
 @section('scripts')
-{!! Html::script('melody/js/data-table.js') !!}
+    {!! Html::script('melody/js/data-table.js') !!}
 @endsection
