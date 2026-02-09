@@ -50,11 +50,12 @@
                                 @foreach ($products as $product)
 
                                 <tr>
+                                    @if($product->images->count()>=0)
                                      <td class="py-1">
                                         <img src="{{ asset($product->images->pluck('url')->first() ?? 'image/system/default.jpg') }}" alt="image" />
                                     </td> 
+                                    @endif
                                     <td> <a href="{{ route('products.show', $product )  }}"> {{$product->name }} </a></td>
-
                                     <td>{{$product->stock }}</td>
                                     @if ($product->status=='ACTIVE')
                                     <td>
