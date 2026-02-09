@@ -51,7 +51,7 @@
 
                                 <tr>
                                      <td class="py-1">
-                                        <img src="{{$product->images->pluck('url')[0]}}" alt="image" />
+                                        <img src="{{ asset($product->images->pluck('url')->first() ?? 'image/system/default.jpg') }}" alt="image" />
                                     </td> 
                                     <td> <a href="{{ route('products.show', $product )  }}"> {{$product->name }} </a></td>
 
