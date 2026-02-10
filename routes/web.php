@@ -4,16 +4,16 @@ use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\MyAccountController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShoppingCartDetailController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\WebController;
-use App\ShoppingCart;
-use App\ShoppingCartDetail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
+Auth::routes();
 
 //============================== rutas del cliente ========================// 
 Route::post('/payments/pay', [PaymentController::class, 'pay'])->name('pay');
@@ -123,22 +123,18 @@ Route::get('change_status/sales/{sale}', 'SaleController@change_status')->name('
 Route::get('get_subcategories', 'AjaxController@get_subcategories')->name('get_subcategories');
 Route::get('get_products_by_subcategory', 'AjaxController@get_products_by_subcategory')->name('get_products_by_subcategory');
 
-//subcategorias
 
-/* Route::resource('subcategories', 'SubcategoryController')
-    ->except(['edit', 'update', 'show'])
-    ->names('subcategories');
-Route::put('category/{category}/subcategory/{subcategory}/update', 'SubcategoryController@update')->name('subcategories.update');
-
-Route::get('category/{category}/subcategory/{subcategory}', 'SubcategoryController@edit')->name('subcategories.edit');
- */
 Route::resource('tags', 'TagController')
 ->except(['show'])
 ->names('tags');
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/buscar', 'SearchController@buscar')->name('buscar');
 
+
+Route::get('/sync_woocommerce/{productId}', [ProductController::class, 'syncWithWooCommerce'])->name('sync_woocommerce');
+
+Route::get('/sync_woocommerce', [ProductController::class, 'syncAllProducts'])->name('sync_all_woocommerce');

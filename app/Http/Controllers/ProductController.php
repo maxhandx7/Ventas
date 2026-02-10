@@ -7,7 +7,7 @@ use App\Category;
 use App\Provider;
 use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
-use App\Subcategory;
+use Illuminate\Support\Facades\Http;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -38,10 +38,10 @@ class ProductController extends Controller
     {
 
         try {
-           $product->my_store($request);
+            $product->my_store($request);
             return redirect()->route('products.index')->with('success', 'Producto creado con éxito');
         } catch (\Exception $th) {
-            return redirect()->back()->with('error', 'Ocurrió un error al crear el producto.'. $th->getMessage());
+            return redirect()->back()->with('error', 'Ocurrió un error al crear el producto.' . $th->getMessage());
         }
     }
 
@@ -94,14 +94,60 @@ class ProductController extends Controller
     public function upload_image(Request $request, $id)
     {
         $product = Product::findOrFail($id);
-        if ( $request->hasFile('image')) {
-            $file =  $request->file('image');
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
             $image_name = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path("/image"), $image_name);
             $urlImages = '/image/' . $image_name;
-        } 
+        }
         $product->images()->create([
             'url' => $urlImages,
         ]);
     }
+
+
+    public function syncWithWooCommerce($productId)
+    {
+
+        $url = env('WC_URL') . "/wp-json/wc/v3/products/" . $productId;
+        $ck = env('WC_KEY');
+        $cs = env('WC_SECRET');
+
+        $response = Http::withBasicAuth($ck, $cs)->get($url);
+
+        if ($response->successful()) {
+            $productData = $response->json();
+            $productModel = new Product();
+            $productModel->storeFromWooCommerce($productData);
+
+            return response()->json([
+                'message' => 'Producto sincronizado con éxito',
+                'product' => $productData['name']
+            ]);
+        }
+
+        return response()->json(['error' => 'No se pudo conectar con WooCommerce'], 500);
+    }
+
+    public function syncAllProducts()
+    {
+        $url = env('WC_URL') . "/wp-json/wc/v3/products/";
+        
+        $response = Http::withBasicAuth(env('WC_KEY'), env('WC_SECRET'))->get($url, [
+            'per_page' => 100
+        ]);
+
+        if ($response->successful()) {
+            $products = $response->json(); 
+
+            foreach ($products as $data) {
+                $productModel = new Product();
+                $productModel->storeFromWooCommerce($data);
+            }
+
+            return "Sincronización masiva completada.";
+        }
+    }
+
+
 }

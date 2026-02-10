@@ -45,14 +45,10 @@ class Product extends Model
         return $this->morphMany('App\Image', 'imageable');
     }
 
-    /*   public function tags()
-      {
-          return $this->belongsToMany(Tag::class);
-      } */
+   
 
     public function tags()
     {
-        // Cambia belongsToMany por morphToMany
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
@@ -137,5 +133,83 @@ class Product extends Model
                 # code...
                 break;
         }
+    }
+
+
+   public function storeFromWooCommerce($wooProduct)
+{
+    $categoryId = null;
+    if (!empty($wooProduct['categories'])) {
+        foreach ($wooProduct['categories'] as $wooCat) {
+            $category = \App\Category::firstOrCreate(
+                ['slug' => $wooCat['slug']],
+                [
+                    'name' => $wooCat['name'],
+                    'category_type' => 'PRODUCT',
+                ]
+            );
+            if (!$categoryId) $categoryId = $category->id;
+        }
+    }
+
+    $product = self::updateOrCreate(
+        ['slug' => $wooProduct['slug']],
+        [
+            'name'              => $wooProduct['name'],
+            'short_description' => $wooProduct['short_description'],
+            'long_description'  => $wooProduct['description'],
+            'sell_price'        => $wooProduct['price'] ?? 0,
+            'stock'             => $wooProduct['stock_quantity'] ?? 0,
+            'status'            => 'ACTIVE', 
+            'category_id'       => $categoryId, // ID recién creado o encontrado
+            'provider_id'       => 1, 
+        ]
+    );
+
+    $this->GenerarCodigo($product);
+
+    if (!empty($wooProduct['tags'])) {
+        $tagIds = [];
+        foreach ($wooProduct['tags'] as $wooTag) {
+            $tag = \App\Tag::firstOrCreate(
+                ['slug' => $wooTag['slug']],
+                ['name' => $wooTag['name']]
+            );
+            $tagIds[] = $tag->id;
+        }
+        $product->tags()->sync($tagIds);
+    }
+
+    if (!empty($wooProduct['images'])) {
+        $product->images()->delete(); // Limpiar previas si es actualización
+        $urlImages = collect($wooProduct['images'])->map(fn($img) => ['url' => $img['src']])->toArray();
+        $product->images()->createMany($urlImages);
+    }
+
+    return $product;
+}
+
+
+    
+
+    public function syncWooCategories(array $wooCategories)
+    {
+        $lastId = null;
+
+        foreach ($wooCategories as $wooCat) {
+            $category = \App\Category::firstOrCreate(
+                ['slug' => $wooCat['slug']],
+                [
+                    'name' => $wooCat['name'],
+                    'category_type' => 'PRODUCT',
+                    'description' => 'Sincronizado desde WooCommerce',
+                ]
+            );
+            if (!$lastId) {
+                $lastId = $category->id;
+            }
+        }
+
+        return $lastId;
     }
 }
