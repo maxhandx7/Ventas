@@ -30,6 +30,9 @@
                                 <a href="{{ route('products.create') }}" class="btn btn-success" type="button">
                                     <i class="fa fa-plus"></i>
                                     Agregar</a>
+                                <a href="{{ route('sync_all_woocommerce') }}" class="btn btn-info" type="button">
+                                    <i class="fa fa-sync"></i>
+                                    Sincronizar</a>
                             </div>
                         </div>
                         <br>
@@ -51,9 +54,8 @@
                                         @foreach ($products as $product)
                                             <tr>
                                                 <td class="py-1">
-                                                    <img src="{{ (isset($product->images) && $product->images->isNotEmpty()) ? asset($product->images->first()->url) : asset('image/system/default.jpg') }}" 
-     alt="image" 
-     width="50">
+                                                    <img src="{{ isset($product->images) && $product->images->isNotEmpty() ? asset($product->images->first()->url) : asset('image/system/default.jpg') }}"
+                                                        alt="image" width="50">
                                                 </td>
                                                 <td> <a href="{{ route('products.show', $product) }}"> {{ $product->name }}
                                                     </a></td>

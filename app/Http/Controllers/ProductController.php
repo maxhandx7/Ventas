@@ -145,7 +145,7 @@ class ProductController extends Controller
                 $productModel->storeFromWooCommerce($data);
             }
 
-            return "Sincronización masiva completada.";
+            return redirect()->route('products.index')->with('success', "Sincronización masiva completada.");
         }
     }
 

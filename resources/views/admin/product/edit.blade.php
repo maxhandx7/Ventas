@@ -83,13 +83,6 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="category_id">Subcategoría</label>
-                            <select class="form-control js-example-basic-single" name="category_id" id="category_id"
-                                style="width: 100%">
-                                <option value="0" disabled selected> --Seleccione una categoria-- </option>
-                            </select>
-                        </div>
 
                         <div class="form-group">
                             <label for="provider_id">Proveedor</label>
@@ -168,29 +161,5 @@
         })(jQuery);
     </script>
 
-    <script>
-        var category_id = $('#category_id');
-        var category = $('#category');
 
-        category.change(function (){
-            $.ajax({
-                url:"{{route('get_categories')}}",
-                method: 'GET',
-                data:{
-                    category: category.val(),
-                },
-                success: function(data){
-                    category_id.empty();
-                    category_id.append('<option disable selected>-- selecciona una categoria ---</ option>');
-                    $.each(data, function(index, element){
-                        category_id.append('<option value="'+element.id+'">'+element.name+'"</option>"');
-                    });
-
-
-                }
-            })
-        });
-
-
-    </script>
 @endsection
