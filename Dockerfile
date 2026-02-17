@@ -3,6 +3,8 @@ FROM node:18 AS nodebuilder
 
 WORKDIR /app
 
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
 COPY package*.json ./
 RUN npm install
 
